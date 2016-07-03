@@ -1,0 +1,332 @@
+﻿@model KindergartentManagerment.Models.DD_ThucPham
+
+@using KindergartentManagerment.Resources
+@{
+    ViewBag.Title = AssCommonResource.IngredientsOverview + " | " + AssCommonResource.Delete;
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<section class="content-header">
+    <h1>
+        @AssCommonResource.IngredientsOverview
+    </h1>
+
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> @AssCommonResource.Home</a></li>
+        <li><a href="#">@AssCommonResource.Kindergarten</a></li>
+        <li class="active">@AssCommonResource.IngredientsOverview</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">@AssCommonResource.Delete</h3>
+                    <h3 class="box-header">@AssCommonResource.RequestDelete</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="form-horizontal">
+                        
+                        <!-- overview-->
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">@AssCommonResource.Overview</h3>
+                                <div class="box-tools pull-right">
+                                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                </div>
+                            </div>
+                            <div class="box-body">
+
+                                <!-- Group 1-->
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @IngredientsCommonResource.TenThucPham
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.TenThucPham, new { htmlAttributes = new { @class = "form-control", required = "required", @placeholder = StudentOverviewResource.RequireName, @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.TenThucPham, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @IngredientsCommonResource.NhomThucPham
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.DropDownListFor(model => model.NhomThucPhamID, new SelectList(db.DD_NhomThucPham.Where(s => s.Auth_Status == "A"), "NhomThucPhamID", "TenNhomThucPham"), new { @class = "form-control", @disabled = "disabled" })
+                                            @Html.ValidationMessageFor(model => model.TenThucPham, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end group-->
+                                <!-- Group 2-->
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @IngredientsCommonResource.NguonTuDongVat
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.NguonTuDongVat, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.NguonTuDongVat, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @IngredientsCommonResource.QuyDoiVeKq
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.QuyDoiVeKg, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.QuyDoiVeKg, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end group-->
+                                <!--Group 3-->
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @IngredientsCommonResource.DonViTinh
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.DonViTinh, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.DonViTinh, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @IngredientsCommonResource.GiaThanh
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.GiaThanh, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.GiaThanh, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- NutritiousInfo-->
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">@AssCommonResource.NutritiousInfo</h3>
+                                <div class="box-tools pull-right">
+                                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                </div>
+                            </div>
+                            <div class="box-body">
+
+                                <!-- Group 1-->
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @IngredientsCommonResource.TyLeHapThu
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.TyLeHapThu, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.TyLeHapThu, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @IngredientsCommonResource.TyLeThai
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.TyLeThai, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.TyLeThai, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end group-->
+                                <!-- Group 2-->
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @IngredientsCommonResource.NangLuongCalo
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.NangLuongCalo, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.NangLuongCalo, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @IngredientsCommonResource.VitaminPP
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.VitaminPP, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.VitaminPP, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end group-->
+                                <!--Group 3-->
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @IngredientsCommonResource.TphhNuoc
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.TphhNuoc, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.TphhNuoc, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @IngredientsCommonResource.TphhProtid
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.TphhProtid, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.TphhProtid, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @IngredientsCommonResource.TphhLipid
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.TphhLipid, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.TphhLipid, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @IngredientsCommonResource.TphhGlucid
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.TphhGlucid, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.TphhGlucid, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @IngredientsCommonResource.TphhCellulose
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.TphhCellulose, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.TphhCellulose, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @IngredientsCommonResource.TphhCholesterol
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.TphhCholesterol, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.TphhCholesterol, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @IngredientsCommonResource.MkCalci
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.MkCalci, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.MkCalci, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @IngredientsCommonResource.MkPhotpho
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.MkPhotpho, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.MkPhotpho, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @IngredientsCommonResource.MkSat
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.MkSat, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.MkSat, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @IngredientsCommonResource.VitaminCaroten
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.VitaminCaroten, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.VitaminCaroten, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @IngredientsCommonResource.VitaminA
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.VitaminA, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.VitaminA, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @IngredientsCommonResource.VitaminB1
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.VitaminB1, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.VitaminB1, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @IngredientsCommonResource.VitaminB2
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.VitaminB2, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.VitaminB2, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @IngredientsCommonResource.VitaminC
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.VitaminC, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.VitaminC, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @AssCommonResource.Notes
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.Notes, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end group-->
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="box-footer clearfix">
+                        <input type="submit" value="@AssCommonResource.Delete" class="btn btn-sm btn-danger btn-flat pull-right" />
+                        @Html.ActionLink(AssCommonResource.BacktoList, "Index", "Ingredients", new { @class = "btn btn-sm btn-info btn-flat pull-left" })
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+

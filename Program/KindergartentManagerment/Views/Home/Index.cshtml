@@ -1,0 +1,140 @@
+﻿@using KindergartentManagerment.Resources
+
+@{
+    ViewBag.Title = AssCommonResource.KindergartenManagerment + " | " + AssCommonResource.Home;
+    KindergartentManagerment.Models.ApplicationDbContext db = new KindergartentManagerment.Models.ApplicationDbContext();
+    int countkindergartent= db.KM_STUDENTOVERVIEW.Count() ;
+    int countStaff = db.SM_STAFFINFO.Count();
+    int countLessonProgram = db.TM_LESSONPROGRAM.Count();
+    int countTopic = db.TM_TOPIC.Count();
+    int countIngredients = db.DD_ThucPham.Count();
+    int countClass = db.GM_CLASSINFO.Count();
+    int countDepartment = db.DM_DEPARTMENTINFO.Count();
+    int countUser = db.Users.Count();
+}
+
+
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Dashboard
+        <small>@AssCommonResource.ControlPanel</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>@AssCommonResource.Home</a></li>
+        <li>Dashboard</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <!-- Small boxes (Stat box) -->
+    <div class="row">
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3>@countkindergartent</h3>
+                    <p>@AssCommonResource.Baby</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="/Home/Kindergarten/StudentOverview/Index" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+        
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-orange">
+                <div class="inner">
+                    <h3>@countStaff</h3>
+                    <p>@AssCommonResource.lbl_staff</p>
+                </div>
+                <div class="icon">
+                    <i class="ion-person-add"></i>
+                </div>
+                <a href="/Home/Staff/StaffInfo/Index" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-blue">
+                <div class="inner">
+                    <h3>@countLessonProgram</h3>
+                    <p>@AssCommonResource.LessonProgram</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-bag"></i>
+                </div>
+                <a href="/Home/Teach/LessonProgram/Index" class="small-box-footer">More info <i class="fa fa-chevron-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-black">
+                <div class="inner">
+                    <h3>@countTopic</h3>
+                    <p>@AssCommonResource.Topic</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-youtube-play"></i>
+                </div>
+                <a href="/Home/Teach/Topic/Index" class="small-box-footer">More info <i class="fa fa-chevron-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-maroon">
+                <div class="inner">
+                    <h3>@countIngredients</h3>
+                    <p>@AssCommonResource.IngredientsOverview</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-heart"></i>
+                </div>
+                <a href="/Home/Nutritious/Ingredients/Index" class="small-box-footer">More info <i class="fa fa-chevron-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+                <div class="inner">
+                    <h3>@countClass</h3>
+                    <p>@AssCommonResource.ClassOverview</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-windows"></i>
+                </div>
+                <a href="/Home/GradeClass/ClassOverview/Index" class="small-box-footer">More info <i class="fa fa-chevron-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-purple">
+                <div class="inner">
+                    <h3>@countDepartment</h3>
+                    <p>@AssCommonResource.Department</p>
+                </div>
+                <div class="icon">
+                    <i class="fa  fa-hand-o-down"></i>
+                </div>
+                <a href="/Home/Staff/Department/Index" class="small-box-footer">More info <i class="fa fa-chevron-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+                <div class="inner">
+                    <h3>@countUser</h3>
+                    <p>Người dùng</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-arrow-circle-up"></i>
+                </div>
+                <a href="" class="small-box-footer">More info <i class="fa fa-chevron-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+    </div>
+</section>

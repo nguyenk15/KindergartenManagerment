@@ -1,0 +1,176 @@
+﻿@model IEnumerable<KindergartentManagerment.Models.REM_INOUT>
+
+@using KindergartentManagerment.Resources
+@{
+    ViewBag.Title = AssCommonResource.Out + " | " + AssCommonResource.Index;
+    Layout = "~/Views/Shared/Layout.cshtml";
+    KindergartentManagerment.Models.ApplicationDbContext db = new KindergartentManagerment.Models.ApplicationDbContext();
+}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        @AssCommonResource.Out
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> @AssCommonResource.Home</a></li>
+        <li><a href="#">@AssCommonResource.Revenueandexpenditures</a></li>
+        <li class="active">@AssCommonResource.Out</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">@Html.ActionLink(AssCommonResource.Create_New, "Create")</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <div class="box box-success">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">@AssCommonResource.Search</h3>
+                                    <span class="label label-success pull-right"><i class="fa fa-search-plus"></i></span>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    @using (Html.BeginForm("Index", "ClassInfo", FormMethod.Get))
+                                    {
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="box box-danger">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">@AssCommonResource.ExportReports</h3>
+                                    <span class="label label-danger pull-right"><i class="fa fa-bar-chart"></i></span>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        @Html.ActionLink(" Excel", "ExportTo", "Out", new { ReportType = "Excel" }, new { @class = "fa fa-file-excel-o btn btn-success" })
+                                        @Html.ActionLink(" Pdf", "ExportTo", "Out", new { ReportType = "Pdf" }, new { @class = "fa fa-file-pdf-o btn btn-warning" })
+                                        @Html.ActionLink(" Word", "ExportTo", "Out", new { ReportType = "Word" }, new { @class = "fa fa-file-word-o btn btn-primary" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">@AssCommonResource.Details</h3>
+                                    <span class="label label-primary pull-right"><i class="fa fa-book"></i></span>
+                                </div><!-- /.box-header -->
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <table id="example2" class="table table-bordered table-hover">
+                                        <tr>
+                                            <th>
+                                                @AssCommonResource.Auth_Status
+                                            </th>
+                                            <th>
+                                                @InOutResource.InOut_Code
+                                            </th>
+                                            <th>
+                                                @InOutResource.InOut_Date
+                                            </th>
+                                            <th>
+                                                @InOutResource.InOut_Reason
+                                            </th>
+                                            <th>
+                                                @InOutResource.InOut_Received
+                                            </th>
+                                            <th>
+                                                @InOutResource.InOut_Paid
+                                            </th>
+                                            <th>
+                                                @InOutResource.InOut_Budget
+                                            </th>
+                                            <th>
+                                                @AssCommonResource.Option
+                                            </th>
+                                            @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                                            {
+                                                <th>
+                                                    @AssCommonResource.SaveAuth
+                                                </th>
+                                            }
+                                        </tr>
+
+                                        @foreach (var item in Model)
+                                        {
+                                            using (Html.BeginForm("Index", "Inout", new { id = item.InOut_ID }, FormMethod.Post, new { @class = "form-horizontal text-center", role = "form", enctype = "multipart/form-data" }))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                <tr>
+                                                    <td>
+                                                        @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                                                        {
+                                                            @Html.DropDownList("AUTH_STATUS", new SelectList(db.SYS_AUTH_STATUS, "AUTH_STATUS", "AUTH_STATUS_NAME", item.Auth_Status), new { @class = "form-control" })
+                                                        }
+                                                        else
+                                                        {
+                                                            @Html.DropDownList("AUTH_STATUS", new SelectList(db.SYS_AUTH_STATUS, "AUTH_STATUS", "AUTH_STATUS_NAME", item.Auth_Status), new { @class = "form-control", @disabled = "disabled" })
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.InOut_Code, new { @class = "text-center" })
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.InOut_Date,new { @class = "datemask" })
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.InOut_Reason)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.InOut_Received)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.InOut_Paid)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.InOut_Budget)
+                                                    </td>
+                                                    <td>
+                                                        @Html.ActionLink(AssCommonResource.Edit, "Edit", new { id = item.InOut_ID }) |
+                                                        @Html.ActionLink(AssCommonResource.Details, "Details", new { id = item.InOut_ID }) |
+                                                        @Html.ActionLink(AssCommonResource.Delete, "Delete", new { id = item.InOut_ID })
+                                                    </td>
+                                                    @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                                                    {
+                                                        <td>
+                                                            <input type="submit" value="@AssCommonResource.Save" class="btn btn-sm btn-default btn-flat pull-right" />
+                                                        </td>
+                                                    }
+                                                </tr>
+                                            }
+                                        }
+                                    </table>
+                                </div>
+                            </div><!-- /.box -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section orther_scripts{
+    <script>
+    $(function () {
+            //Datemask dd/mm/yyyy
+            $(".datemask").inputmask({
+                alias: "dd/mm/yyyy"
+            });
+            //Datemask2 mm/dd/yyyy
+            $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
+            //Money Euro
+            $("[data-mask]").inputmask();
+            $('.inputmask').inputmask({
+                mask: '9999-999-999'
+            })
+    });
+    //ten class tien = money
+    </script>
+}

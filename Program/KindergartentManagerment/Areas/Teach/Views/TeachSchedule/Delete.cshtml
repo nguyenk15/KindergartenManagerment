@@ -1,0 +1,113 @@
+﻿@model KindergartentManagerment.Models.TM_TEACHSCHEDULE
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TM_TEACHSCHEDULE</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MorningLesson)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MorningLesson)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MorningTeacher)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MorningTeacher)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AfternoonLesson)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AfternoonLesson)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AfternoonTeacher)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AfternoonTeacher)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Record_Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Record_Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Maker_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Maker_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Create_DT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Create_DT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Auth_Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Auth_Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Checker_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Checker_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Approve_DT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Approve_DT)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

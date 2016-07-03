@@ -1,0 +1,485 @@
+﻿@model KindergartentManagerment.Models.SM_STAFFINFO
+
+@using KindergartentManagerment.Resources
+
+@{
+    ViewBag.Title = AssCommonResource.lbl_staff + " | " + AssCommonResource.Delete;
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        @AssCommonResource.lbl_staff
+    </h1>
+
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> @AssCommonResource.Home</a></li>
+        <li><a href="#">@AssCommonResource.Kindergarten</a></li>
+        <li class="active">@AssCommonResource.lbl_staff</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">@AssCommonResource.Delete</h3>
+                    <h3 class="box-header">@AssCommonResource.RequestDelete</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="form-horizontal">
+
+                        <!-- student information-->
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">@AssCommonResource.Profiles</h3>
+                                <div class="box-tools pull-right">
+                                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                </div>
+                            </div>
+                            <div class="box-body">
+
+                                <!-- Group name,gender-->
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @StaffCommonResource.StaffName
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.StaffName, new { htmlAttributes = new { @class = "form-control", required = "required", @placeholder = StudentOverviewResource.RequireName, @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.StaffName, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @StaffCommonResource.StaffNumber
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.TextBoxFor(model => model.StaffNumber, new { @class = "form-control", required = "required", @disabled = "disabled" })
+                                            @Html.ValidationMessageFor(model => model.StaffNumber)
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- end group-->
+                                <!-- Group birthday,identitycard-->
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @StaffCommonResource.Date_Of_Birth
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                @Html.TextBoxFor(model => model.Date_Of_Birth, new { @class = "form-control datemask", @type = "text", @disabled = "disabled", required = "required" })
+                                                @Html.ValidationMessageFor(model => model.Date_Of_Birth)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @StaffCommonResource.IndentityCard
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.TextBoxFor(model => model.IndentityCard, new { @class = "form-control", @disabled = "disabled" })
+                                            @Html.ValidationMessageFor(model => model.IndentityCard)
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end group-->
+                                <!--Group adress-->
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @StaffCommonResource.Address
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @StaffCommonResource.Gender
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.DropDownListFor(model => model.Gender, ViewBag.Gender as List<SelectListItem>, new { @class = "form-control", @disabled = "disabled" })
+                                            @Html.ValidationMessageFor(model => model.Gender)
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End group-->
+                                <!-- Group nation and Religion-->
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @StaffCommonResource.Nation
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.TextBoxFor(model => model.Nation, new { @class = "form-control", @disabled = "disabled" })
+                                            @Html.ValidationMessageFor(model => model.Nation)
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @StaffCommonResource.Religion
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.TextBoxFor(model => model.Religion, new { @class = "form-control", @disabled = "disabled" })
+                                            @Html.ValidationMessageFor(model => model.Religion)
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End group-->
+                                <!-- group Phone and Email-->
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @StaffCommonResource.Phone
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.TextBoxFor(model => model.Phone, new
+                                           {
+                                               @class = "form-control inputmask",
+                                               type = "text",
+                                               @disabled = "disabled"
+                                           })
+                                            @Html.ValidationMessageFor(model => model.Phone)
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @StaffCommonResource.Email
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End group-->
+                                <!-- group Politic-->
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @StaffCommonResource.IsLeaguer
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="checkbox icheck">
+                                                @Html.CheckBoxFor(m => m.IsLeaguer, new { @disabled = "disabled" })
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.IsLeaguer, "", new { @class = "text-danger", @disabled = "disabled" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @StaffCommonResource.DayatParty
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                @Html.EditorFor(model => model.DayatParty, new { htmlAttributes = new { @class = "form-control datemask", @type = "text", @disabled = "disabled" } })
+                                                @Html.ValidationMessageFor(model => model.DayatParty, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- End group-->
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @StaffCommonResource.CardNumberParty
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.CardNumberParty, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.CardNumberParty, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <div class="control-label col-md-6">
+                                            @StaffCommonResource.Picture
+                                        </div>
+                                        <div class="col-md-6">
+                                            <img src=@Model.Picture class="user-image" alt="User Image">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- /.box-body -->
+                        </div>
+
+                        <!-- familly information-->
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">@StaffCommonResource.Family</h3>
+                                <div class="box-tools pull-right">
+                                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <!-- Group father name and father birthday-->
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @StaffCommonResource.FatherFullName
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.FatherFullName, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.FatherFullName, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @StudentOverviewResource.FatherBirthday
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                @Html.TextBoxFor(model => model.FatherBirthday, new { @class = "form-control datemask", @type = "text", @disabled = "disabled" })
+                                                @Html.ValidationMessageFor(model => model.FatherBirthday)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End group -->
+                                <!-- Group fatherjob and fatherPhone-->
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @StaffCommonResource.FatherJob
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.FatherJob, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.FatherJob, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @StaffCommonResource.TelephoneFather
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-phone"></i>
+                                                </div>
+                                                @Html.TextBoxFor(model => model.FatherPhone, new
+                                               {
+                                                   @class = "form-control inputmask",
+                                                   type = "text",
+                                                   @disabled = "disabled"
+                                               })
+                                                @Html.ValidationMessageFor(model => model.FatherPhone)
+                                            </div><!-- /.input group -->
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End group-->
+                                <!-- Group Mothername and motherbirthday-->
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @StaffCommonResource.MotherFullName
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.MotherFullName, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.MotherFullName, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @StaffCommonResource.MotherBirthday
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                @Html.TextBoxFor(model => model.MotherBirthday, new { @class = "form-control datemask", @type = "text", @disabled = "disabled" })
+                                                @Html.ValidationMessageFor(model => model.MotherBirthday)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End group-->
+                                <!-- Group MotherJop and Mother Phone-->
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @StaffCommonResource.MotherJob
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.MotherJob, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.MotherJob, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @StaffCommonResource.TelephoneMother
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-phone"></i>
+                                                </div>
+                                                @Html.TextBoxFor(model => model.MotherPhone, new
+                                               {
+                                                   @class = "form-control inputmask",
+                                                   type = "text",
+                                                   @disabled = "disabled"
+                                               })
+                                                @Html.ValidationMessageFor(model => model.MotherPhone)
+                                            </div><!-- /.input group -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Job information -->
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">@StaffCommonResource.Job</h3>
+                                <div class="box-tools pull-right">
+                                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <!-- Group is a teacher-->
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @StaffCommonResource.IsATeacher
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="checkbox icheck">
+                                                @Html.CheckBoxFor(m => m.IsATeacher, new { @disabled = "disabled" })
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.IsATeacher, "", new { @class = "text-danger", @disabled = "disabled" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @StaffCommonResource.Department
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.DropDownListFor(model => model.DepartmentID, ViewBag.DepartmentList as SelectList, new { @class = "form-control", @disabled = "disabled" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End group -->
+                                <!-- Group position n degree-->
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @StaffCommonResource.Position
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.Position, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.Position, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @StaffCommonResource.Degree
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.Degree, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.Degree, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End group -->
+                                <!-- Group salary grade-->
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @StaffCommonResource.SalaryGrade
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.SalaryGrade, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.SalaryGrade, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @StaffCommonResource.BasicSalary
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.BasicSalary, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.BasicSalary, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End group -->
+                                <!-- Group coefficient & basic salary-->
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @StaffCommonResource.CoefficientsSalary
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.CoefficientsSalary, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.CoefficientsSalary, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @AssCommonResource.Notes
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.Notes, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End group -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Action click-->
+                @using (Html.BeginForm("Delete", "StaffInfo", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+
+                    <div class="box-footer clearfix">
+                        <input type="submit" value="@AssCommonResource.Delete" class="btn btn-sm btn-warning btn-flat pull-right" />
+                        @Html.ActionLink(AssCommonResource.BacktoList, "Index", "StaffIndo", new { @class = "btn btn-sm btn-info btn-flat pull-left" })
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>
+@section Orther_styles{
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/Content/themes/AdminLTE/css/iCheck/square/blue.css">
+}
+
+@section Orther_scripts{
+    <script>
+            $(function () {
+                $('input').iCheck({
+                    checkboxClass: 'icheckbox_square-blue',
+                    radioClass: 'iradio_square-blue',
+                    increaseArea: '20%' // optional
+                });
+            });
+    </script>
+    <script src="~/Scripts/Valid.js"></script>
+}

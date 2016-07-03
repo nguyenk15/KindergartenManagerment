@@ -1,0 +1,51 @@
+﻿@model KindergartentManagerment.Models.GM_GRADEINFO
+@using KindergartentManagerment.Resources
+
+@{
+    ViewBag.Title = AssCommonResource.GradeOverview + " | " + AssCommonResource.Delete;
+    Layout = "~/Views/Shared/Layout.cshtml";
+    KindergartentManagerment.Models.ApplicationDbContext db = new KindergartentManagerment.Models.ApplicationDbContext();
+}
+<section class="content-header">
+    <h1>
+        @AssCommonResource.GradeOverview
+    </h1>
+
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> @AssCommonResource.Home</a></li>
+        <li><a href="#">@AssCommonResource.Kindergarten</a></li>
+        <li class="active">@AssCommonResource.GradeOverview</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">@AssCommonResource.Delete</h3>
+                    <h3 class="box-header">@AssCommonResource.RequestDelete</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @ClassCommonResource.Grade
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayNameFor(model => model.GRADE_NAME)
+                        </dd>
+                    </dl>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="box-footer clearfix">
+                            <input type="submit" value=@AssCommonResource.Delete class="btn btn-sm btn-info btn-flat pull-left" /> |
+                            @Html.ActionLink(AssCommonResource.BacktoList, "Index", "Grade", new { @class = "btn btn-sm btn-info btn-flat pull-left" })
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

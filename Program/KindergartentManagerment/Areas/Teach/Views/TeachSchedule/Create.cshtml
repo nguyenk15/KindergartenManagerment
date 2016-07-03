@@ -1,0 +1,133 @@
+﻿@model KindergartentManagerment.Models.TM_TEACHSCHEDULE
+@using KindergartentManagerment.Resources
+@{
+    ViewBag.Title = AssCommonResource.TeachSchedule + " | " + AssCommonResource.Create;
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<section class="content-header">
+    <h1>
+        @AssCommonResource.TeachSchedule
+    </h1>
+
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> @AssCommonResource.Home</a></li>
+        <li><a href="#">@AssCommonResource.Teach</a></li>
+        <li class="active">@AssCommonResource.TeachSchedule</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">@AssCommonResource.Create_New</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            <div class="box box-info">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">@AssCommonResource.TeachSchedule</h3>
+                                    <div class="box-tools pull-right">
+                                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <div class="control-label col-md-2">
+                                            @TeachScheduleResource.DateofWeek
+                                        </div>
+                                        <div class="col-md-9">
+                                            @Html.EditorFor(model => model.DateofWeek, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.DateofWeek, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="control-label col-md-2">
+                                            @TeachScheduleResource.Date
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                @Html.TextBoxFor(model => model.Date, new { @class = "form-control datemask", @type = "text", style = "width: 100%;" })
+                                                @Html.ValidationMessageFor(model => model.Date)
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="control-label col-md-2">
+                                            @TeachScheduleResource.MorningLesson
+                                        </div>
+                                        <div class="col-md-9">
+                                            @Html.EditorFor(model => model.MorningLesson, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.MorningLesson, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="control-label col-md-2">
+                                            @TeachScheduleResource.MorningTeacher
+                                        </div>
+                                        <div class="col-md-9">
+                                            @Html.EditorFor(model => model.MorningTeacher, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.MorningTeacher, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="control-label col-md-2">
+                                            @TeachScheduleResource.AfternoonLesson
+                                        </div>
+                                        <div class="col-md-9">
+                                            @Html.EditorFor(model => model.AfternoonLesson, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.AfternoonLesson, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="control-label col-md-2">
+                                            @TeachScheduleResource.AfternoonTeacher
+                                        </div>
+                                        <div class="col-md-9">
+                                            @Html.EditorFor(model => model.AfternoonTeacher, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.AfternoonTeacher, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="control-label col-md-2">
+                                            @AssCommonResource.Notes
+                                        </div>
+                                        <div class="col-md-9">
+                                            @Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Notes, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-footer clearfix">
+                            @Html.ActionLink(AssCommonResource.BacktoList, "Index", "TechSchedule", new { @class = "btn btn-sm btn-default btn-flat pull-left" })
+                            <input type="submit" value="@AssCommonResource.Create" class="btn btn-sm btn-success btn-flat pull-right" />
+                        </div><!-- /.box-footer -->
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Orther_scripts{
+    <script src="~/Scripts/Valid.js"></script>
+}
+

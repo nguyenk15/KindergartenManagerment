@@ -1,0 +1,130 @@
+﻿@model KindergartentManagerment.Models.GM_CLASSINFO
+@using KindergartentManagerment.Resources
+@{
+    ViewBag.Title = AssCommonResource.KindergartenManagerment + " | " + AssCommonResource.Details;
+    Layout = "~/Views/Shared/Layout.cshtml";
+    KindergartentManagerment.Models.ApplicationDbContext db = new KindergartentManagerment.Models.ApplicationDbContext();
+}
+
+<section class="content-header">
+    <h1>
+        @AssCommonResource.ClassOverview
+    </h1>
+
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> @AssCommonResource.Home</a></li>
+        <li><a href="#">@AssCommonResource.Kindergarten</a></li>
+        <li class="active">@AssCommonResource.ClassOverview</li>
+    </ol>
+</section>
+<!-- Main content -->
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">@AssCommonResource.Details</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <!-- overview-->
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">@AssCommonResource.Overview</h3>
+                                <div class="box-tools pull-right">
+                                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                </div>
+                            </div>
+                            <div class="box-body">
+
+                                <!-- Group 1-->
+                                <div class="form-group">
+                                    <div class="control-label col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @ClassCommonResource.ClassName
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.Class_Name, new { htmlAttributes = new { @class = "form-control", required = "required", @disabled = "disabled", @style = "width:100%;", @placeholder = StudentOverviewResource.RequireName } })
+                                        </div>
+                                    </div>
+                                    <div class="control-label col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @ClassCommonResource.Grade
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.DropDownListFor(model => model.GradeID, ViewBag.GradeList as SelectList, new { @class = "form-control", @disabled = "disabled", @style = "width:100%;" })
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                                <!-- Group 2-->
+                                <div class="form-group">
+                                    <div class="control-label col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @ClassCommonResource.Teacher
+                                        </div>
+                                        <div class="col-md-8">
+                                                @Html.DropDownListFor(model => model.Teacher_ID,ViewBag.TeacherList as SelectList,new { @class = "form-control", @disabled = "disabled", @style = "width:100%;" })
+                                        </div>
+                                    </div>
+                                    <div class="control-label col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @ClassCommonResource.Kindergartener
+                                        </div>
+                                        <div class="col-md-8">
+                                                @Html.DropDownListFor(model => model.Kindergartener_ID, ViewBag.KindergartenerList as SelectList, new { @class = "form-control", @disabled = "disabled", @style = "width:100%;" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Group 3-->
+                                <div class="form-group">
+                                    <div class="control-label col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @ClassCommonResource.Quantity
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.Quantity,
+                                            new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = "width:100%;" } })
+                                        </div>
+                                    </div>
+                                    <div class="control-label col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @AssCommonResource.Notes
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.Notes,
+                                            new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = "width:100%;" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action click-->
+                <div class="box-footer clearfix">
+                    <div class="form-group">
+                        <div class="col-md-8">
+                            @Html.ActionLink(AssCommonResource.Edit, "Edit", new { id = Model.ClassID, @class = "btn btn-sm btn-info btn-flat pull-left" }) |
+                            @Html.ActionLink(AssCommonResource.BacktoList, "Index", new { @class = "btn btn-sm btn-info btn-flat pull-left" })
+                        </div>
+                        <div class="col-md-4"> 
+                            <div class="control-label col-md-4 text-blue text-center">
+                                @AssCommonResource.ExportReports
+                            </div>
+                            @Html.ActionLink(" Excel", "DetailsExportTo", "ClassInfo", new { ReportType = "Excel", id = Model.ClassID }, new { @class = "fa fa-file-excel-o btn btn-success" })
+                            @Html.ActionLink(" Pdf", "DetailsExportTo", "ClassInfo", new { ReportType = "Pdf", id = Model.ClassID }, new { @class = "fa fa-file-pdf-o btn btn-warning" })
+                            @Html.ActionLink(" Word", "DetailsExportTo", "ClassInfo", new { ReportType = "Word", id = Model.ClassID }, new { @class = "fa fa-file-word-o btn btn-primary" })
+                        </div>
+                    </div>
+                </div><!-- /.box-footer -->
+            </div>
+        </div>
+    </div>
+</section>
+

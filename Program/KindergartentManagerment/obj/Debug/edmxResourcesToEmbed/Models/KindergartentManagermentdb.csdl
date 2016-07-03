@@ -1,0 +1,814 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="KindergartentManagermentdb" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="Model.C__MigrationHistory" />
+    <EntitySet Name="AspNetRoles" EntityType="Model.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Model.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Model.AspNetUserLogin" />
+    <EntitySet Name="AspNetUsers" EntityType="Model.AspNetUser" />
+    <EntitySet Name="DD_ChiTietMonAnMau" EntityType="Model.DD_ChiTietMonAnMau" />
+    <EntitySet Name="DD_LoaiMonAnMau" EntityType="Model.DD_LoaiMonAnMau" />
+    <EntitySet Name="DD_LoaiSuatAn" EntityType="Model.DD_LoaiSuatAn" />
+    <EntitySet Name="DD_MonAnMau" EntityType="Model.DD_MonAnMau" />
+    <EntitySet Name="DD_NhomThucPham" EntityType="Model.DD_NhomThucPham" />
+    <EntitySet Name="DD_NhuCauDinhDuong" EntityType="Model.DD_NhuCauDinhDuong" />
+    <EntitySet Name="DD_NhuCauNangLuong" EntityType="Model.DD_NhuCauNangLuong" />
+    <EntitySet Name="DD_SuatAn" EntityType="Model.DD_SuatAn" />
+    <EntitySet Name="DD_SuatAnChiTiet" EntityType="Model.DD_SuatAnChiTiet" />
+    <EntitySet Name="DD_ThucDonNgay" EntityType="Model.DD_ThucDonNgay" />
+    <EntitySet Name="DD_ThucPham" EntityType="Model.DD_ThucPham" />
+    <EntitySet Name="DM_DEPARTMENTINFO" EntityType="Model.DM_DEPARTMENTINFO" />
+    <EntitySet Name="FM_FOODREPOSITORY" EntityType="Model.FM_FOODREPOSITORY" />
+    <EntitySet Name="GM_CLASSINFO" EntityType="Model.GM_CLASSINFO" />
+    <EntitySet Name="GM_GRADEINFO" EntityType="Model.GM_GRADEINFO" />
+    <EntitySet Name="KM_PHYSICALINFO" EntityType="Model.KM_PHYSICALINFO" />
+    <EntitySet Name="KM_STANDARDINDEXES" EntityType="Model.KM_STANDARDINDEXES" />
+    <EntitySet Name="KM_STUDENTOVERVIEW" EntityType="Model.KM_STUDENTOVERVIEW" />
+    <EntitySet Name="REM_IN" EntityType="Model.REM_IN" />
+    <EntitySet Name="REM_INOUT" EntityType="Model.REM_INOUT" />
+    <EntitySet Name="REM_OUT" EntityType="Model.REM_OUT" />
+    <EntitySet Name="REM_OUT_DETAIL" EntityType="Model.REM_OUT_DETAIL" />
+    <EntitySet Name="SCHOOLYEARs" EntityType="Model.SCHOOLYEAR" />
+    <EntitySet Name="SM_SALARY" EntityType="Model.SM_SALARY" />
+    <EntitySet Name="SM_STAFFINFO" EntityType="Model.SM_STAFFINFO" />
+    <EntitySet Name="SUPPLIERDETAILs" EntityType="Model.SUPPLIERDETAIL" />
+    <EntitySet Name="SYS_AUTH_STATUS" EntityType="Model.SYS_AUTH_STATUS" />
+    <EntitySet Name="SYS_COLOR" EntityType="Model.SYS_COLOR" />
+    <EntitySet Name="SYS_EVENT" EntityType="Model.SYS_EVENT" />
+    <EntitySet Name="SYS_GROUP" EntityType="Model.SYS_GROUP" />
+    <EntitySet Name="TM_LESSONPROGRAM" EntityType="Model.TM_LESSONPROGRAM" />
+    <EntitySet Name="TM_TEACHSCHEDULE" EntityType="Model.TM_TEACHSCHEDULE" />
+    <EntitySet Name="TM_TOPIC" EntityType="Model.TM_TOPIC" />
+    <EntitySet Name="UM_ROLEDELIVERY" EntityType="Model.UM_ROLEDELIVERY" />
+    <EntitySet Name="UM_USERINFO" EntityType="Model.UM_USERINFO" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="Model.AspNetUserRoles">
+      <End Role="AspNetRole" EntitySet="AspNetRoles" />
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Model.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ImageURL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ImageURL1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Date_Of_Birth" Type="DateTime" Precision="3" />
+    <Property Name="Gender" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Job" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Model.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+  </EntityType>
+  <EntityType Name="DD_ChiTietMonAnMau">
+    <Key>
+      <PropertyRef Name="ChiTietMonAnMauID" />
+    </Key>
+    <Property Name="ChiTietMonAnMauID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MonAnMauID" Type="Int32" Nullable="false" />
+    <Property Name="ThucPhamID" Type="Int32" Nullable="false" />
+    <Property Name="KhoiKuongKg" Type="Double" />
+    <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Maker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Create_DT" Type="DateTime" Precision="3" />
+    <Property Name="Auth_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Checker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Approve_DT" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="DD_LoaiMonAnMau">
+    <Key>
+      <PropertyRef Name="LoaiMonAnMauID" />
+    </Key>
+    <Property Name="LoaiMonAnMauID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenLoaiMonAnMau" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="GhiChu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Maker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Create_DT" Type="DateTime" Precision="3" />
+    <Property Name="Auth_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Checker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Approve_DT" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="DD_LoaiSuatAn">
+    <Key>
+      <PropertyRef Name="DDLoaiSuatAnID" />
+    </Key>
+    <Property Name="DDLoaiSuatAnID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenLoaiSuatAn" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="GhiChu" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Maker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Create_DT" Type="DateTime" Precision="3" />
+    <Property Name="Auth_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Checker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Approve_DT" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="DD_MonAnMau">
+    <Key>
+      <PropertyRef Name="MonAnMauID" />
+    </Key>
+    <Property Name="MonAnMauID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoaiMonAnMauID" Type="Int32" Nullable="false" />
+    <Property Name="TenMonAnMau" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="GhiChu" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Maker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Create_DT" Type="DateTime" Precision="3" />
+    <Property Name="Auth_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Checker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Approve_DT" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="DD_NhomThucPham">
+    <Key>
+      <PropertyRef Name="DDNhomThucPhamID" />
+    </Key>
+    <Property Name="DDNhomThucPhamID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenNhomThucPham" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="GhiChu" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Maker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Create_DT" Type="DateTime" Precision="3" />
+    <Property Name="Auth_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Checker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Approve_DT" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="DD_NhuCauDinhDuong">
+    <Key>
+      <PropertyRef Name="DDNhuCauDinhDuongID" />
+    </Key>
+    <Property Name="DDNhuCauDinhDuongID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tuoi" Type="Int32" Nullable="false" />
+    <Property Name="Kcalo" Type="Double" />
+    <Property Name="Protein" Type="Double" />
+    <Property Name="Calsi" Type="Double" />
+    <Property Name="Sat" Type="Double" />
+    <Property Name="VitaminA" Type="Double" />
+    <Property Name="VitaminB1" Type="Double" />
+    <Property Name="VitaminB2" Type="Double" />
+    <Property Name="VitaminPP" Type="Double" />
+    <Property Name="VitaminC" Type="Double" />
+    <Property Name="GhiChu" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Maker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Create_DT" Type="DateTime" Precision="3" />
+    <Property Name="Auth_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Checker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Approve_DT" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="DD_NhuCauNangLuong">
+    <Key>
+      <PropertyRef Name="DDNhuCauNangLuongID" />
+    </Key>
+    <Property Name="DDNhuCauNangLuongID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DoTuoi" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="CaloCaNgay" Type="Double" />
+    <Property Name="CaloTruong" Type="Double" />
+    <Property Name="ProtidCaNgay" Type="Double" />
+    <Property Name="ProtidTruong" Type="Double" />
+    <Property Name="LipidCaNgay" Type="Double" />
+    <Property Name="LipidTruong" Type="Double" />
+    <Property Name="GlucidCaNgay" Type="Double" />
+    <Property Name="GlucidTruong" Type="Double" />
+    <Property Name="GhiChu" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Maker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Create_DT" Type="DateTime" Precision="3" />
+    <Property Name="Auth_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Checker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Approve_DT" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="DD_SuatAn">
+    <Key>
+      <PropertyRef Name="DDSuatAnID" />
+    </Key>
+    <Property Name="DDSuatAnID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DDLoaiSuatAnID" Type="Int32" Nullable="false" />
+    <Property Name="SoLuongSuatAn" Type="Int32" />
+    <Property Name="TenSuatAn" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="Ngay" Type="DateTime" Precision="3" />
+    <Property Name="TongTienSuatAn" Type="Double" />
+    <Property Name="GhiChu" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Maker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Create_DT" Type="DateTime" Precision="3" />
+    <Property Name="Auth_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Checker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Approve_DT" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="DD_SuatAnChiTiet">
+    <Key>
+      <PropertyRef Name="DDSuatAnChiTietID" />
+    </Key>
+    <Property Name="DDSuatAnChiTietID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DDSuatAnID" Type="Int32" Nullable="false" />
+    <Property Name="MonAnMauID" Type="Int32" Nullable="false" />
+    <Property Name="GhiChu" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Maker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Create_DT" Type="DateTime" Precision="3" />
+    <Property Name="Auth_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Checker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Approve_DT" Type="DateTime" Precision="3" />
+    <Property Name="Notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="DD_ThucDonNgay">
+    <Key>
+      <PropertyRef Name="ThucDon_ID" />
+    </Key>
+    <Property Name="ThucDon_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NgayThucDon" Type="DateTime" Precision="3" />
+    <Property Name="BuaSang" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="MonMan" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="MonCanh" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="TrangMieng" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="BuaXe" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Maker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Create_DT" Type="DateTime" Precision="3" />
+    <Property Name="Auth_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Checker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Approve_DT" Type="DateTime" Precision="3" />
+    <Property Name="Notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="DD_ThucPham">
+    <Key>
+      <PropertyRef Name="DDThucPhamID" />
+    </Key>
+    <Property Name="DDThucPhamID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NhomThucPhamID" Type="Int32" Nullable="false" />
+    <Property Name="TenThucPham" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="NguonTuDongVat" Type="Boolean" />
+    <Property Name="QuyDoiVeKg" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="DonViTinh" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="GiaThanh" Type="Double" />
+    <Property Name="TyLeHapThu" Type="Double" />
+    <Property Name="TyLeThai" Type="Double" />
+    <Property Name="NangLuongCalo" Type="Double" />
+    <Property Name="TphhNuoc" Type="Double" />
+    <Property Name="TphhProtid" Type="Double" />
+    <Property Name="TphhLipid" Type="Double" />
+    <Property Name="TphhGlucid" Type="Double" />
+    <Property Name="TphhCellulose" Type="Double" />
+    <Property Name="TphhCholesterol" Type="Double" />
+    <Property Name="MkCalci" Type="Double" />
+    <Property Name="MkPhotpho" Type="Double" />
+    <Property Name="MkSat" Type="Double" />
+    <Property Name="VitaminCaroten" Type="Double" />
+    <Property Name="VitaminA" Type="Double" />
+    <Property Name="VitaminB1" Type="Double" />
+    <Property Name="VitaminB2" Type="Double" />
+    <Property Name="VitaminC" Type="Double" />
+    <Property Name="VitaminPP" Type="Double" />
+    <Property Name="GhiChu" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Maker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Create_DT" Type="DateTime" Precision="3" />
+    <Property Name="Auth_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Checker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Approve_DT" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="DM_DEPARTMENTINFO">
+    <Key>
+      <PropertyRef Name="Depatment_ID" />
+    </Key>
+    <Property Name="Depatment_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Chief_ID" Type="Int32" />
+    <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Maker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Create_DT" Type="DateTime" Precision="3" />
+    <Property Name="Auth_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Checker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Approve_DT" Type="DateTime" Precision="3" />
+    <Property Name="Notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="FM_FOODREPOSITORY">
+    <Key>
+      <PropertyRef Name="Food_ID" />
+    </Key>
+    <Property Name="Food_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Food_Code" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="FoodType" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="FoodName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="InputDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Unit" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Supplier" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ExpiredDate" Type="DateTime" Precision="0" />
+    <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Maker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Create_DT" Type="DateTime" Precision="3" />
+    <Property Name="Auth_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Checker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Approve_DT" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="GM_CLASSINFO">
+    <Key>
+      <PropertyRef Name="Class_ID" />
+    </Key>
+    <Property Name="Class_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Teacher_ID" Type="Int32" Nullable="false" />
+    <Property Name="Grade_ID" Type="Int32" Nullable="false" />
+    <Property Name="Accountability" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Maker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Create_DT" Type="DateTime" Precision="3" />
+    <Property Name="Auth_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Checker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Approve_DT" Type="DateTime" Precision="3" />
+    <Property Name="Notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Class_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Kindergartener_ID" Type="Int32" Nullable="false" />
+    <Property Name="SchoolYear_ID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GM_GRADEINFO">
+    <Key>
+      <PropertyRef Name="GRADE_ID" />
+    </Key>
+    <Property Name="GRADE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GRADE_NAME" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Maker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Create_DT" Type="DateTime" Precision="3" />
+    <Property Name="Auth_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Checker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Approve_DT" Type="DateTime" Precision="3" />
+    <Property Name="Notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="KM_PHYSICALINFO">
+    <Key>
+      <PropertyRef Name="Record_ID" />
+    </Key>
+    <Property Name="Student_ID" Type="Int32" Nullable="false" />
+    <Property Name="Height" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Weight" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="BMI" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Dermatology" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Otolaryngology" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Dentomaxillofacial" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="RespiratorySystem" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Maker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Create_DT" Type="DateTime" Precision="3" />
+    <Property Name="Auth_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Checker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Approve_DT" Type="DateTime" Precision="3" />
+    <Property Name="Notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Months" Type="Int32" />
+    <Property Name="Record_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="KM_STANDARDINDEXES">
+    <Key>
+      <PropertyRef Name="Record_ID" />
+    </Key>
+    <Property Name="Record_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Months" Type="Int32" Nullable="false" />
+    <Property Name="StandardHeight" Type="Int32" />
+    <Property Name="HeightUnit" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="StandardWeight" Type="Int32" />
+    <Property Name="WeightUnit" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="StandardBMI" Type="Decimal" Precision="4" Scale="2" />
+    <Property Name="Maker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Create_DT" Type="DateTime" Precision="3" />
+    <Property Name="Auth_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Checker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Approve_DT" Type="DateTime" Precision="3" />
+    <Property Name="Notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="KM_STUDENTOVERVIEW">
+    <Key>
+      <PropertyRef Name="STUDENT_ID" />
+    </Key>
+    <Property Name="STUDENT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Date_Of_Birth" Type="DateTime" Precision="3" />
+    <Property Name="PrioritySubjects" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Nation" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Religion" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ClassID" Type="Int32" />
+    <Property Name="SchoolYear" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="FatherName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FatherBirthday" Type="DateTime" Precision="3" />
+    <Property Name="FatherJob" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MotherName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MotherBirthday" Type="DateTime" Precision="3" />
+    <Property Name="MotherJob" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="FatherPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="MotherPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Picture" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="DateofAdmission" Type="DateTime" Precision="3" />
+    <Property Name="CompletionDate" Type="DateTime" Precision="3" />
+    <Property Name="Notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Maker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Create_DT" Type="DateTime" Precision="3" />
+    <Property Name="Auth_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Checker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Approve_DT" Type="DateTime" Precision="3" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="REM_IN">
+    <Key>
+      <PropertyRef Name="In_ID" />
+    </Key>
+    <Property Name="In_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="In_Code" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Date_Trade_In" Type="DateTime" Precision="3" />
+    <Property Name="Customer_ID" Type="Int32" />
+    <Property Name="School_Fee" Type="Boolean" />
+    <Property Name="Year" Type="Int32" />
+    <Property Name="Month" Type="Int32" />
+    <Property Name="Payer_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Payer_Address" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="In_Reason" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="In_Total" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="In_Received" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="In_Debt" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Attach" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="In_Status" Type="Boolean" />
+    <Property Name="Notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Maker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Create_DT" Type="DateTime" Precision="3" />
+    <Property Name="Auth_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Checker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Approve_DT" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="REM_INOUT">
+    <Key>
+      <PropertyRef Name="InOut_ID" />
+    </Key>
+    <Property Name="InOut_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InOut_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="InOut_Date" Type="DateTime" Precision="3" />
+    <Property Name="InOut_Reason" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="InOut_Received" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="InOut_Paid" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="InOut_Budget" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Maker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Create_DT" Type="DateTime" Precision="3" />
+    <Property Name="Auth_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Checker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Approve_DT" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="REM_OUT">
+    <Key>
+      <PropertyRef Name="Out_ID" />
+    </Key>
+    <Property Name="Out_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Out_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Out_Trade_Date" Type="DateTime" Precision="3" />
+    <Property Name="Out_Write_Date" Type="DateTime" Precision="3" />
+    <Property Name="STAFF_ID" Type="Int32" />
+    <Property Name="Salary" Type="Boolean" />
+    <Property Name="Out_Year" Type="Int32" />
+    <Property Name="Out_Month" Type="Int32" />
+    <Property Name="Supplier_ID" Type="Int32" />
+    <Property Name="Receiver_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Receiver_Address" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Out_Reason" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Out_Total" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Out_Paid" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Out_Debt" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Maker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Create_DT" Type="DateTime" Precision="3" />
+    <Property Name="Auth_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Checker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Approve_DT" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="REM_OUT_DETAIL">
+    <Key>
+      <PropertyRef Name="Out_Detail_ID" />
+    </Key>
+    <Property Name="Out_Detail_ID" Type="Int32" Nullable="false" />
+    <Property Name="Out_ID" Type="Int32" Nullable="false" />
+    <Property Name="Product_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Unit" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Maker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Create_DT" Type="DateTime" Precision="3" />
+    <Property Name="Auth_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Checker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Approve_DT" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="SCHOOLYEAR">
+    <Key>
+      <PropertyRef Name="YEAR_ID" />
+    </Key>
+    <Property Name="YEAR_ID" Type="Int32" Nullable="false" />
+    <Property Name="YEAR_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="YEAR_BEGIN" Type="Int32" />
+    <Property Name="YEAR_END" Type="Int32" />
+  </EntityType>
+  <EntityType Name="SM_SALARY">
+    <Key>
+      <PropertyRef Name="Sa_ID" />
+    </Key>
+    <Property Name="Sa_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="STAFF_ID" Type="Int32" Nullable="false" />
+    <Property Name="Sa_Total" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Sa_Bonus" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Sa_Minus" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Sa_Salary" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Maker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Create_DT" Type="DateTime" Precision="3" />
+    <Property Name="Auth_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Checker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Approve_DT" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="SM_STAFFINFO">
+    <Key>
+      <PropertyRef Name="STAFF_ID" />
+    </Key>
+    <Property Name="STAFF_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StaffNumber" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="StaffName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Date_Of_Birth" Type="DateTime" Precision="3" />
+    <Property Name="Nation" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Religion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="IsATeacher" Type="Boolean" Nullable="false" />
+    <Property Name="IndentityCard" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IssuedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DateRange" Type="DateTime" Precision="3" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Position" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Degree" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SalaryGrade" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="DepartmentID" Type="Int32" Nullable="false" />
+    <Property Name="CoefficientsSalary" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="BasicSalary" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="DayWage" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="WageIncreaseDay" Type="DateTime" Precision="3" />
+    <Property Name="FatherFullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="FatherBirthday" Type="DateTime" Precision="3" />
+    <Property Name="FatherJob" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MotherFullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MotherBirthday" Type="DateTime" Precision="3" />
+    <Property Name="MotherJob" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FatherPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="MotherPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Picture" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="IsLeaguer" Type="Boolean" Nullable="false" />
+    <Property Name="DayatParty" Type="DateTime" Precision="3" />
+    <Property Name="CardNumberParty" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="WorkingStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StartWorkDay" Type="DateTime" Precision="3" />
+    <Property Name="Dayoff" Type="DateTime" Precision="3" />
+    <Property Name="TypeofContract" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Maker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Create_DT" Type="DateTime" Precision="3" />
+    <Property Name="Auth_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Checker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Approve_DT" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="SUPPLIERDETAIL">
+    <Key>
+      <PropertyRef Name="Supplier_ID" />
+    </Key>
+    <Property Name="Supplier_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SupplierName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SupplierType" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="ProductType" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Maker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Create_DT" Type="DateTime" Precision="3" />
+    <Property Name="Auth_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Checker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Approve_DT" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="SYS_AUTH_STATUS">
+    <Key>
+      <PropertyRef Name="AUTH_STATUS" />
+    </Key>
+    <Property Name="AUTH_STATUS" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="AUTH_STATUS_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SYS_COLOR">
+    <Key>
+      <PropertyRef Name="Color_ID" />
+    </Key>
+    <Property Name="Color_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Color_Code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Color_Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SYS_EVENT">
+    <Key>
+      <PropertyRef Name="EVENT_ID" />
+    </Key>
+    <Property Name="EVENT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EVENT_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ISALLDAY" Type="Boolean" Nullable="false" />
+    <Property Name="EVENT_START" Type="DateTime" Precision="3" />
+    <Property Name="EVENT_END" Type="DateTime" Precision="3" />
+    <Property Name="EVENT_GROUP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EVENT_DETAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EVENT_MANAGER" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EVENT_STATUS_COLOR" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="NOTES" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="RECORD_STATUS" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="MAKER_ID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="CREATE_DT" Type="DateTime" Precision="3" />
+    <Property Name="AUTH_STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CHECKER_ID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="APPROVE_DT" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="SYS_GROUP">
+    <Key>
+      <PropertyRef Name="GROUP_ID" />
+    </Key>
+    <Property Name="GROUP_ID" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="GROUP_CODE" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="GROUP_NAME" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="NOTES" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="RECORD_STATUS" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="MAKER_ID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="CREATE_DT" Type="DateTime" Precision="3" />
+    <Property Name="AUTH_STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CHECKER_ID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="APPROVE_DT" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="TM_LESSONPROGRAM">
+    <Key>
+      <PropertyRef Name="Lesson_ID" />
+    </Key>
+    <Property Name="Topic_ID" Type="Int32" Nullable="false" />
+    <Property Name="Lesson_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LessonName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LessonGoal" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="TeacherActivity" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="KidActivity" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Author" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Maker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Create_DT" Type="DateTime" Precision="3" />
+    <Property Name="Auth_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Checker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Approve_DT" Type="DateTime" Precision="3" />
+    <Property Name="Notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TM_TEACHSCHEDULE">
+    <Key>
+      <PropertyRef Name="Class_ID" />
+      <PropertyRef Name="DateofWeek" />
+      <PropertyRef Name="Date" />
+    </Key>
+    <Property Name="Class_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DateofWeek" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="MorningLesson" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MorningTeacher" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="AfternoonLesson" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="AfternoonTeacher" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Maker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Create_DT" Type="DateTime" Precision="3" />
+    <Property Name="Auth_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Checker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Approve_DT" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="TM_TOPIC">
+    <Key>
+      <PropertyRef Name="Topic_ID" />
+    </Key>
+    <Property Name="Topic_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TopicName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Record_Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Maker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Create_DT" Type="DateTime" Precision="3" />
+    <Property Name="Auth_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Checker_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Approve_DT" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="UM_ROLEDELIVERY">
+    <Key>
+      <PropertyRef Name="Group_ID" />
+    </Key>
+    <Property Name="Group_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GroupName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GroupDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="UM_USERINFO">
+    <Key>
+      <PropertyRef Name="User_ID" />
+    </Key>
+    <Property Name="Group_ID" Type="Int32" Nullable="false" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Date_Of_Birth" Type="DateTime" Precision="3" />
+    <Property Name="Gender" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Job" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Type="Model.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Model.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaim">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Type="Model.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Model.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogin">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Type="Model.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+    <End Type="Model.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+  </Association>
+</Schema>

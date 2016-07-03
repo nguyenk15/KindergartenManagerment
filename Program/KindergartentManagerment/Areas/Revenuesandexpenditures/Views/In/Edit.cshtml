@@ -1,0 +1,170 @@
+﻿@model KindergartentManagerment.Models.REM_IN
+@using KindergartentManagerment.Resources
+@{
+    ViewBag.Title = AssCommonResource.Revenueandexpenditures + " | " + AssCommonResource.Edit;
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<section class="content-header">
+    <h1>
+        @AssCommonResource.In
+    </h1>
+
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> @AssCommonResource.Home</a></li>
+        <li><a href="#">@AssCommonResource.Revenueandexpenditures</a></li>
+        <li class="active">@AssCommonResource.In</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    @using (Html.BeginForm("Edit", "In", FormMethod.Post, new {role = "form", enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.In_ID)
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">@AssCommonResource.Edit</h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>@InResource.In_Code</label>
+                            @Html.EditorFor(model => model.In_Code, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                            @Html.ValidationMessageFor(model => model.In_Code, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label>@InResource.Customer_ID</label>
+                            @Html.EditorFor(model => model.Customer_ID, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Customer_ID, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label>@InResource.Year</label>
+                            @Html.EditorFor(model => model.Year, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                @InResource.Payer_Name
+                            </label>
+                            @Html.EditorFor(model => model.Payer_Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Payer_Name, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label>@InResource.Payer_Address</label>
+                            @Html.EditorFor(model => model.Payer_Address, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Payer_Address, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                @InResource.In_Reason
+                            </label>
+                            @Html.EditorFor(model => model.In_Reason, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.In_Reason, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                @InResource.In_Total
+                            </label>
+                            @Html.TextBoxFor(model => model.In_Total, new { @class = "form-control moneymask", @type = "text" })
+                            @Html.ValidationMessageFor(model => model.In_Total, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                @InResource.Attach
+                            </label>
+                            @Html.EditorFor(model => model.Attach, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Attach, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>
+                                @InResource.Date_Trade_In
+                            </label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                @Html.TextBoxFor(model => model.Date_Trade_In, new { @class = "form-control datemask", @type = "text" })
+                                @Html.ValidationMessageFor(model => model.Date_Trade_In)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                @InResource.School_Fee
+                            </label>
+                            @Html.EditorFor(model => model.School_Fee, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.School_Fee, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                @InResource.Month
+                            </label>
+                            @Html.EditorFor(model => model.Month, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Month, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                @InResource.In_Received
+                            </label>
+                            @Html.TextBoxFor(model => model.In_Received, new { @class = "form-control moneymask", @type = "text" })
+                            @Html.ValidationMessageFor(model => model.In_Received, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                @InResource.In_Debt
+                            </label>
+                            @Html.TextBoxFor(model => model.In_Debt, new { @class = "form-control moneymask", @type = "text" })
+                            @Html.ValidationMessageFor(model => model.In_Debt, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                @InResource.In_Status
+                            </label>
+                            @Html.EditorFor(model => model.In_Status, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.In_Status, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                @AssCommonResource.Notes
+                            </label>
+                            @Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Notes, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer">
+                @Html.ActionLink(AssCommonResource.BacktoList, "Index", "In", new { @class = "btn btn-sm btn-default btn-flat pull-left" })
+                <input type="submit" value="@AssCommonResource.Save" class="btn btn-sm btn-primary btn-flat pull-right" />
+            </div><!-- /.box-footer -->
+        </div>
+    }
+</section>
+@section orther_scripts{
+    <!-- InputMask -->
+    <script src="/Content/plugins/input-mask/jquery.inputmask.js"></script>
+    <script src="/Content/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+    <script src="/Content/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+    <script>
+    $(function () {
+            //Datemask dd/mm/yyyy
+            $(".datemask").inputmask({
+                alias: "dd/mm/yyyy"
+            });
+            //Datemask2 mm/dd/yyyy
+            $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
+            //Money Euro
+            $("[data-mask]").inputmask();
+            $('.inputmask').inputmask({
+                mask: '9999-999-999'
+            })
+    });
+    </script>
+}
+

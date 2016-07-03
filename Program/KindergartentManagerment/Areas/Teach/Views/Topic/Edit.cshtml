@@ -1,0 +1,92 @@
+﻿@model KindergartentManagerment.Models.TM_TOPIC
+@using KindergartentManagerment.Resources
+@{
+    ViewBag.Title = AssCommonResource.Topic + " | " + AssCommonResource.Create;
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<section class="content-header">
+    <h1>
+        @AssCommonResource.Topic
+    </h1>
+
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> @AssCommonResource.Home</a></li>
+        <li><a href="#">@AssCommonResource.Teach</a></li>
+        <li class="active">@AssCommonResource.Topic</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">@AssCommonResource.Edit</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.Topic_ID)
+                            <div class="box box-info">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">@AssCommonResource.Topic</h3>
+                                    <div class="box-tools pull-right">
+                                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <div class="control-label col-md-2">
+                                            @TopicResource.TopicName
+                                        </div>
+                                        <div class="col-md-9">
+                                            @Html.EditorFor(model => model.TopicName, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.TopicName, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="control-label col-md-2">
+                                            @AssCommonResource.Picture
+                                        </div>
+                                        <div class="col-md-9">
+                                            <input id="picture" name="picture" type="file" class="form-control" style="width: 100%;height: 100%">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="control-label col-md-2">
+                                            @AssCommonResource.Attach
+                                        </div>
+                                        <div class="col-md-9">
+                                            <input id="attach" name="attach" type="file" class="form-control" style="width: 100%;height: 100%">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="control-label col-md-2">
+                                            @AssCommonResource.Notes
+                                        </div>
+                                        <div class="col-md-9">
+                                            @Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Notes, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="box-footer clearfix">
+                            @Html.ActionLink(AssCommonResource.BacktoList, "Index", "StudentOverview", new { @class = "btn btn-sm btn-default btn-flat pull-left" })
+                            <input type="submit" value="@AssCommonResource.Save" class="btn btn-sm btn-warning btn-flat pull-right" />
+                        </div><!-- /.box-footer -->
+                    }
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

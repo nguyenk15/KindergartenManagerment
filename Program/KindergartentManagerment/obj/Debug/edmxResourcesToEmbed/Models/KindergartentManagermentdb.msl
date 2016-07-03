@@ -1,0 +1,767 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="KindergartentManagermentdb">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="Model.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="Model.AspNetRole">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="Model.AspNetUserClaim">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="Model.AspNetUserLogin">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="Model.AspNetUser">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Job" ColumnName="Job" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Date_Of_Birth" ColumnName="Date_Of_Birth" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="ImageURL1" ColumnName="ImageURL1" />
+          <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DD_ChiTietMonAnMau">
+      <EntityTypeMapping TypeName="Model.DD_ChiTietMonAnMau">
+        <MappingFragment StoreEntitySet="DD_ChiTietMonAnMau">
+          <ScalarProperty Name="Approve_DT" ColumnName="Approve_DT" />
+          <ScalarProperty Name="Checker_ID" ColumnName="Checker_ID" />
+          <ScalarProperty Name="Auth_Status" ColumnName="Auth_Status" />
+          <ScalarProperty Name="Create_DT" ColumnName="Create_DT" />
+          <ScalarProperty Name="Maker_ID" ColumnName="Maker_ID" />
+          <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+          <ScalarProperty Name="KhoiKuongKg" ColumnName="KhoiKuongKg" />
+          <ScalarProperty Name="ThucPhamID" ColumnName="ThucPhamID" />
+          <ScalarProperty Name="MonAnMauID" ColumnName="MonAnMauID" />
+          <ScalarProperty Name="ChiTietMonAnMauID" ColumnName="ChiTietMonAnMauID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DD_LoaiMonAnMau">
+      <EntityTypeMapping TypeName="Model.DD_LoaiMonAnMau">
+        <MappingFragment StoreEntitySet="DD_LoaiMonAnMau">
+          <ScalarProperty Name="Approve_DT" ColumnName="Approve_DT" />
+          <ScalarProperty Name="Checker_ID" ColumnName="Checker_ID" />
+          <ScalarProperty Name="Auth_Status" ColumnName="Auth_Status" />
+          <ScalarProperty Name="Create_DT" ColumnName="Create_DT" />
+          <ScalarProperty Name="Maker_ID" ColumnName="Maker_ID" />
+          <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="TenLoaiMonAnMau" ColumnName="TenLoaiMonAnMau" />
+          <ScalarProperty Name="LoaiMonAnMauID" ColumnName="LoaiMonAnMauID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DD_LoaiSuatAn">
+      <EntityTypeMapping TypeName="Model.DD_LoaiSuatAn">
+        <MappingFragment StoreEntitySet="DD_LoaiSuatAn">
+          <ScalarProperty Name="Approve_DT" ColumnName="Approve_DT" />
+          <ScalarProperty Name="Checker_ID" ColumnName="Checker_ID" />
+          <ScalarProperty Name="Auth_Status" ColumnName="Auth_Status" />
+          <ScalarProperty Name="Create_DT" ColumnName="Create_DT" />
+          <ScalarProperty Name="Maker_ID" ColumnName="Maker_ID" />
+          <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="TenLoaiSuatAn" ColumnName="TenLoaiSuatAn" />
+          <ScalarProperty Name="DDLoaiSuatAnID" ColumnName="DDLoaiSuatAnID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DD_MonAnMau">
+      <EntityTypeMapping TypeName="Model.DD_MonAnMau">
+        <MappingFragment StoreEntitySet="DD_MonAnMau">
+          <ScalarProperty Name="Approve_DT" ColumnName="Approve_DT" />
+          <ScalarProperty Name="Checker_ID" ColumnName="Checker_ID" />
+          <ScalarProperty Name="Auth_Status" ColumnName="Auth_Status" />
+          <ScalarProperty Name="Create_DT" ColumnName="Create_DT" />
+          <ScalarProperty Name="Maker_ID" ColumnName="Maker_ID" />
+          <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="TenMonAnMau" ColumnName="TenMonAnMau" />
+          <ScalarProperty Name="LoaiMonAnMauID" ColumnName="LoaiMonAnMauID" />
+          <ScalarProperty Name="MonAnMauID" ColumnName="MonAnMauID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DD_NhomThucPham">
+      <EntityTypeMapping TypeName="Model.DD_NhomThucPham">
+        <MappingFragment StoreEntitySet="DD_NhomThucPham">
+          <ScalarProperty Name="Approve_DT" ColumnName="Approve_DT" />
+          <ScalarProperty Name="Checker_ID" ColumnName="Checker_ID" />
+          <ScalarProperty Name="Auth_Status" ColumnName="Auth_Status" />
+          <ScalarProperty Name="Create_DT" ColumnName="Create_DT" />
+          <ScalarProperty Name="Maker_ID" ColumnName="Maker_ID" />
+          <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="TenNhomThucPham" ColumnName="TenNhomThucPham" />
+          <ScalarProperty Name="DDNhomThucPhamID" ColumnName="DDNhomThucPhamID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DD_NhuCauDinhDuong">
+      <EntityTypeMapping TypeName="Model.DD_NhuCauDinhDuong">
+        <MappingFragment StoreEntitySet="DD_NhuCauDinhDuong">
+          <ScalarProperty Name="Approve_DT" ColumnName="Approve_DT" />
+          <ScalarProperty Name="Checker_ID" ColumnName="Checker_ID" />
+          <ScalarProperty Name="Auth_Status" ColumnName="Auth_Status" />
+          <ScalarProperty Name="Create_DT" ColumnName="Create_DT" />
+          <ScalarProperty Name="Maker_ID" ColumnName="Maker_ID" />
+          <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="VitaminC" ColumnName="VitaminC" />
+          <ScalarProperty Name="VitaminPP" ColumnName="VitaminPP" />
+          <ScalarProperty Name="VitaminB2" ColumnName="VitaminB2" />
+          <ScalarProperty Name="VitaminB1" ColumnName="VitaminB1" />
+          <ScalarProperty Name="VitaminA" ColumnName="VitaminA" />
+          <ScalarProperty Name="Sat" ColumnName="Sat" />
+          <ScalarProperty Name="Calsi" ColumnName="Calsi" />
+          <ScalarProperty Name="Protein" ColumnName="Protein" />
+          <ScalarProperty Name="Kcalo" ColumnName="Kcalo" />
+          <ScalarProperty Name="Tuoi" ColumnName="Tuoi" />
+          <ScalarProperty Name="DDNhuCauDinhDuongID" ColumnName="DDNhuCauDinhDuongID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DD_NhuCauNangLuong">
+      <EntityTypeMapping TypeName="Model.DD_NhuCauNangLuong">
+        <MappingFragment StoreEntitySet="DD_NhuCauNangLuong">
+          <ScalarProperty Name="Approve_DT" ColumnName="Approve_DT" />
+          <ScalarProperty Name="Checker_ID" ColumnName="Checker_ID" />
+          <ScalarProperty Name="Auth_Status" ColumnName="Auth_Status" />
+          <ScalarProperty Name="Create_DT" ColumnName="Create_DT" />
+          <ScalarProperty Name="Maker_ID" ColumnName="Maker_ID" />
+          <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="GlucidTruong" ColumnName="GlucidTruong" />
+          <ScalarProperty Name="GlucidCaNgay" ColumnName="GlucidCaNgay" />
+          <ScalarProperty Name="LipidTruong" ColumnName="LipidTruong" />
+          <ScalarProperty Name="LipidCaNgay" ColumnName="LipidCaNgay" />
+          <ScalarProperty Name="ProtidTruong" ColumnName="ProtidTruong" />
+          <ScalarProperty Name="ProtidCaNgay" ColumnName="ProtidCaNgay" />
+          <ScalarProperty Name="CaloTruong" ColumnName="CaloTruong" />
+          <ScalarProperty Name="CaloCaNgay" ColumnName="CaloCaNgay" />
+          <ScalarProperty Name="DoTuoi" ColumnName="DoTuoi" />
+          <ScalarProperty Name="DDNhuCauNangLuongID" ColumnName="DDNhuCauNangLuongID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DD_SuatAn">
+      <EntityTypeMapping TypeName="Model.DD_SuatAn">
+        <MappingFragment StoreEntitySet="DD_SuatAn">
+          <ScalarProperty Name="Approve_DT" ColumnName="Approve_DT" />
+          <ScalarProperty Name="Checker_ID" ColumnName="Checker_ID" />
+          <ScalarProperty Name="Auth_Status" ColumnName="Auth_Status" />
+          <ScalarProperty Name="Create_DT" ColumnName="Create_DT" />
+          <ScalarProperty Name="Maker_ID" ColumnName="Maker_ID" />
+          <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="TongTienSuatAn" ColumnName="TongTienSuatAn" />
+          <ScalarProperty Name="Ngay" ColumnName="Ngay" />
+          <ScalarProperty Name="TenSuatAn" ColumnName="TenSuatAn" />
+          <ScalarProperty Name="SoLuongSuatAn" ColumnName="SoLuongSuatAn" />
+          <ScalarProperty Name="DDLoaiSuatAnID" ColumnName="DDLoaiSuatAnID" />
+          <ScalarProperty Name="DDSuatAnID" ColumnName="DDSuatAnID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DD_SuatAnChiTiet">
+      <EntityTypeMapping TypeName="Model.DD_SuatAnChiTiet">
+        <MappingFragment StoreEntitySet="DD_SuatAnChiTiet">
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Approve_DT" ColumnName="Approve_DT" />
+          <ScalarProperty Name="Checker_ID" ColumnName="Checker_ID" />
+          <ScalarProperty Name="Auth_Status" ColumnName="Auth_Status" />
+          <ScalarProperty Name="Create_DT" ColumnName="Create_DT" />
+          <ScalarProperty Name="Maker_ID" ColumnName="Maker_ID" />
+          <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="MonAnMauID" ColumnName="MonAnMauID" />
+          <ScalarProperty Name="DDSuatAnID" ColumnName="DDSuatAnID" />
+          <ScalarProperty Name="DDSuatAnChiTietID" ColumnName="DDSuatAnChiTietID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DD_ThucDonNgay">
+      <EntityTypeMapping TypeName="Model.DD_ThucDonNgay">
+        <MappingFragment StoreEntitySet="DD_ThucDonNgay">
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Approve_DT" ColumnName="Approve_DT" />
+          <ScalarProperty Name="Checker_ID" ColumnName="Checker_ID" />
+          <ScalarProperty Name="Auth_Status" ColumnName="Auth_Status" />
+          <ScalarProperty Name="Create_DT" ColumnName="Create_DT" />
+          <ScalarProperty Name="Maker_ID" ColumnName="Maker_ID" />
+          <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+          <ScalarProperty Name="BuaXe" ColumnName="BuaXe" />
+          <ScalarProperty Name="TrangMieng" ColumnName="TrangMieng" />
+          <ScalarProperty Name="MonCanh" ColumnName="MonCanh" />
+          <ScalarProperty Name="MonMan" ColumnName="MonMan" />
+          <ScalarProperty Name="BuaSang" ColumnName="BuaSang" />
+          <ScalarProperty Name="NgayThucDon" ColumnName="NgayThucDon" />
+          <ScalarProperty Name="ThucDon_ID" ColumnName="ThucDon_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DD_ThucPham">
+      <EntityTypeMapping TypeName="Model.DD_ThucPham">
+        <MappingFragment StoreEntitySet="DD_ThucPham">
+          <ScalarProperty Name="Approve_DT" ColumnName="Approve_DT" />
+          <ScalarProperty Name="Checker_ID" ColumnName="Checker_ID" />
+          <ScalarProperty Name="Auth_Status" ColumnName="Auth_Status" />
+          <ScalarProperty Name="Create_DT" ColumnName="Create_DT" />
+          <ScalarProperty Name="Maker_ID" ColumnName="Maker_ID" />
+          <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="VitaminPP" ColumnName="VitaminPP" />
+          <ScalarProperty Name="VitaminC" ColumnName="VitaminC" />
+          <ScalarProperty Name="VitaminB2" ColumnName="VitaminB2" />
+          <ScalarProperty Name="VitaminB1" ColumnName="VitaminB1" />
+          <ScalarProperty Name="VitaminA" ColumnName="VitaminA" />
+          <ScalarProperty Name="VitaminCaroten" ColumnName="VitaminCaroten" />
+          <ScalarProperty Name="MkSat" ColumnName="MkSat" />
+          <ScalarProperty Name="MkPhotpho" ColumnName="MkPhotpho" />
+          <ScalarProperty Name="MkCalci" ColumnName="MkCalci" />
+          <ScalarProperty Name="TphhCholesterol" ColumnName="TphhCholesterol" />
+          <ScalarProperty Name="TphhCellulose" ColumnName="TphhCellulose" />
+          <ScalarProperty Name="TphhGlucid" ColumnName="TphhGlucid" />
+          <ScalarProperty Name="TphhLipid" ColumnName="TphhLipid" />
+          <ScalarProperty Name="TphhProtid" ColumnName="TphhProtid" />
+          <ScalarProperty Name="TphhNuoc" ColumnName="TphhNuoc" />
+          <ScalarProperty Name="NangLuongCalo" ColumnName="NangLuongCalo" />
+          <ScalarProperty Name="TyLeThai" ColumnName="TyLeThai" />
+          <ScalarProperty Name="TyLeHapThu" ColumnName="TyLeHapThu" />
+          <ScalarProperty Name="GiaThanh" ColumnName="GiaThanh" />
+          <ScalarProperty Name="DonViTinh" ColumnName="DonViTinh" />
+          <ScalarProperty Name="QuyDoiVeKg" ColumnName="QuyDoiVeKg" />
+          <ScalarProperty Name="NguonTuDongVat" ColumnName="NguonTuDongVat" />
+          <ScalarProperty Name="TenThucPham" ColumnName="TenThucPham" />
+          <ScalarProperty Name="NhomThucPhamID" ColumnName="NhomThucPhamID" />
+          <ScalarProperty Name="DDThucPhamID" ColumnName="DDThucPhamID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DM_DEPARTMENTINFO">
+      <EntityTypeMapping TypeName="Model.DM_DEPARTMENTINFO">
+        <MappingFragment StoreEntitySet="DM_DEPARTMENTINFO">
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Approve_DT" ColumnName="Approve_DT" />
+          <ScalarProperty Name="Checker_ID" ColumnName="Checker_ID" />
+          <ScalarProperty Name="Auth_Status" ColumnName="Auth_Status" />
+          <ScalarProperty Name="Create_DT" ColumnName="Create_DT" />
+          <ScalarProperty Name="Maker_ID" ColumnName="Maker_ID" />
+          <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+          <ScalarProperty Name="Chief_ID" ColumnName="Chief_ID" />
+          <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+          <ScalarProperty Name="Depatment_ID" ColumnName="Depatment_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FM_FOODREPOSITORY">
+      <EntityTypeMapping TypeName="Model.FM_FOODREPOSITORY">
+        <MappingFragment StoreEntitySet="FM_FOODREPOSITORY">
+          <ScalarProperty Name="Approve_DT" ColumnName="Approve_DT" />
+          <ScalarProperty Name="Checker_ID" ColumnName="Checker_ID" />
+          <ScalarProperty Name="Auth_Status" ColumnName="Auth_Status" />
+          <ScalarProperty Name="Create_DT" ColumnName="Create_DT" />
+          <ScalarProperty Name="Maker_ID" ColumnName="Maker_ID" />
+          <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="ExpiredDate" ColumnName="ExpiredDate" />
+          <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="InputDate" ColumnName="InputDate" />
+          <ScalarProperty Name="FoodName" ColumnName="FoodName" />
+          <ScalarProperty Name="FoodType" ColumnName="FoodType" />
+          <ScalarProperty Name="Food_Code" ColumnName="Food_Code" />
+          <ScalarProperty Name="Food_ID" ColumnName="Food_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GM_CLASSINFO">
+      <EntityTypeMapping TypeName="Model.GM_CLASSINFO">
+        <MappingFragment StoreEntitySet="GM_CLASSINFO">
+          <ScalarProperty Name="SchoolYear_ID" ColumnName="SchoolYear_ID" />
+          <ScalarProperty Name="Kindergartener_ID" ColumnName="Kindergartener_ID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Class_Name" ColumnName="Class_Name" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Approve_DT" ColumnName="Approve_DT" />
+          <ScalarProperty Name="Checker_ID" ColumnName="Checker_ID" />
+          <ScalarProperty Name="Auth_Status" ColumnName="Auth_Status" />
+          <ScalarProperty Name="Create_DT" ColumnName="Create_DT" />
+          <ScalarProperty Name="Maker_ID" ColumnName="Maker_ID" />
+          <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+          <ScalarProperty Name="Accountability" ColumnName="Accountability" />
+          <ScalarProperty Name="Grade_ID" ColumnName="Grade_ID" />
+          <ScalarProperty Name="Teacher_ID" ColumnName="Teacher_ID" />
+          <ScalarProperty Name="Class_ID" ColumnName="Class_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GM_GRADEINFO">
+      <EntityTypeMapping TypeName="Model.GM_GRADEINFO">
+        <MappingFragment StoreEntitySet="GM_GRADEINFO">
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Approve_DT" ColumnName="Approve_DT" />
+          <ScalarProperty Name="Checker_ID" ColumnName="Checker_ID" />
+          <ScalarProperty Name="Auth_Status" ColumnName="Auth_Status" />
+          <ScalarProperty Name="Create_DT" ColumnName="Create_DT" />
+          <ScalarProperty Name="Maker_ID" ColumnName="Maker_ID" />
+          <ScalarProperty Name="GRADE_NAME" ColumnName="GRADE_NAME" />
+          <ScalarProperty Name="GRADE_ID" ColumnName="GRADE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KM_PHYSICALINFO">
+      <EntityTypeMapping TypeName="Model.KM_PHYSICALINFO">
+        <MappingFragment StoreEntitySet="KM_PHYSICALINFO">
+          <ScalarProperty Name="Record_ID" ColumnName="Record_ID" />
+          <ScalarProperty Name="Months" ColumnName="Months" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Approve_DT" ColumnName="Approve_DT" />
+          <ScalarProperty Name="Checker_ID" ColumnName="Checker_ID" />
+          <ScalarProperty Name="Auth_Status" ColumnName="Auth_Status" />
+          <ScalarProperty Name="Create_DT" ColumnName="Create_DT" />
+          <ScalarProperty Name="Maker_ID" ColumnName="Maker_ID" />
+          <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+          <ScalarProperty Name="RespiratorySystem" ColumnName="RespiratorySystem" />
+          <ScalarProperty Name="Dentomaxillofacial" ColumnName="Dentomaxillofacial" />
+          <ScalarProperty Name="Otolaryngology" ColumnName="Otolaryngology" />
+          <ScalarProperty Name="Dermatology" ColumnName="Dermatology" />
+          <ScalarProperty Name="BMI" ColumnName="BMI" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KM_STANDARDINDEXES">
+      <EntityTypeMapping TypeName="Model.KM_STANDARDINDEXES">
+        <MappingFragment StoreEntitySet="KM_STANDARDINDEXES">
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Approve_DT" ColumnName="Approve_DT" />
+          <ScalarProperty Name="Checker_ID" ColumnName="Checker_ID" />
+          <ScalarProperty Name="Auth_Status" ColumnName="Auth_Status" />
+          <ScalarProperty Name="Create_DT" ColumnName="Create_DT" />
+          <ScalarProperty Name="Maker_ID" ColumnName="Maker_ID" />
+          <ScalarProperty Name="StandardBMI" ColumnName="StandardBMI" />
+          <ScalarProperty Name="WeightUnit" ColumnName="WeightUnit" />
+          <ScalarProperty Name="StandardWeight" ColumnName="StandardWeight" />
+          <ScalarProperty Name="HeightUnit" ColumnName="HeightUnit" />
+          <ScalarProperty Name="StandardHeight" ColumnName="StandardHeight" />
+          <ScalarProperty Name="Months" ColumnName="Months" />
+          <ScalarProperty Name="Record_ID" ColumnName="Record_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KM_STUDENTOVERVIEW">
+      <EntityTypeMapping TypeName="Model.KM_STUDENTOVERVIEW">
+        <MappingFragment StoreEntitySet="KM_STUDENTOVERVIEW">
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Approve_DT" ColumnName="Approve_DT" />
+          <ScalarProperty Name="Checker_ID" ColumnName="Checker_ID" />
+          <ScalarProperty Name="Auth_Status" ColumnName="Auth_Status" />
+          <ScalarProperty Name="Create_DT" ColumnName="Create_DT" />
+          <ScalarProperty Name="Maker_ID" ColumnName="Maker_ID" />
+          <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="CompletionDate" ColumnName="CompletionDate" />
+          <ScalarProperty Name="DateofAdmission" ColumnName="DateofAdmission" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="MotherPhone" ColumnName="MotherPhone" />
+          <ScalarProperty Name="FatherPhone" ColumnName="FatherPhone" />
+          <ScalarProperty Name="MotherJob" ColumnName="MotherJob" />
+          <ScalarProperty Name="MotherBirthday" ColumnName="MotherBirthday" />
+          <ScalarProperty Name="MotherName" ColumnName="MotherName" />
+          <ScalarProperty Name="FatherJob" ColumnName="FatherJob" />
+          <ScalarProperty Name="FatherBirthday" ColumnName="FatherBirthday" />
+          <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+          <ScalarProperty Name="SchoolYear" ColumnName="SchoolYear" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="Religion" ColumnName="Religion" />
+          <ScalarProperty Name="Nation" ColumnName="Nation" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PrioritySubjects" ColumnName="PrioritySubjects" />
+          <ScalarProperty Name="Date_Of_Birth" ColumnName="Date_Of_Birth" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REM_IN">
+      <EntityTypeMapping TypeName="Model.REM_IN">
+        <MappingFragment StoreEntitySet="REM_IN">
+          <ScalarProperty Name="Approve_DT" ColumnName="Approve_DT" />
+          <ScalarProperty Name="Checker_ID" ColumnName="Checker_ID" />
+          <ScalarProperty Name="Auth_Status" ColumnName="Auth_Status" />
+          <ScalarProperty Name="Create_DT" ColumnName="Create_DT" />
+          <ScalarProperty Name="Maker_ID" ColumnName="Maker_ID" />
+          <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="In_Status" ColumnName="In_Status" />
+          <ScalarProperty Name="Attach" ColumnName="Attach" />
+          <ScalarProperty Name="In_Debt" ColumnName="In_Debt" />
+          <ScalarProperty Name="In_Received" ColumnName="In_Received" />
+          <ScalarProperty Name="In_Total" ColumnName="In_Total" />
+          <ScalarProperty Name="In_Reason" ColumnName="In_Reason" />
+          <ScalarProperty Name="Payer_Address" ColumnName="Payer_Address" />
+          <ScalarProperty Name="Payer_Name" ColumnName="Payer_Name" />
+          <ScalarProperty Name="Month" ColumnName="Month" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="School_Fee" ColumnName="School_Fee" />
+          <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+          <ScalarProperty Name="Date_Trade_In" ColumnName="Date_Trade_In" />
+          <ScalarProperty Name="In_Code" ColumnName="In_Code" />
+          <ScalarProperty Name="In_ID" ColumnName="In_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REM_INOUT">
+      <EntityTypeMapping TypeName="Model.REM_INOUT">
+        <MappingFragment StoreEntitySet="REM_INOUT">
+          <ScalarProperty Name="Approve_DT" ColumnName="Approve_DT" />
+          <ScalarProperty Name="Checker_ID" ColumnName="Checker_ID" />
+          <ScalarProperty Name="Auth_Status" ColumnName="Auth_Status" />
+          <ScalarProperty Name="Create_DT" ColumnName="Create_DT" />
+          <ScalarProperty Name="Maker_ID" ColumnName="Maker_ID" />
+          <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="InOut_Budget" ColumnName="InOut_Budget" />
+          <ScalarProperty Name="InOut_Paid" ColumnName="InOut_Paid" />
+          <ScalarProperty Name="InOut_Received" ColumnName="InOut_Received" />
+          <ScalarProperty Name="InOut_Reason" ColumnName="InOut_Reason" />
+          <ScalarProperty Name="InOut_Date" ColumnName="InOut_Date" />
+          <ScalarProperty Name="InOut_Code" ColumnName="InOut_Code" />
+          <ScalarProperty Name="InOut_ID" ColumnName="InOut_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REM_OUT">
+      <EntityTypeMapping TypeName="Model.REM_OUT">
+        <MappingFragment StoreEntitySet="REM_OUT">
+          <ScalarProperty Name="Approve_DT" ColumnName="Approve_DT" />
+          <ScalarProperty Name="Checker_ID" ColumnName="Checker_ID" />
+          <ScalarProperty Name="Auth_Status" ColumnName="Auth_Status" />
+          <ScalarProperty Name="Create_DT" ColumnName="Create_DT" />
+          <ScalarProperty Name="Maker_ID" ColumnName="Maker_ID" />
+          <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Out_Debt" ColumnName="Out_Debt" />
+          <ScalarProperty Name="Out_Paid" ColumnName="Out_Paid" />
+          <ScalarProperty Name="Out_Total" ColumnName="Out_Total" />
+          <ScalarProperty Name="Out_Reason" ColumnName="Out_Reason" />
+          <ScalarProperty Name="Receiver_Address" ColumnName="Receiver_Address" />
+          <ScalarProperty Name="Receiver_Name" ColumnName="Receiver_Name" />
+          <ScalarProperty Name="Supplier_ID" ColumnName="Supplier_ID" />
+          <ScalarProperty Name="Out_Month" ColumnName="Out_Month" />
+          <ScalarProperty Name="Out_Year" ColumnName="Out_Year" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+          <ScalarProperty Name="STAFF_ID" ColumnName="STAFF_ID" />
+          <ScalarProperty Name="Out_Write_Date" ColumnName="Out_Write_Date" />
+          <ScalarProperty Name="Out_Trade_Date" ColumnName="Out_Trade_Date" />
+          <ScalarProperty Name="Out_Code" ColumnName="Out_Code" />
+          <ScalarProperty Name="Out_ID" ColumnName="Out_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REM_OUT_DETAIL">
+      <EntityTypeMapping TypeName="Model.REM_OUT_DETAIL">
+        <MappingFragment StoreEntitySet="REM_OUT_DETAIL">
+          <ScalarProperty Name="Approve_DT" ColumnName="Approve_DT" />
+          <ScalarProperty Name="Checker_ID" ColumnName="Checker_ID" />
+          <ScalarProperty Name="Auth_Status" ColumnName="Auth_Status" />
+          <ScalarProperty Name="Create_DT" ColumnName="Create_DT" />
+          <ScalarProperty Name="Maker_ID" ColumnName="Maker_ID" />
+          <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+          <ScalarProperty Name="Out_ID" ColumnName="Out_ID" />
+          <ScalarProperty Name="Out_Detail_ID" ColumnName="Out_Detail_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCHOOLYEARs">
+      <EntityTypeMapping TypeName="Model.SCHOOLYEAR">
+        <MappingFragment StoreEntitySet="SCHOOLYEAR">
+          <ScalarProperty Name="YEAR_END" ColumnName="YEAR_END" />
+          <ScalarProperty Name="YEAR_BEGIN" ColumnName="YEAR_BEGIN" />
+          <ScalarProperty Name="YEAR_NAME" ColumnName="YEAR_NAME" />
+          <ScalarProperty Name="YEAR_ID" ColumnName="YEAR_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SM_SALARY">
+      <EntityTypeMapping TypeName="Model.SM_SALARY">
+        <MappingFragment StoreEntitySet="SM_SALARY">
+          <ScalarProperty Name="Approve_DT" ColumnName="Approve_DT" />
+          <ScalarProperty Name="Checker_ID" ColumnName="Checker_ID" />
+          <ScalarProperty Name="Auth_Status" ColumnName="Auth_Status" />
+          <ScalarProperty Name="Create_DT" ColumnName="Create_DT" />
+          <ScalarProperty Name="Maker_ID" ColumnName="Maker_ID" />
+          <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Sa_Salary" ColumnName="Sa_Salary" />
+          <ScalarProperty Name="Sa_Minus" ColumnName="Sa_Minus" />
+          <ScalarProperty Name="Sa_Bonus" ColumnName="Sa_Bonus" />
+          <ScalarProperty Name="Sa_Total" ColumnName="Sa_Total" />
+          <ScalarProperty Name="STAFF_ID" ColumnName="STAFF_ID" />
+          <ScalarProperty Name="Sa_ID" ColumnName="Sa_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SM_STAFFINFO">
+      <EntityTypeMapping TypeName="Model.SM_STAFFINFO">
+        <MappingFragment StoreEntitySet="SM_STAFFINFO">
+          <ScalarProperty Name="Approve_DT" ColumnName="Approve_DT" />
+          <ScalarProperty Name="Checker_ID" ColumnName="Checker_ID" />
+          <ScalarProperty Name="Auth_Status" ColumnName="Auth_Status" />
+          <ScalarProperty Name="Create_DT" ColumnName="Create_DT" />
+          <ScalarProperty Name="Maker_ID" ColumnName="Maker_ID" />
+          <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+          <ScalarProperty Name="TypeofContract" ColumnName="TypeofContract" />
+          <ScalarProperty Name="Dayoff" ColumnName="Dayoff" />
+          <ScalarProperty Name="StartWorkDay" ColumnName="StartWorkDay" />
+          <ScalarProperty Name="WorkingStatus" ColumnName="WorkingStatus" />
+          <ScalarProperty Name="CardNumberParty" ColumnName="CardNumberParty" />
+          <ScalarProperty Name="DayatParty" ColumnName="DayatParty" />
+          <ScalarProperty Name="IsLeaguer" ColumnName="IsLeaguer" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="MotherPhone" ColumnName="MotherPhone" />
+          <ScalarProperty Name="FatherPhone" ColumnName="FatherPhone" />
+          <ScalarProperty Name="MotherJob" ColumnName="MotherJob" />
+          <ScalarProperty Name="MotherBirthday" ColumnName="MotherBirthday" />
+          <ScalarProperty Name="MotherFullName" ColumnName="MotherFullName" />
+          <ScalarProperty Name="FatherJob" ColumnName="FatherJob" />
+          <ScalarProperty Name="FatherBirthday" ColumnName="FatherBirthday" />
+          <ScalarProperty Name="FatherFullName" ColumnName="FatherFullName" />
+          <ScalarProperty Name="WageIncreaseDay" ColumnName="WageIncreaseDay" />
+          <ScalarProperty Name="DayWage" ColumnName="DayWage" />
+          <ScalarProperty Name="BasicSalary" ColumnName="BasicSalary" />
+          <ScalarProperty Name="CoefficientsSalary" ColumnName="CoefficientsSalary" />
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+          <ScalarProperty Name="SalaryGrade" ColumnName="SalaryGrade" />
+          <ScalarProperty Name="Degree" ColumnName="Degree" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="DateRange" ColumnName="DateRange" />
+          <ScalarProperty Name="IssuedBy" ColumnName="IssuedBy" />
+          <ScalarProperty Name="IndentityCard" ColumnName="IndentityCard" />
+          <ScalarProperty Name="IsATeacher" ColumnName="IsATeacher" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Religion" ColumnName="Religion" />
+          <ScalarProperty Name="Nation" ColumnName="Nation" />
+          <ScalarProperty Name="Date_Of_Birth" ColumnName="Date_Of_Birth" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="StaffName" ColumnName="StaffName" />
+          <ScalarProperty Name="StaffNumber" ColumnName="StaffNumber" />
+          <ScalarProperty Name="STAFF_ID" ColumnName="STAFF_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SUPPLIERDETAILs">
+      <EntityTypeMapping TypeName="Model.SUPPLIERDETAIL">
+        <MappingFragment StoreEntitySet="SUPPLIERDETAIL">
+          <ScalarProperty Name="Approve_DT" ColumnName="Approve_DT" />
+          <ScalarProperty Name="Checker_ID" ColumnName="Checker_ID" />
+          <ScalarProperty Name="Auth_Status" ColumnName="Auth_Status" />
+          <ScalarProperty Name="Create_DT" ColumnName="Create_DT" />
+          <ScalarProperty Name="Maker_ID" ColumnName="Maker_ID" />
+          <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="ProductType" ColumnName="ProductType" />
+          <ScalarProperty Name="SupplierType" ColumnName="SupplierType" />
+          <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+          <ScalarProperty Name="Supplier_ID" ColumnName="Supplier_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SYS_AUTH_STATUS">
+      <EntityTypeMapping TypeName="Model.SYS_AUTH_STATUS">
+        <MappingFragment StoreEntitySet="SYS_AUTH_STATUS">
+          <ScalarProperty Name="AUTH_STATUS_NAME" ColumnName="AUTH_STATUS_NAME" />
+          <ScalarProperty Name="AUTH_STATUS" ColumnName="AUTH_STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SYS_COLOR">
+      <EntityTypeMapping TypeName="Model.SYS_COLOR">
+        <MappingFragment StoreEntitySet="SYS_COLOR">
+          <ScalarProperty Name="Color_Name" ColumnName="Color_Name" />
+          <ScalarProperty Name="Color_Code" ColumnName="Color_Code" />
+          <ScalarProperty Name="Color_ID" ColumnName="Color_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SYS_EVENT">
+      <EntityTypeMapping TypeName="Model.SYS_EVENT">
+        <MappingFragment StoreEntitySet="SYS_EVENT">
+          <ScalarProperty Name="APPROVE_DT" ColumnName="APPROVE_DT" />
+          <ScalarProperty Name="CHECKER_ID" ColumnName="CHECKER_ID" />
+          <ScalarProperty Name="AUTH_STATUS" ColumnName="AUTH_STATUS" />
+          <ScalarProperty Name="CREATE_DT" ColumnName="CREATE_DT" />
+          <ScalarProperty Name="MAKER_ID" ColumnName="MAKER_ID" />
+          <ScalarProperty Name="RECORD_STATUS" ColumnName="RECORD_STATUS" />
+          <ScalarProperty Name="NOTES" ColumnName="NOTES" />
+          <ScalarProperty Name="EVENT_STATUS_COLOR" ColumnName="EVENT_STATUS_COLOR" />
+          <ScalarProperty Name="EVENT_MANAGER" ColumnName="EVENT_MANAGER" />
+          <ScalarProperty Name="EVENT_DETAIL" ColumnName="EVENT_DETAIL" />
+          <ScalarProperty Name="EVENT_GROUP" ColumnName="EVENT_GROUP" />
+          <ScalarProperty Name="EVENT_END" ColumnName="EVENT_END" />
+          <ScalarProperty Name="EVENT_START" ColumnName="EVENT_START" />
+          <ScalarProperty Name="ISALLDAY" ColumnName="ISALLDAY" />
+          <ScalarProperty Name="EVENT_NAME" ColumnName="EVENT_NAME" />
+          <ScalarProperty Name="EVENT_ID" ColumnName="EVENT_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SYS_GROUP">
+      <EntityTypeMapping TypeName="Model.SYS_GROUP">
+        <MappingFragment StoreEntitySet="SYS_GROUP">
+          <ScalarProperty Name="APPROVE_DT" ColumnName="APPROVE_DT" />
+          <ScalarProperty Name="CHECKER_ID" ColumnName="CHECKER_ID" />
+          <ScalarProperty Name="AUTH_STATUS" ColumnName="AUTH_STATUS" />
+          <ScalarProperty Name="CREATE_DT" ColumnName="CREATE_DT" />
+          <ScalarProperty Name="MAKER_ID" ColumnName="MAKER_ID" />
+          <ScalarProperty Name="RECORD_STATUS" ColumnName="RECORD_STATUS" />
+          <ScalarProperty Name="NOTES" ColumnName="NOTES" />
+          <ScalarProperty Name="GROUP_NAME" ColumnName="GROUP_NAME" />
+          <ScalarProperty Name="GROUP_CODE" ColumnName="GROUP_CODE" />
+          <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TM_LESSONPROGRAM">
+      <EntityTypeMapping TypeName="Model.TM_LESSONPROGRAM">
+        <MappingFragment StoreEntitySet="TM_LESSONPROGRAM">
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Approve_DT" ColumnName="Approve_DT" />
+          <ScalarProperty Name="Checker_ID" ColumnName="Checker_ID" />
+          <ScalarProperty Name="Auth_Status" ColumnName="Auth_Status" />
+          <ScalarProperty Name="Create_DT" ColumnName="Create_DT" />
+          <ScalarProperty Name="Maker_ID" ColumnName="Maker_ID" />
+          <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+          <ScalarProperty Name="Author" ColumnName="Author" />
+          <ScalarProperty Name="KidActivity" ColumnName="KidActivity" />
+          <ScalarProperty Name="TeacherActivity" ColumnName="TeacherActivity" />
+          <ScalarProperty Name="LessonGoal" ColumnName="LessonGoal" />
+          <ScalarProperty Name="LessonName" ColumnName="LessonName" />
+          <ScalarProperty Name="Lesson_ID" ColumnName="Lesson_ID" />
+          <ScalarProperty Name="Topic_ID" ColumnName="Topic_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TM_TEACHSCHEDULE">
+      <EntityTypeMapping TypeName="Model.TM_TEACHSCHEDULE">
+        <MappingFragment StoreEntitySet="TM_TEACHSCHEDULE">
+          <ScalarProperty Name="Approve_DT" ColumnName="Approve_DT" />
+          <ScalarProperty Name="Checker_ID" ColumnName="Checker_ID" />
+          <ScalarProperty Name="Auth_Status" ColumnName="Auth_Status" />
+          <ScalarProperty Name="Create_DT" ColumnName="Create_DT" />
+          <ScalarProperty Name="Maker_ID" ColumnName="Maker_ID" />
+          <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="AfternoonTeacher" ColumnName="AfternoonTeacher" />
+          <ScalarProperty Name="AfternoonLesson" ColumnName="AfternoonLesson" />
+          <ScalarProperty Name="MorningTeacher" ColumnName="MorningTeacher" />
+          <ScalarProperty Name="MorningLesson" ColumnName="MorningLesson" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="DateofWeek" ColumnName="DateofWeek" />
+          <ScalarProperty Name="Class_ID" ColumnName="Class_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TM_TOPIC">
+      <EntityTypeMapping TypeName="Model.TM_TOPIC">
+        <MappingFragment StoreEntitySet="TM_TOPIC">
+          <ScalarProperty Name="Approve_DT" ColumnName="Approve_DT" />
+          <ScalarProperty Name="Checker_ID" ColumnName="Checker_ID" />
+          <ScalarProperty Name="Auth_Status" ColumnName="Auth_Status" />
+          <ScalarProperty Name="Create_DT" ColumnName="Create_DT" />
+          <ScalarProperty Name="Maker_ID" ColumnName="Maker_ID" />
+          <ScalarProperty Name="Record_Status" ColumnName="Record_Status" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="TopicName" ColumnName="TopicName" />
+          <ScalarProperty Name="Topic_ID" ColumnName="Topic_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UM_ROLEDELIVERY">
+      <EntityTypeMapping TypeName="Model.UM_ROLEDELIVERY">
+        <MappingFragment StoreEntitySet="UM_ROLEDELIVERY">
+          <ScalarProperty Name="GroupDescription" ColumnName="GroupDescription" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="Group_ID" ColumnName="Group_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UM_USERINFO">
+      <EntityTypeMapping TypeName="Model.UM_USERINFO">
+        <MappingFragment StoreEntitySet="UM_USERINFO">
+          <ScalarProperty Name="Job" ColumnName="Job" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Date_Of_Birth" ColumnName="Date_Of_Birth" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Group_ID" ColumnName="Group_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetUser">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+      <EndProperty Name="AspNetRole">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

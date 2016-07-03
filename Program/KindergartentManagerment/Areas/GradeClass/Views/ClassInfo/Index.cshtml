@@ -1,0 +1,225 @@
+﻿@model List<KindergartentManagerment.Models.GM_CLASSINFO>
+@using KindergartentManagerment.Resources
+@{
+    ViewBag.Title = AssCommonResource.ClassOverview + " | " + AssCommonResource.Index;
+    Layout = "~/Views/Shared/Layout.cshtml";
+    KindergartentManagerment.Models.ApplicationDbContext db = new KindergartentManagerment.Models.ApplicationDbContext();
+}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        @AssCommonResource.ClassOverview
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> @AssCommonResource.Home</a></li>
+        <li><a href="#">@AssCommonResource.Kindergarten</a></li>
+        <li class="active">@AssCommonResource.ClassOverview</li>
+    </ol>
+</section>
+<script src="/Content/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/Content/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="/Content/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="/Content/plugins/fastclick/fastclick.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/Content/themes/AdminLTE/js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/Content/themes/AdminLTE/js/demo.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<!-- page script -->
+<script>
+    $(function () {
+        var array = @Html.Raw(Json.Encode(ViewBag._giaovien));
+        $( "#tags" ).autocomplete({
+            source: array
+        });
+        var array2 = @Html.Raw(Json.Encode(ViewBag._baomau));
+        $( "#tags2" ).autocomplete({
+            source: array2
+        });
+    });
+</script>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title" title=@ClassCommonResource.CreateClass>@Html.ActionLink(AssCommonResource.Create_New, "Create")</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <div class="box box-success">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">@AssCommonResource.Search</h3>
+                                    <span class="label label-success pull-right"><i class="fa fa-search-plus"></i></span>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    @using (Html.BeginForm("Index", "ClassInfo", FormMethod.Get))
+                                    {
+                                        <section class="select2-search__field">
+                                            <table id="example1" class="table table-bordered">
+                                                <tr>
+                                                    <th>
+                                                        @ClassCommonResource.ClassName
+                                                    </th>
+                                                    <th>
+                                                        @ClassCommonResource.Grade
+                                                    </th>
+                                                    <th>
+                                                        @ClassCommonResource.Quantity
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        @Html.TextBox("tenlop",null, new { @class = "form-control" })
+                                                    </td>
+                                                    <td>
+                                                        @Html.DropDownList("_GradeList", null,AssCommonResource.All, new { @class = "form-control" })
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBox("siso",null, new { @class = "form-control" })
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        @ClassCommonResource.Teacher
+                                                    </th>
+                                                    <th>
+                                                        @ClassCommonResource.Kindergartener
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <input id="tags" name="giaovien" class="form-control">
+                                                        @*@Html.TextBox("giaovien", null, new { @class = "form-control" })*@
+                                                    </td>
+                                                    <td>
+                                                        <input id="tags2" name="baomau" class="form-control">
+                                                        @*@Html.TextBox("baomau", null, new { @class = "form-control" })*@
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <input type="submit" class="btn btn-success form-control pull-left" style="width:20%" value=@AssCommonResource.Filter />                                        </section>
+                                        
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="box box-danger">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">@AssCommonResource.ExportReports</h3>
+                                    <span class="label label-danger pull-right"><i class="fa fa-bar-chart"></i></span>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        @Html.ActionLink(" Excel", "ExportTo", "ClassInfo", new { ReportType = "Excel" }, new { @class = "fa fa-file-excel-o btn btn-success" })
+                                        @Html.ActionLink(" Pdf", "ExportTo", "ClassInfo", new { ReportType = "Pdf" }, new { @class = "fa fa-file-pdf-o btn btn-warning" })
+                                        @Html.ActionLink(" Word", "ExportTo", "ClassInfo", new { ReportType = "Word" }, new { @class = "fa fa-file-word-o btn btn-primary" })
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">@AssCommonResource.Details</h3>
+                                    <span class="label label-primary pull-right"><i class="fa fa-book"></i></span>
+                                </div><!-- /.box-header -->
+                               <!-- /.box-header -->
+                                <div class="box-body">
+                                    <table id="example2" class="table table-bordered table-hover">
+                                        <tr>
+                                            <th>
+                                                @AssCommonResource.Auth_Status
+                                            </th>
+                                            <th>
+                                                @ClassCommonResource.ClassName
+                                            </th>
+                                            <th>
+                                                @ClassCommonResource.Grade
+                                            </th>
+                                            <th>
+                                                @ClassCommonResource.Quantity
+                                            </th>
+                                            <th>
+                                                @ClassCommonResource.Teacher
+                                            </th>
+                                            <th>
+                                                @ClassCommonResource.Kindergartener
+                                            </th>
+                                            @*<th>
+                                                    @ClassCommonResource.Year
+                                                </th>*@
+                                            <th>
+                                                @AssCommonResource.Option
+                                            </th>
+                                        @if (User.IsInRole("Admin") || User.IsInRole("Manager")) { 
+                                            <th>
+                                                @AssCommonResource.SaveAuth
+                                            </th>
+                                        }
+                                        </tr>
+
+                                        @foreach (var item in Model)
+                                        {
+                                            using (Html.BeginForm("Index", "ClassInfo", new { id = item.ClassID }, FormMethod.Post, new { @class = "form-horizontal text-center", role = "form", enctype = "multipart/form-data" }))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                <tr>
+                                                    <td>
+                                                        @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                                                        {
+                                                            @Html.DropDownList("AUTH_STATUS", new SelectList(db.SYS_AUTH_STATUS, "AUTH_STATUS", "AUTH_STATUS_NAME", item.Auth_Status), new { @class = "form-control" })
+                                                        }
+                                                        else
+                                                        {
+                                                            @Html.DropDownList("AUTH_STATUS", new SelectList(db.SYS_AUTH_STATUS, "AUTH_STATUS", "AUTH_STATUS_NAME", item.Auth_Status), new { @class = "form-control", @disabled = "disabled" })
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Class_Name, new { @class = "text-center" })
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Grade.GRADE_NAME)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Quantity)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Teacher.StaffName)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Kindergartener.StaffName)
+                                                    </td>
+                                                    <td>
+                                                        @Html.ActionLink(AssCommonResource.Edit, "Edit", new { id = item.ClassID }) |
+                                                        @Html.ActionLink(AssCommonResource.Details, "Details", new { id = item.ClassID }) |
+                                                        @Html.ActionLink(AssCommonResource.Delete, "Delete", new { id = item.ClassID })
+                                                    </td>
+                                                    @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                                                    { 
+                                                        <td>
+                                                            <input type="submit" value="@AssCommonResource.Save" class="btn btn-sm btn-default btn-flat pull-right" />
+                                                        </td>
+                                                    }
+                                                </tr>
+                                            }
+                                        }
+                                    </table>
+                                </div>
+                            </div><!-- /.box -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

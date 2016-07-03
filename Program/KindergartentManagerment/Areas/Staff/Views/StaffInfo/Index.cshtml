@@ -1,0 +1,218 @@
+﻿@model IEnumerable<KindergartentManagerment.Models.SM_STAFFINFO>
+@using KindergartentManagerment.Resources
+@{
+    ViewBag.Title = AssCommonResource.lbl_staff + " | " + AssCommonResource.Index;
+    Layout = "~/Views/Shared/Layout.cshtml";
+    KindergartentManagerment.Models.ApplicationDbContext db = new KindergartentManagerment.Models.ApplicationDbContext();
+}
+<script src="/Content/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/Content/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="/Content/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="/Content/plugins/fastclick/fastclick.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/Content/themes/AdminLTE/js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/Content/themes/AdminLTE/js/demo.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        @AssCommonResource.lbl_staff
+    </h1>
+
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> @AssCommonResource.Home</a></li>
+        <li><a href="#">@AssCommonResource.Kindergarten</a></li>
+        <li class="active">@AssCommonResource.lbl_staff</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title" title=@StaffCommonResource.CreateStaff>@Html.ActionLink(AssCommonResource.Create_New, "Create")</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <div class="box box-success">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">@AssCommonResource.Search</h3>
+                                    <span class="label label-success pull-right"><i class="fa fa-search-plus"></i></span>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    @using (Html.BeginForm("Index", "StaffInfo", FormMethod.Get))
+                                    {
+
+                                        <section class="select2-search__field">
+                                            <table id="example1" class="table table-bordered">
+                                                <tr>
+                                                    <th>
+                                                        @StaffCommonResource.StaffName
+                                                    </th>
+                                                    <th>
+                                                        @StaffCommonResource.Gender
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        @Html.TextBox("staffname",null,new { @class = "form-control" })
+                                                    </td>
+                                                    <td>
+                                                        @Html.DropDownList("gender", new SelectList
+                                                   (new List<Object>{
+                                                                   new { value = "0" , text = AssCommonResource.Male  },
+                                                                       new { value = "1" , text = AssCommonResource.Female },
+                                                                       new {value = "2" , text = AssCommonResource.All }
+                                                                           },
+                                                                           "value",
+                                                                           "text"), new { value = 2, text = AssCommonResource.All, @class = "form-control" })
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        @StaffCommonResource.Department
+                                                    </th>
+                                                    <th>
+                                                        @StaffCommonResource.Position
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        @Html.DropDownList("_department", null, AssCommonResource.All, new { @class= "form-control" })
+                                                    </td>
+                                                    <td>
+                                                        @Html.DropDownList("position", null, AssCommonResource.All, new { @class = "form-control" })
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <input type="submit" class="btn btn-success form-control pull-left" style="width:20%" value=@AssCommonResource.Filter />
+                                        </section>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="box box-danger">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">@AssCommonResource.ExportReports</h3>
+                                    <span class="label label-danger pull-right"><i class="fa fa-bar-chart"></i></span>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        @Html.ActionLink(" Excel", "ExportTo", "ClassInfo", new { ReportType = "Excel" }, new { @class = "fa fa-file-excel-o btn btn-success" })
+                                        @Html.ActionLink(" Pdf", "ExportTo", "ClassInfo", new { ReportType = "Pdf" }, new { @class = "fa fa-file-pdf-o btn btn-warning" })
+                                        @Html.ActionLink(" Word", "ExportTo", "ClassInfo", new { ReportType = "Word" }, new { @class = "fa fa-file-word-o btn btn-primary" })
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">@AssCommonResource.Details</h3>
+                                    <span class="label label-primary pull-right"><i class="fa fa-book"></i></span>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <table id="example2" class="table table-bordered table-hove table-responsive text-center">
+                                        <tr>
+                                            <th>
+                                                @AssCommonResource.Auth_Status
+                                            </th>
+                                            <th>
+                                                @StaffCommonResource.Picture
+                                            </th>
+                                            <th>
+                                                @StaffCommonResource.StaffName
+                                            </th>
+                                            <th>
+                                                @StaffCommonResource.Gender
+                                            </th>
+                                            <th>
+                                                @StaffCommonResource.Date_Of_Birth
+                                            </th>
+                                            <th>
+                                                @StaffCommonResource.Department
+                                            </th>
+                                            <th>
+                                                @StaffCommonResource.Position
+                                            </th>
+                                            <th>
+                                                @AssCommonResource.Option
+                                            </th>
+                                            @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                                            {
+                                                <th>
+                                                    @AssCommonResource.SaveAuth
+                                                </th>
+                                            }
+                                        </tr>
+
+                                        @foreach (var item in Model)
+                                        {
+                                            using (Html.BeginForm("Index", "StaffInfo", new { id = item.STAFF_ID }, FormMethod.Post, new { @class = "form-horizontal text-center", role = "form", enctype = "multipart/form-data" }))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                <tr>
+                                                    <td>
+                                                        @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                                                        {
+                                                            @Html.DropDownList("AUTH_STATUS", new SelectList(db.SYS_AUTH_STATUS, "AUTH_STATUS", "AUTH_STATUS_NAME", item.Auth_Status), new { @class = "form-control" })
+                                                        }
+                                                        else
+                                                        {
+                                                            @Html.DropDownList("AUTH_STATUS", new SelectList(db.SYS_AUTH_STATUS, "AUTH_STATUS", "AUTH_STATUS_NAME", item.Auth_Status), new { @class = "form-control", @disabled = "disabled" })
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        <img src=@item.Picture class="user-image" alt="User Image">
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.StaffName, new { @class = "text-center" })
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Gender)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Date_Of_Birth)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Department.DepartmentName)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Position)
+                                                    </td>
+                                                    <td>
+                                                        @Html.ActionLink(AssCommonResource.Edit, "Edit", new { id = item.STAFF_ID }) |
+                                                        @Html.ActionLink(AssCommonResource.Details, "Details", new { id = item.STAFF_ID }) |
+                                                        @Html.ActionLink(AssCommonResource.Delete, "Delete", new { id = item.STAFF_ID })
+                                                    </td>
+                                                    @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                                                    {
+                                                        <td>
+                                                            <input type="submit" value="@AssCommonResource.Save" class="btn btn-sm btn-default btn-flat pull-right" />
+                                                        </td>
+                                                    }
+                                                </tr>
+                                            }
+                                        }
+
+                                    </table>
+                                </div>
+                            </div><!-- /.box -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

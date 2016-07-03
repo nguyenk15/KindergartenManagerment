@@ -1,0 +1,121 @@
+﻿@model KindergartentManagerment.Models.REM_INOUT
+
+@using KindergartentManagerment.Resources
+@{
+    ViewBag.Title = AssCommonResource.Revenueandexpenditures + " | " + AssCommonResource.Create;
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<section class="content-header">
+    <h1>
+        @AssCommonResource.Inout
+    </h1>
+
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> @AssCommonResource.Home</a></li>
+        <li><a href="#">@AssCommonResource.Revenueandexpenditures</a></li>
+        <li class="active">@AssCommonResource.Inout</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">@AssCommonResource.Overview</h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>@InOutResource.InOut_Code</label>
+                            @Html.EditorFor(model => model.InOut_Code, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.InOut_Code, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                @InOutResource.InOut_Date
+                            </label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                @Html.TextBoxFor(model => model.InOut_Date, new { @class = "form-control datemask", @type = "text" })
+                                @Html.ValidationMessageFor(model => model.InOut_Date)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                @InOutResource.InOut_Reason
+                            </label>
+                            @Html.EditorFor(model => model.InOut_Reason, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.InOut_Reason, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                @InOutResource.InOut_Received
+                            </label>
+                            @Html.EditorFor(model => model.InOut_Received, new { htmlAttributes = new { @class = "form-control money" } })
+                            @Html.ValidationMessageFor(model => model.InOut_Received, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>
+                                @InOutResource.InOut_Paid
+                            </label>
+                            @Html.EditorFor(model => model.InOut_Paid, new { htmlAttributes = new { @class = "form-control money" } })
+                            @Html.ValidationMessageFor(model => model.InOut_Paid, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                @InOutResource.InOut_Budget
+                            </label>
+                            @Html.EditorFor(model => model.InOut_Budget, new { htmlAttributes = new { @class = "form-control  money" } })
+                            @Html.ValidationMessageFor(model => model.InOut_Budget, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                @AssCommonResource.Notes
+                            </label>
+                            @Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Notes, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer">
+                @Html.ActionLink(AssCommonResource.BacktoList, "Index", "Inout", new { @class = "btn btn-sm btn-default btn-flat pull-left" })
+                <input type="submit" value="@AssCommonResource.Create" class="btn btn-sm btn-primary btn-flat pull-right" />
+            </div>
+        </div>
+    }
+</section>
+@section orther_scripts{
+<script>
+    $(function () {
+            //Datemask dd/mm/yyyy
+            $(".datemask").inputmask({
+                alias: "dd/mm/yyyy"
+            });
+            //Datemask2 mm/dd/yyyy
+            $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
+            //Money Euro
+            $("[data-mask]").inputmask();
+            $('.inputmask').inputmask({
+                mask: '9999-999-999'
+            })
+    });
+    //ten class tien = money
+</script>     
+}

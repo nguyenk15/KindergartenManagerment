@@ -1,0 +1,361 @@
+﻿@model KindergartentManagerment.Models.KM_STUDENTOVERVIEW
+@using KindergartentManagerment.Resources
+@{
+    ViewBag.Title = AssCommonResource.KindergartenManagerment + " | " + AssCommonResource.Delete;
+    Layout = "~/Views/Shared/Layout.cshtml";
+    KindergartentManagerment.Models.ApplicationDbContext db = new KindergartentManagerment.Models.ApplicationDbContext();
+}
+
+<section class="content-header">
+    <h1>
+        @AssCommonResource.StudentOverview
+    </h1>
+
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> @AssCommonResource.Home</a></li>
+        <li><a href="#">@AssCommonResource.Kindergarten</a></li>
+        <li class="active">@AssCommonResource.StudentOverview</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">@AssCommonResource.Delete</h3>
+                    <h3 class="box-header">@AssCommonResource.RequestDelete</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="form-horizontal">
+
+                        <!-- student information-->
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">@StudentOverviewResource.StudentInfomation</h3>
+                                <div class="box-tools pull-right">
+                                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <!--Group name-->
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-3">
+                                            @StudentOverviewResource.StudentName
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.StudentName, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = "width:100%;" } })
+                                        </div>
+                                    </div>
+                                </div><!--End Group-->
+                                <!-- Group gender and birthday-->
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-3">
+                                            @StudentOverviewResource.Gender
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.DropDownListFor(model => model.Gender, new SelectList(
+                                                    new List<Object>{
+                                                        new { value = 0 , text = StudentOverviewResource.Male  },
+                                                        new { value = 1 , text = StudentOverviewResource.Female },
+                                                                    },
+                                                        "value",
+                                                        "text"), new { @class = "form-control", @disabled = "disabled", @style = "width:100%;" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-3">
+                                            @StudentOverviewResource.Birthday
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                @Html.TextBoxFor(model => model.Date_Of_Birth, new { @class = "form-control datemask", @disabled = "disabled", @style = "width:100%;", @type = "text" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- end group-->
+                                <!--Group adress and prioritysubjects-->
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-3">
+                                            @StudentOverviewResource.Address
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = "width:100%;" } })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-3">
+                                            @StudentOverviewResource.PrioritySubjects
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.PrioritySubjects, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = "width:100%;" } })
+                                        </div>
+                                    </div>
+                                </div><!-- End group-->
+                                <!-- Group nation and Religion-->
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-3">
+                                            @StudentOverviewResource.Nation
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.Nation, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = "width:100%;" } })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-3">
+                                            @StudentOverviewResource.Religion
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.Religion, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = "width:100%;" } })
+                                        </div>
+                                    </div>
+                                </div><!-- End group-->
+                                <!-- group Class and School Year-->
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-3">
+                                            @StudentOverviewResource.Class
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.DropDownListFor(model => model.Class.Class_Name, new SelectList(db.GM_CLASSINFO, "ClassID", "Class_Name"), new { @class = "form-control", @disabled = "disabled", @style = "width:100%;" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-3">
+                                            @StudentOverviewResource.SchoolYear
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.DropDownListFor(model => model.SchoolYear, new SelectList(db.SYS_AUTH_STATUS, "AUTH_STATUS", "AUTH_STATUS_NAME"), new { @class = "form-control", @disabled = "disabled", @style = "width:100%;" })
+                                        </div>
+                                    </div>
+                                </div><!-- End group-->
+
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <div class="control-label col-md-6">
+                                            @StudentOverviewResource.Picture
+                                        </div>
+                                        <div class="col-md-6">
+                                            <img src=@Model.Picture class="user-image" alt="User Image">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- /.box-body -->
+                        </div>
+
+                        <!-- familly information-->
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">@StudentOverviewResource.FamilyInformation</h3>
+                                <div class="box-tools pull-right">
+                                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <!-- Group father name and father birthday-->
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-3">
+                                            @StudentOverviewResource.FatherName
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.FatherName, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = "width:100%;" } })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-3">
+                                            @StudentOverviewResource.FatherBirthday
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                @Html.TextBoxFor(model => model.FatherBirthday, new { @class = "form-control datemask", @disabled = "disabled", @style = "width:100%;", @type = "text" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Group fatherjob and fatherPhone-->
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-3">
+                                            @StudentOverviewResource.FatherJob
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.FatherJob, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = "width:100%;" } })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-3">
+                                            @StudentOverviewResource.FatherPhone
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-phone"></i>
+                                                </div>
+                                                @Html.TextBoxFor(model => model.FatherPhone, new
+                                           {
+                                               @class = "form-control inputmask",
+                                               @disabled = "disabled",
+                                               @style = "width:100%;",
+                                               type = "text"
+                                           })
+                                            </div><!-- /.input group -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Group Mothername and motherbirthday-->
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-3">
+                                            @StudentOverviewResource.MotherName
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.MotherName, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = "width:100%;" } })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-3">
+                                            @StudentOverviewResource.MotherBirthday
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                @Html.TextBoxFor(model => model.MotherBirthday, new { @class = "form-control datemask", @disabled = "disabled", @style = "width:100%;", @type = "text" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Group MotherJop and Mother Phone-->
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-3">
+                                            @StudentOverviewResource.MotherJob
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.MotherJob, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = "width:100%;" } })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-3">
+                                            @StudentOverviewResource.MotherPhone
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-phone"></i>
+                                                </div>
+                                                @Html.TextBoxFor(model => model.MotherPhone, new
+                                           {
+                                               @class = "form-control inputmask",
+                                               @disabled = "disabled",
+                                               @style = "width:100%;",
+                                               type = "text"
+                                           })
+                                            </div><!-- /.input group -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Orther information -->
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">@AssCommonResource.Other</h3>
+                                <div class="box-tools pull-right">
+                                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-3">
+                                            @StudentOverviewResource.DateofAdmission
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                @Html.TextBoxFor(model => model.DateofAdmission, new
+                                           {
+                                               @class = "form-control datemask",
+                                               @type = "text",
+                                               @disabled = "disabled",
+                                               @style = "width:100%;"
+                                           })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="control-label col-md-3">
+                                                @StudentOverviewResource.CompletionDate
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </div>
+                                                    @Html.TextBoxFor(model => model.CompletionDate, new
+                                               {
+                                                   @class = "form-control datemask",
+                                                   @type = "text",
+                                                   @disabled = "disabled",
+                                                   @style = "width:100%;"
+                                               })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-3">
+                                            @AssCommonResource.Notes
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = "width:100%;" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Action click-->
+                @using (Html.BeginForm("Delete", "StudentOverview", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+
+                    <div class="box-footer clearfix">
+                        <input type="submit" value="@AssCommonResource.Delete" class="btn btn-sm btn-warning btn-flat pull-right" /> 
+                        @Html.ActionLink(AssCommonResource.BacktoList, "Index", "StudentOverview", new { @class = "btn btn-sm btn-info btn-flat pull-left" })
+                    </div>
+                }
+                
+            </div>
+        </div>
+    </div>
+</section>
+@section Orther_scripts{
+    <script src="~/Scripts/Valid.js"></script>
+}

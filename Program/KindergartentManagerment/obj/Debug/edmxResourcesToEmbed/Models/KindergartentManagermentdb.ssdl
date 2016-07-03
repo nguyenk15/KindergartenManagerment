@@ -1,0 +1,865 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AM_ASSETOVERVIEW">
+    <Key>
+      <PropertyRef Name="Asset_ID" />
+    </Key>
+    <Property Name="Asset_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Asset_Code" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="AssetName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Number" Type="int" />
+    <Property Name="Supplier" Type="nvarchar" MaxLength="50" />
+    <Property Name="ImportDate" Type="datetime" />
+    <Property Name="MaintenanceMode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="20" />
+    <Property Name="Record_Status" Type="char" MaxLength="1" />
+    <Property Name="Maker_ID" Type="int" />
+    <Property Name="Create_DT" Type="datetime" />
+    <Property Name="Auth_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Checker_ID" Type="int" />
+    <Property Name="Approve_DT" Type="datetime" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="ImageURL" Type="nvarchar" MaxLength="500" />
+    <Property Name="ImageURL1" Type="nvarchar" MaxLength="500" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Date_Of_Birth" Type="datetime" />
+    <Property Name="Gender" Type="varchar" MaxLength="5" />
+    <Property Name="Job" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="DD_ChiTietMonAnMau">
+    <Key>
+      <PropertyRef Name="ChiTietMonAnMauID" />
+    </Key>
+    <Property Name="ChiTietMonAnMauID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MonAnMauID" Type="int" Nullable="false" />
+    <Property Name="ThucPhamID" Type="int" Nullable="false" />
+    <Property Name="KhoiKuongKg" Type="float" />
+    <Property Name="Record_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Maker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Create_DT" Type="datetime" />
+    <Property Name="Auth_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Checker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Approve_DT" Type="datetime" />
+  </EntityType>
+  <EntityType Name="DD_LoaiMonAnMau">
+    <Key>
+      <PropertyRef Name="LoaiMonAnMauID" />
+    </Key>
+    <Property Name="LoaiMonAnMauID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenLoaiMonAnMau" Type="nvarchar" MaxLength="64" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="100" />
+    <Property Name="Record_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Maker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Create_DT" Type="datetime" />
+    <Property Name="Auth_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Checker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Approve_DT" Type="datetime" />
+  </EntityType>
+  <EntityType Name="DD_LoaiSuatAn">
+    <Key>
+      <PropertyRef Name="DDLoaiSuatAnID" />
+    </Key>
+    <Property Name="DDLoaiSuatAnID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenLoaiSuatAn" Type="nvarchar" MaxLength="64" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Record_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Maker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Create_DT" Type="datetime" />
+    <Property Name="Auth_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Checker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Approve_DT" Type="datetime" />
+  </EntityType>
+  <EntityType Name="DD_MonAnMau">
+    <Key>
+      <PropertyRef Name="MonAnMauID" />
+    </Key>
+    <Property Name="MonAnMauID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LoaiMonAnMauID" Type="int" Nullable="false" />
+    <Property Name="TenMonAnMau" Type="nvarchar" MaxLength="64" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Record_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Maker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Create_DT" Type="datetime" />
+    <Property Name="Auth_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Checker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Approve_DT" Type="datetime" />
+  </EntityType>
+  <EntityType Name="DD_NhomThucPham">
+    <Key>
+      <PropertyRef Name="DDNhomThucPhamID" />
+    </Key>
+    <Property Name="DDNhomThucPhamID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenNhomThucPham" Type="nvarchar" MaxLength="64" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Record_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Maker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Create_DT" Type="datetime" />
+    <Property Name="Auth_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Checker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Approve_DT" Type="datetime" />
+  </EntityType>
+  <EntityType Name="DD_NhuCauDinhDuong">
+    <Key>
+      <PropertyRef Name="DDNhuCauDinhDuongID" />
+    </Key>
+    <Property Name="DDNhuCauDinhDuongID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tuoi" Type="int" Nullable="false" />
+    <Property Name="Kcalo" Type="float" />
+    <Property Name="Protein" Type="float" />
+    <Property Name="Calsi" Type="float" />
+    <Property Name="Sat" Type="float" />
+    <Property Name="VitaminA" Type="float" />
+    <Property Name="VitaminB1" Type="float" />
+    <Property Name="VitaminB2" Type="float" />
+    <Property Name="VitaminPP" Type="float" />
+    <Property Name="VitaminC" Type="float" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Record_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Maker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Create_DT" Type="datetime" />
+    <Property Name="Auth_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Checker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Approve_DT" Type="datetime" />
+  </EntityType>
+  <EntityType Name="DD_NhuCauNangLuong">
+    <Key>
+      <PropertyRef Name="DDNhuCauNangLuongID" />
+    </Key>
+    <Property Name="DDNhuCauNangLuongID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DoTuoi" Type="nvarchar" MaxLength="32" />
+    <Property Name="CaloCaNgay" Type="float" />
+    <Property Name="CaloTruong" Type="float" />
+    <Property Name="ProtidCaNgay" Type="float" />
+    <Property Name="ProtidTruong" Type="float" />
+    <Property Name="LipidCaNgay" Type="float" />
+    <Property Name="LipidTruong" Type="float" />
+    <Property Name="GlucidCaNgay" Type="float" />
+    <Property Name="GlucidTruong" Type="float" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Record_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Maker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Create_DT" Type="datetime" />
+    <Property Name="Auth_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Checker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Approve_DT" Type="datetime" />
+  </EntityType>
+  <EntityType Name="DD_SuatAn">
+    <Key>
+      <PropertyRef Name="DDSuatAnID" />
+    </Key>
+    <Property Name="DDSuatAnID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DDLoaiSuatAnID" Type="int" Nullable="false" />
+    <Property Name="SoLuongSuatAn" Type="int" />
+    <Property Name="TenSuatAn" Type="nvarchar" MaxLength="64" />
+    <Property Name="Ngay" Type="datetime" />
+    <Property Name="TongTienSuatAn" Type="float" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Record_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Maker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Create_DT" Type="datetime" />
+    <Property Name="Auth_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Checker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Approve_DT" Type="datetime" />
+  </EntityType>
+  <EntityType Name="DD_SuatAnChiTiet">
+    <Key>
+      <PropertyRef Name="DDSuatAnChiTietID" />
+    </Key>
+    <Property Name="DDSuatAnChiTietID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DDSuatAnID" Type="int" Nullable="false" />
+    <Property Name="MonAnMauID" Type="int" Nullable="false" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Record_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Maker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Create_DT" Type="datetime" />
+    <Property Name="Auth_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Checker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Approve_DT" Type="datetime" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="DD_ThucDonNgay">
+    <Key>
+      <PropertyRef Name="ThucDon_ID" />
+    </Key>
+    <Property Name="ThucDon_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NgayThucDon" Type="datetime" />
+    <Property Name="BuaSang" Type="nvarchar" MaxLength="64" />
+    <Property Name="MonMan" Type="nvarchar" MaxLength="64" />
+    <Property Name="MonCanh" Type="nvarchar" MaxLength="64" />
+    <Property Name="TrangMieng" Type="nvarchar" MaxLength="64" />
+    <Property Name="BuaXe" Type="nvarchar" MaxLength="64" />
+    <Property Name="Record_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Maker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Create_DT" Type="datetime" />
+    <Property Name="Auth_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Checker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Approve_DT" Type="datetime" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="DD_ThucPham">
+    <Key>
+      <PropertyRef Name="DDThucPhamID" />
+    </Key>
+    <Property Name="DDThucPhamID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NhomThucPhamID" Type="int" Nullable="false" />
+    <Property Name="TenThucPham" Type="nvarchar" MaxLength="64" />
+    <Property Name="NguonTuDongVat" Type="bit" />
+    <Property Name="QuyDoiVeKg" Type="nvarchar" MaxLength="5" />
+    <Property Name="DonViTinh" Type="nvarchar" MaxLength="15" />
+    <Property Name="GiaThanh" Type="float" />
+    <Property Name="TyLeHapThu" Type="float" />
+    <Property Name="TyLeThai" Type="float" />
+    <Property Name="NangLuongCalo" Type="float" />
+    <Property Name="TphhNuoc" Type="float" />
+    <Property Name="TphhProtid" Type="float" />
+    <Property Name="TphhLipid" Type="float" />
+    <Property Name="TphhGlucid" Type="float" />
+    <Property Name="TphhCellulose" Type="float" />
+    <Property Name="TphhCholesterol" Type="float" />
+    <Property Name="MkCalci" Type="float" />
+    <Property Name="MkPhotpho" Type="float" />
+    <Property Name="MkSat" Type="float" />
+    <Property Name="VitaminCaroten" Type="float" />
+    <Property Name="VitaminA" Type="float" />
+    <Property Name="VitaminB1" Type="float" />
+    <Property Name="VitaminB2" Type="float" />
+    <Property Name="VitaminC" Type="float" />
+    <Property Name="VitaminPP" Type="float" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Record_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Maker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Create_DT" Type="datetime" />
+    <Property Name="Auth_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Checker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Approve_DT" Type="datetime" />
+  </EntityType>
+  <EntityType Name="DM_DEPARTMENTINFO">
+    <Key>
+      <PropertyRef Name="Depatment_ID" />
+    </Key>
+    <Property Name="Depatment_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DepartmentName" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Chief_ID" Type="int" />
+    <Property Name="Record_Status" Type="char" MaxLength="1" />
+    <Property Name="Maker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Create_DT" Type="datetime" />
+    <Property Name="Auth_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Checker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Approve_DT" Type="datetime" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="FM_FOODREPOSITORY">
+    <Key>
+      <PropertyRef Name="Food_ID" />
+    </Key>
+    <Property Name="Food_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Food_Code" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="FoodType" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="FoodName" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="InputDate" Type="date" Nullable="false" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="Cost" Type="money" />
+    <Property Name="Supplier" Type="nvarchar" MaxLength="255" />
+    <Property Name="ExpiredDate" Type="date" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+    <Property Name="Record_Status" Type="char" MaxLength="1" />
+    <Property Name="Maker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Create_DT" Type="datetime" />
+    <Property Name="Auth_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Checker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Approve_DT" Type="datetime" />
+  </EntityType>
+  <EntityType Name="GM_CLASSINFO">
+    <Key>
+      <PropertyRef Name="Class_ID" />
+    </Key>
+    <Property Name="Class_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Teacher_ID" Type="int" Nullable="false" />
+    <Property Name="Grade_ID" Type="int" Nullable="false" />
+    <Property Name="Accountability" Type="varchar" MaxLength="15" />
+    <Property Name="Record_Status" Type="char" MaxLength="1" />
+    <Property Name="Maker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Create_DT" Type="datetime" />
+    <Property Name="Auth_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Checker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Approve_DT" Type="datetime" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Class_Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="Kindergartener_ID" Type="int" Nullable="false" />
+    <Property Name="SchoolYear_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GM_GRADEINFO">
+    <Key>
+      <PropertyRef Name="GRADE_ID" />
+    </Key>
+    <Property Name="GRADE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GRADE_NAME" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Maker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Create_DT" Type="datetime" />
+    <Property Name="Auth_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Checker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Approve_DT" Type="datetime" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="KM_PHYSICALINFO">
+    <Key>
+      <PropertyRef Name="Record_ID" />
+    </Key>
+    <Property Name="Student_ID" Type="int" Nullable="false" />
+    <Property Name="Height" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Weight" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="BMI" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Dermatology" Type="nvarchar" MaxLength="255" />
+    <Property Name="Otolaryngology" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dentomaxillofacial" Type="nvarchar" MaxLength="255" />
+    <Property Name="RespiratorySystem" Type="nvarchar" MaxLength="255" />
+    <Property Name="Record_Status" Type="char" MaxLength="1" />
+    <Property Name="Maker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Create_DT" Type="datetime" />
+    <Property Name="Auth_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Checker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Approve_DT" Type="datetime" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Months" Type="int" />
+    <Property Name="Record_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KM_STANDARDINDEXES">
+    <Key>
+      <PropertyRef Name="Record_ID" />
+    </Key>
+    <Property Name="Record_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Months" Type="int" Nullable="false" />
+    <Property Name="StandardHeight" Type="int" />
+    <Property Name="HeightUnit" Type="varchar" MaxLength="10" />
+    <Property Name="StandardWeight" Type="int" />
+    <Property Name="WeightUnit" Type="varchar" MaxLength="10" />
+    <Property Name="StandardBMI" Type="decimal" Precision="4" Scale="2" />
+    <Property Name="Maker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Create_DT" Type="datetime" />
+    <Property Name="Auth_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Checker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Approve_DT" Type="datetime" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="KM_STUDENTOVERVIEW">
+    <Key>
+      <PropertyRef Name="STUDENT_ID" />
+    </Key>
+    <Property Name="STUDENT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Date_Of_Birth" Type="datetime" />
+    <Property Name="PrioritySubjects" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Nation" Type="nvarchar" MaxLength="20" />
+    <Property Name="Religion" Type="nvarchar" MaxLength="20" />
+    <Property Name="ClassID" Type="int" />
+    <Property Name="SchoolYear" Type="nvarchar" MaxLength="255" />
+    <Property Name="FatherName" Type="nvarchar" MaxLength="50" />
+    <Property Name="FatherBirthday" Type="datetime" />
+    <Property Name="FatherJob" Type="nvarchar" MaxLength="255" />
+    <Property Name="MotherName" Type="nvarchar" MaxLength="255" />
+    <Property Name="MotherBirthday" Type="datetime" />
+    <Property Name="MotherJob" Type="nvarchar" MaxLength="255" />
+    <Property Name="FatherPhone" Type="nvarchar" MaxLength="15" />
+    <Property Name="MotherPhone" Type="nvarchar" MaxLength="15" />
+    <Property Name="Picture" Type="nvarchar" MaxLength="1000" />
+    <Property Name="DateofAdmission" Type="datetime" />
+    <Property Name="CompletionDate" Type="datetime" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Record_Status" Type="char" MaxLength="1" />
+    <Property Name="Maker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Create_DT" Type="datetime" />
+    <Property Name="Auth_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Checker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Approve_DT" Type="datetime" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="REM_IN">
+    <Key>
+      <PropertyRef Name="In_ID" />
+    </Key>
+    <Property Name="In_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="In_Code" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Date_Trade_In" Type="datetime" />
+    <Property Name="Customer_ID" Type="int" />
+    <Property Name="School_Fee" Type="bit" />
+    <Property Name="Year" Type="int" />
+    <Property Name="Month" Type="int" />
+    <Property Name="Payer_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Payer_Address" Type="nvarchar" MaxLength="1000" />
+    <Property Name="In_Reason" Type="nvarchar" MaxLength="1000" />
+    <Property Name="In_Total" Type="money" />
+    <Property Name="In_Received" Type="money" />
+    <Property Name="In_Debt" Type="money" />
+    <Property Name="Attach" Type="nvarchar" MaxLength="100" />
+    <Property Name="In_Status" Type="bit" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Record_Status" Type="char" MaxLength="1" />
+    <Property Name="Maker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Create_DT" Type="datetime" />
+    <Property Name="Auth_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Checker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Approve_DT" Type="datetime" />
+  </EntityType>
+  <EntityType Name="REM_INOUT">
+    <Key>
+      <PropertyRef Name="InOut_ID" />
+    </Key>
+    <Property Name="InOut_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InOut_Code" Type="varchar" MaxLength="10" />
+    <Property Name="InOut_Date" Type="datetime" />
+    <Property Name="InOut_Reason" Type="nvarchar" MaxLength="1000" />
+    <Property Name="InOut_Received" Type="money" />
+    <Property Name="InOut_Paid" Type="money" />
+    <Property Name="InOut_Budget" Type="money" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Record_Status" Type="char" MaxLength="1" />
+    <Property Name="Maker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Create_DT" Type="datetime" />
+    <Property Name="Auth_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Checker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Approve_DT" Type="datetime" />
+  </EntityType>
+  <EntityType Name="REM_OUT">
+    <Key>
+      <PropertyRef Name="Out_ID" />
+    </Key>
+    <Property Name="Out_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Out_Code" Type="varchar" MaxLength="10" />
+    <Property Name="Out_Trade_Date" Type="datetime" />
+    <Property Name="Out_Write_Date" Type="datetime" />
+    <Property Name="STAFF_ID" Type="int" />
+    <Property Name="Salary" Type="bit" />
+    <Property Name="Out_Year" Type="int" />
+    <Property Name="Out_Month" Type="int" />
+    <Property Name="Supplier_ID" Type="int" />
+    <Property Name="Receiver_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Receiver_Address" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Out_Reason" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Out_Total" Type="money" />
+    <Property Name="Out_Paid" Type="money" />
+    <Property Name="Out_Debt" Type="money" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Record_Status" Type="char" MaxLength="1" />
+    <Property Name="Maker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Create_DT" Type="datetime" />
+    <Property Name="Auth_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Checker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Approve_DT" Type="datetime" />
+  </EntityType>
+  <EntityType Name="REM_OUT_DETAIL">
+    <Key>
+      <PropertyRef Name="Out_Detail_ID" />
+    </Key>
+    <Property Name="Out_Detail_ID" Type="int" Nullable="false" />
+    <Property Name="Out_ID" Type="int" Nullable="false" />
+    <Property Name="Product_Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="20" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="Price" Type="money" />
+    <Property Name="Total" Type="money" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Record_Status" Type="char" MaxLength="1" />
+    <Property Name="Maker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Create_DT" Type="datetime" />
+    <Property Name="Auth_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Checker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Approve_DT" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SCHOOLYEAR">
+    <Key>
+      <PropertyRef Name="YEAR_ID" />
+    </Key>
+    <Property Name="YEAR_ID" Type="int" Nullable="false" />
+    <Property Name="YEAR_NAME" Type="nvarchar" MaxLength="30" />
+    <Property Name="YEAR_BEGIN" Type="int" />
+    <Property Name="YEAR_END" Type="int" />
+  </EntityType>
+  <EntityType Name="SM_SALARY">
+    <Key>
+      <PropertyRef Name="Sa_ID" />
+    </Key>
+    <Property Name="Sa_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="STAFF_ID" Type="int" Nullable="false" />
+    <Property Name="Sa_Total" Type="money" />
+    <Property Name="Sa_Bonus" Type="money" />
+    <Property Name="Sa_Minus" Type="money" />
+    <Property Name="Sa_Salary" Type="money" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Record_Status" Type="char" MaxLength="1" />
+    <Property Name="Maker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Create_DT" Type="datetime" />
+    <Property Name="Auth_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Checker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Approve_DT" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SM_STAFFINFO">
+    <Key>
+      <PropertyRef Name="STAFF_ID" />
+    </Key>
+    <Property Name="STAFF_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StaffNumber" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="StaffName" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="Date_Of_Birth" Type="datetime" />
+    <Property Name="Nation" Type="nvarchar" MaxLength="10" />
+    <Property Name="Religion" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="IsATeacher" Type="bit" Nullable="false" />
+    <Property Name="IndentityCard" Type="nvarchar" MaxLength="50" />
+    <Property Name="IssuedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="DateRange" Type="datetime" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="15" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Position" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Degree" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SalaryGrade" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="DepartmentID" Type="int" Nullable="false" />
+    <Property Name="CoefficientsSalary" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="BasicSalary" Type="money" />
+    <Property Name="DayWage" Type="money" />
+    <Property Name="WageIncreaseDay" Type="datetime" />
+    <Property Name="FatherFullName" Type="nvarchar" MaxLength="255" />
+    <Property Name="FatherBirthday" Type="datetime" />
+    <Property Name="FatherJob" Type="nvarchar" MaxLength="255" />
+    <Property Name="MotherFullName" Type="nvarchar" MaxLength="255" />
+    <Property Name="MotherBirthday" Type="datetime" />
+    <Property Name="MotherJob" Type="nvarchar" MaxLength="50" />
+    <Property Name="FatherPhone" Type="nvarchar" MaxLength="15" />
+    <Property Name="MotherPhone" Type="nvarchar" MaxLength="15" />
+    <Property Name="Picture" Type="nvarchar" MaxLength="1000" />
+    <Property Name="IsLeaguer" Type="bit" Nullable="false" />
+    <Property Name="DayatParty" Type="datetime" />
+    <Property Name="CardNumberParty" Type="nvarchar" MaxLength="50" />
+    <Property Name="WorkingStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="StartWorkDay" Type="datetime" />
+    <Property Name="Dayoff" Type="datetime" />
+    <Property Name="TypeofContract" Type="nvarchar" MaxLength="50" />
+    <Property Name="Record_Status" Type="char" MaxLength="1" />
+    <Property Name="Maker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Create_DT" Type="datetime" />
+    <Property Name="Auth_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Checker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Approve_DT" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SUPPLIERDETAIL">
+    <Key>
+      <PropertyRef Name="Supplier_ID" />
+    </Key>
+    <Property Name="Supplier_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SupplierName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SupplierType" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="ProductType" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Record_Status" Type="char" MaxLength="1" />
+    <Property Name="Maker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Create_DT" Type="datetime" />
+    <Property Name="Auth_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Checker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Approve_DT" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SYS_AUTH_STATUS">
+    <Key>
+      <PropertyRef Name="AUTH_STATUS" />
+    </Key>
+    <Property Name="AUTH_STATUS" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="AUTH_STATUS_NAME" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="SYS_COLOR">
+    <Key>
+      <PropertyRef Name="Color_ID" />
+    </Key>
+    <Property Name="Color_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Color_Code" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Color_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SYS_EVENT">
+    <Key>
+      <PropertyRef Name="EVENT_ID" />
+    </Key>
+    <Property Name="EVENT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EVENT_NAME" Type="nvarchar" MaxLength="100" />
+    <Property Name="ISALLDAY" Type="bit" Nullable="false" />
+    <Property Name="EVENT_START" Type="datetime" />
+    <Property Name="EVENT_END" Type="datetime" />
+    <Property Name="EVENT_GROUP" Type="nvarchar" MaxLength="50" />
+    <Property Name="EVENT_DETAIL" Type="nvarchar" MaxLength="100" />
+    <Property Name="EVENT_MANAGER" Type="nvarchar" MaxLength="100" />
+    <Property Name="EVENT_STATUS_COLOR" Type="nvarchar" MaxLength="20" />
+    <Property Name="NOTES" Type="nvarchar" MaxLength="1000" />
+    <Property Name="RECORD_STATUS" Type="varchar" MaxLength="1" />
+    <Property Name="MAKER_ID" Type="varchar" MaxLength="12" />
+    <Property Name="CREATE_DT" Type="datetime" />
+    <Property Name="AUTH_STATUS" Type="varchar" MaxLength="50" />
+    <Property Name="CHECKER_ID" Type="varchar" MaxLength="12" />
+    <Property Name="APPROVE_DT" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SYS_GROUP">
+    <Key>
+      <PropertyRef Name="GROUP_ID" />
+    </Key>
+    <Property Name="GROUP_ID" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="GROUP_CODE" Type="nvarchar" MaxLength="500" />
+    <Property Name="GROUP_NAME" Type="nvarchar" MaxLength="1000" />
+    <Property Name="NOTES" Type="nvarchar" MaxLength="1000" />
+    <Property Name="RECORD_STATUS" Type="varchar" MaxLength="1" />
+    <Property Name="MAKER_ID" Type="varchar" MaxLength="12" />
+    <Property Name="CREATE_DT" Type="datetime" />
+    <Property Name="AUTH_STATUS" Type="varchar" MaxLength="50" />
+    <Property Name="CHECKER_ID" Type="varchar" MaxLength="12" />
+    <Property Name="APPROVE_DT" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TM_LESSONPROGRAM">
+    <Key>
+      <PropertyRef Name="Lesson_ID" />
+    </Key>
+    <Property Name="Topic_ID" Type="int" Nullable="false" />
+    <Property Name="Lesson_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LessonName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LessonGoal" Type="text" Nullable="false" />
+    <Property Name="TeacherActivity" Type="text" />
+    <Property Name="KidActivity" Type="text" Nullable="false" />
+    <Property Name="Author" Type="varchar" MaxLength="10" />
+    <Property Name="Record_Status" Type="char" MaxLength="1" />
+    <Property Name="Maker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Create_DT" Type="datetime" />
+    <Property Name="Auth_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Checker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Approve_DT" Type="datetime" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="TM_TEACHSCHEDULE">
+    <Key>
+      <PropertyRef Name="Class_ID" />
+      <PropertyRef Name="DateofWeek" />
+      <PropertyRef Name="Date" />
+    </Key>
+    <Property Name="Class_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateofWeek" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="MorningLesson" Type="varchar" MaxLength="20" />
+    <Property Name="MorningTeacher" Type="varchar" MaxLength="10" />
+    <Property Name="AfternoonLesson" Type="varchar" MaxLength="20" />
+    <Property Name="AfternoonTeacher" Type="varchar" MaxLength="10" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Record_Status" Type="char" MaxLength="1" />
+    <Property Name="Maker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Create_DT" Type="datetime" />
+    <Property Name="Auth_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Checker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Approve_DT" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TM_TOPIC">
+    <Key>
+      <PropertyRef Name="Topic_ID" />
+    </Key>
+    <Property Name="Topic_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TopicName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Record_Status" Type="char" MaxLength="1" />
+    <Property Name="Maker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Create_DT" Type="datetime" />
+    <Property Name="Auth_Status" Type="varchar" MaxLength="1" />
+    <Property Name="Checker_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Approve_DT" Type="datetime" />
+  </EntityType>
+  <EntityType Name="UM_ROLEDELIVERY">
+    <Key>
+      <PropertyRef Name="Group_ID" />
+    </Key>
+    <Property Name="Group_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GroupName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="GroupDescription" Type="text" />
+  </EntityType>
+  <EntityType Name="UM_USERINFO">
+    <Key>
+      <PropertyRef Name="User_ID" />
+    </Key>
+    <Property Name="Group_ID" Type="int" Nullable="false" />
+    <Property Name="User_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="FullName" Type="varchar" MaxLength="50" />
+    <Property Name="Date_Of_Birth" Type="datetime" />
+    <Property Name="Gender" Type="varchar" MaxLength="5" />
+    <Property Name="Job" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AM_ASSETOVERVIEW" EntityType="Self.AM_ASSETOVERVIEW" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DD_ChiTietMonAnMau" EntityType="Self.DD_ChiTietMonAnMau" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DD_LoaiMonAnMau" EntityType="Self.DD_LoaiMonAnMau" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DD_LoaiSuatAn" EntityType="Self.DD_LoaiSuatAn" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DD_MonAnMau" EntityType="Self.DD_MonAnMau" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DD_NhomThucPham" EntityType="Self.DD_NhomThucPham" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DD_NhuCauDinhDuong" EntityType="Self.DD_NhuCauDinhDuong" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DD_NhuCauNangLuong" EntityType="Self.DD_NhuCauNangLuong" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DD_SuatAn" EntityType="Self.DD_SuatAn" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DD_SuatAnChiTiet" EntityType="Self.DD_SuatAnChiTiet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DD_ThucDonNgay" EntityType="Self.DD_ThucDonNgay" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DD_ThucPham" EntityType="Self.DD_ThucPham" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DM_DEPARTMENTINFO" EntityType="Self.DM_DEPARTMENTINFO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FM_FOODREPOSITORY" EntityType="Self.FM_FOODREPOSITORY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GM_CLASSINFO" EntityType="Self.GM_CLASSINFO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GM_GRADEINFO" EntityType="Self.GM_GRADEINFO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KM_PHYSICALINFO" EntityType="Self.KM_PHYSICALINFO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KM_STANDARDINDEXES" EntityType="Self.KM_STANDARDINDEXES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KM_STUDENTOVERVIEW" EntityType="Self.KM_STUDENTOVERVIEW" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="REM_IN" EntityType="Self.REM_IN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="REM_INOUT" EntityType="Self.REM_INOUT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="REM_OUT" EntityType="Self.REM_OUT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="REM_OUT_DETAIL" EntityType="Self.REM_OUT_DETAIL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCHOOLYEAR" EntityType="Self.SCHOOLYEAR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SM_SALARY" EntityType="Self.SM_SALARY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SM_STAFFINFO" EntityType="Self.SM_STAFFINFO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SUPPLIERDETAIL" EntityType="Self.SUPPLIERDETAIL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SYS_AUTH_STATUS" EntityType="Self.SYS_AUTH_STATUS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SYS_COLOR" EntityType="Self.SYS_COLOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SYS_EVENT" EntityType="Self.SYS_EVENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SYS_GROUP" EntityType="Self.SYS_GROUP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TM_LESSONPROGRAM" EntityType="Self.TM_LESSONPROGRAM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TM_TEACHSCHEDULE" EntityType="Self.TM_TEACHSCHEDULE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TM_TOPIC" EntityType="Self.TM_TOPIC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UM_ROLEDELIVERY" EntityType="Self.UM_ROLEDELIVERY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UM_USERINFO" EntityType="Self.UM_USERINFO" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,93 @@
+﻿@model KindergartentManagerment.Models.TM_TOPIC
+@using KindergartentManagerment.Resources
+@{
+    ViewBag.Title = AssCommonResource.Topic + " | " + AssCommonResource.Delete;
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        @AssCommonResource.Topic
+    </h1>
+
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> @AssCommonResource.Home</a></li>
+        <li><a href="#">@AssCommonResource.Teach</a></li>
+        <li class="active">@AssCommonResource.Topic</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">@AssCommonResource.Delete</h3>
+                    <h3 class="box-header">@AssCommonResource.RequestDelete</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="form-horizontal">
+
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">@AssCommonResource.Topic</h3>
+                                <div class="box-tools pull-right">
+                                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="control-label col-md-2">
+                                        @TopicResource.TopicName
+                                    </div>
+                                    <div class="col-md-9">
+                                        @Html.EditorFor(model => model.TopicName, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                        @Html.ValidationMessageFor(model => model.TopicName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="control-label col-md-2">
+                                        @AssCommonResource.Picture
+                                    </div>
+                                    <div class="col-md-9">
+                                        <input id="picture" name="picture" type="file" class="form-control" disabled="disabled">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="control-label col-md-2">
+                                        @AssCommonResource.Attach
+                                    </div>
+                                    <div class="col-md-9">
+                                        <input id="attach" name="attach" type="file" class="form-control" disabled="disabled">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="control-label col-md-2">
+                                        @AssCommonResource.Notes
+                                    </div>
+                                    <div class="col-md-9">
+                                        @Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                        @Html.ValidationMessageFor(model => model.Notes, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Action click-->
+                @using (Html.BeginForm("Delete", "Topic", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="box-footer clearfix">
+                        <input type="submit" value="@AssCommonResource.Delete" class="btn btn-sm btn-warning btn-flat pull-right" />
+                        @Html.ActionLink(AssCommonResource.BacktoList, "Index", "LessonProgram", new { @class = "btn btn-sm btn-info btn-flat pull-left" })
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>

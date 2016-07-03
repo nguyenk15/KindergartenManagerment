@@ -1,0 +1,140 @@
+﻿@model KindergartentManagerment.Models.TM_LESSONPROGRAM
+@using KindergartentManagerment.Resources
+@{
+    ViewBag.Title = AssCommonResource.LessonProgram + " | " + AssCommonResource.Delete;
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        @AssCommonResource.lbl_staff
+    </h1>
+
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> @AssCommonResource.Home</a></li>
+        <li><a href="#">@AssCommonResource.Teach</a></li>
+        <li class="active">@AssCommonResource.LessonProgram</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">@AssCommonResource.Delete</h3>
+                    <h3 class="box-header">@AssCommonResource.RequestDelete</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="form-horizontal">
+
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">@AssCommonResource.LessonProgram</h3>
+                                <div class="box-tools pull-right">
+                                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @LessonProgramResource.Topic_Name
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.DropDownListFor(model => model.Topic_ID, ViewBag.TopicList as SelectList, null, new { @class = "form-control", required = "required", @disabled = "disabled" })
+                                            @Html.ValidationMessageFor(model => model.Topic_ID, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-3">
+                                            @LessonProgramResource.LessonName
+                                        </div>
+                                        <div class="col-md-7">
+                                            @Html.EditorFor(model => model.LessonName, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.LessonName, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="control-label col-md-2">
+                                        @LessonProgramResource.LessonGoal
+                                    </div>
+                                    <div class="col-md-9">
+                                        @Html.EditorFor(model => model.LessonGoal, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                        @Html.ValidationMessageFor(model => model.LessonGoal, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="control-label col-md-2">
+                                        @LessonProgramResource.TeacherActivity
+                                    </div>
+                                    <div class="col-md-9">
+                                        @Html.EditorFor(model => model.TeacherActivity, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                        @Html.ValidationMessageFor(model => model.TeacherActivity, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="control-label col-md-2">
+                                        @LessonProgramResource.KidActivity
+                                    </div>
+                                    <div class="col-md-9">
+                                        @Html.EditorFor(model => model.KidActivity, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                        @Html.ValidationMessageFor(model => model.KidActivity, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="control-label col-md-2">
+                                        @LessonProgramResource.Author
+                                    </div>
+                                    <div class="col-md-9">
+                                        @Html.DropDownListFor(model => model.AuthorID, ViewBag.TeacherList as SelectList, null, new { @class = "form-control", @disabled = "disabled" })
+                                        @Html.ValidationMessageFor(model => model.AuthorID, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="control-label col-md-2">
+                                        @LessonProgramResource.Attach
+                                    </div>
+                                    <div class="col-md-9">
+                                        <input id="file" name="file" type="file" class="form-control" disabled="disabled" style="width: 100%;height: 100%">
+                                    </div>
+
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="control-label col-md-2">
+                                        @AssCommonResource.Notes
+                                    </div>
+                                    <div class="col-md-9">
+                                        @Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                        @Html.ValidationMessageFor(model => model.Notes, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Action click-->
+                @using (Html.BeginForm("Delete", "LessonProgram", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="box-footer clearfix">
+                        <input type="submit" value="@AssCommonResource.Delete" class="btn btn-sm btn-warning btn-flat pull-right" />
+                        @Html.ActionLink(AssCommonResource.BacktoList, "Index", "LessonProgram", new { @class = "btn btn-sm btn-info btn-flat pull-left" })
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>

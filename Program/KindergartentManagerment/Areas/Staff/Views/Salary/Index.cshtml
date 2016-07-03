@@ -1,0 +1,95 @@
+﻿@model IEnumerable<KindergartentManagerment.Models.SM_SALARY>
+@using KindergartentManagerment.Resources
+
+@{
+    ViewBag.Title = AssCommonResource.Salary + " | " + AssCommonResource.Index;
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Sa_Total)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sa_Bonus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sa_Minus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sa_Salary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Notes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Record_Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Maker_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Create_DT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Auth_Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Checker_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Approve_DT)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sa_Total)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sa_Bonus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sa_Minus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sa_Salary)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Notes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Record_Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Maker_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Create_DT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Auth_Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Checker_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Approve_DT)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

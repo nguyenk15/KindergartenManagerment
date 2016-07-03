@@ -1,0 +1,193 @@
+﻿@model KindergartentManagerment.Models.REM_OUT
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>REM_OUT</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Out_Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Out_Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Out_Trade_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Out_Trade_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Out_Write_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Out_Write_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STAFF_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STAFF_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Salary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Salary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Out_Year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Out_Year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Out_Month)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Out_Month)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Supplier_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Supplier_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Receiver_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Receiver_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Receiver_Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Receiver_Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Out_Reason)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Out_Reason)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Out_Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Out_Total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Out_Paid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Out_Paid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Out_Debt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Out_Debt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Record_Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Record_Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Maker_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Maker_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Create_DT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Create_DT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Auth_Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Auth_Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Checker_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Checker_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Approve_DT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Approve_DT)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

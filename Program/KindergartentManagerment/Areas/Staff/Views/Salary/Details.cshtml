@@ -1,0 +1,107 @@
+﻿@model KindergartentManagerment.Models.SM_SALARY
+@using KindergartentManagerment.Resources
+@{
+    ViewBag.Title = AssCommonResource.Salary + " | " + AssCommonResource.Delete;
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SM_SALARY</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Sa_Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sa_Total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sa_Bonus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sa_Bonus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sa_Minus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sa_Minus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sa_Salary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sa_Salary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Record_Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Record_Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Maker_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Maker_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Create_DT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Create_DT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Auth_Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Auth_Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Checker_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Checker_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Approve_DT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Approve_DT)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
