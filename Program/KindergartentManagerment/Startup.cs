@@ -52,7 +52,7 @@ namespace KindergartentManagerment
                 var user = new ApplicationUser();
                 user.UserName = "admin";
                 user.Email = "nguyen.nah76@gmail.com";
-                user.ImageURL1 = "/Content/themes/AdminLTE/img/" + "user2-160x160" + ".jpg";
+                user.ImageURL1 = "/Content/profile/Manager/" + "user2-160x160" + ".jpg";
                 string userPWD = "@Admin123";
 
                 var chkUser = UserManager.Create(user, userPWD);
@@ -71,6 +71,63 @@ namespace KindergartentManagerment
                 role.Name = "Manager";
                 roleManager.Create(role);
 
+                //Here we create a Admin super user who will maintain the website				
+
+                var Hoa = new ApplicationUser();
+                Hoa.UserName = "Hoa";
+                Hoa.Email = "13520285@gm.uit.edu.com";
+                Hoa.ImageURL1 = "/Content/profile/Manager/" + "hoa_huynh" + ".jpg";
+                string HoaPWD = "@Hoa123";
+
+                var chkHoa = UserManager.Create(Hoa, HoaPWD);
+
+                //Add default User to Role Admin
+                if (chkHoa.Succeeded)
+                {
+                    var result1 = UserManager.AddToRole(Hoa.Id, "Manager");
+                }
+
+                var Nguyen = new ApplicationUser();
+                Nguyen.UserName = "Nguyen";
+                Nguyen.Email = "13520558@gm.uit.edu.com";
+                Nguyen.ImageURL1 = "/Content/profile/Manager/" + "nguyen_nguyen" + ".jpg";
+                string NguyenPWD = "@Nguyen123";
+
+                var chkNguyen = UserManager.Create(Nguyen, NguyenPWD);
+
+                //Add default User to Role Admin
+                if (chkNguyen.Succeeded)
+                {
+                    var result1 = UserManager.AddToRole(Nguyen.Id, "Manager");
+                }
+
+                var Phat = new ApplicationUser();
+                Phat.UserName = "Phat";
+                Phat.Email = "13520600@gm.uit.edu.com";
+                Phat.ImageURL1 = "/Content/profile/Manager/" + "phat_pham" + ".jpg";
+                string PhatPWD = "@Phat123";
+
+                var chkPhat = UserManager.Create(Phat, PhatPWD);
+
+                //Add default User to Role Admin
+                if (chkPhat.Succeeded)
+                {
+                    var result1 = UserManager.AddToRole(Phat.Id, "Manager");
+                }
+
+                var Phuc = new ApplicationUser();
+                Phuc.UserName = "Phuc";
+                Phuc.Email = "13520285@gm.uit.edu.com";
+                Phuc.ImageURL1 = "/Content/profile/Manager/" + "phuc_tran" + ".jpg";
+                string PhucPWD = "@Phuc123";
+
+                var chkPhuc = UserManager.Create(Phuc, PhucPWD);
+
+                //Add default User to Role Admin
+                if (chkPhuc.Succeeded)
+                {
+                    var result1 = UserManager.AddToRole(Phuc.Id, "Manager");
+                }
             }
 
             // creating Creating Employee role 

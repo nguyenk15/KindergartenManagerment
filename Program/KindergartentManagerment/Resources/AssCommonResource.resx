@@ -456,4 +456,13 @@
   <data name="Asterisk" xml:space="preserve">
     <value>Notes: all (*) field is required to fill in</value>
   </data>
+  <data name="Moreinfo" xml:space="preserve">
+    <value>More info</value>
+  </data>
+  <data name="Lastestmember" xml:space="preserve">
+    <value>Latest Members</value>
+  </data>
+  <data name="Lastestkid" xml:space="preserve">
+    <value>Lastestkid</value>
+  </data>
 </root>

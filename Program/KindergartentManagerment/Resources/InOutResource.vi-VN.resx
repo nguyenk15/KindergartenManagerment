@@ -118,24 +118,24 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="InOut_Budget" xml:space="preserve">
-    <value>In out Budget</value>
+    <value>Thu chi từ ngân sách</value>
   </data>
   <data name="InOut_Code" xml:space="preserve">
-    <value>In out code</value>
+    <value>Mã thu chi</value>
   </data>
   <data name="InOut_Date" xml:space="preserve">
-    <value>In out date</value>
+    <value>Ngày thu chi</value>
   </data>
   <data name="InOut_ID" xml:space="preserve">
     <value>In out ID</value>
   </data>
   <data name="InOut_Paid" xml:space="preserve">
-    <value>In out paid</value>
+    <value>Ngày chi trả</value>
   </data>
   <data name="InOut_Reason" xml:space="preserve">
-    <value>In out reason</value>
+    <value>Lý do thu chi</value>
   </data>
   <data name="InOut_Received" xml:space="preserve">
-    <value>In out received</value>
+    <value>Đã nhận thu chi</value>
   </data>
 </root>

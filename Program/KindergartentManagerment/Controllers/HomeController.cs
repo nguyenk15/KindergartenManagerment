@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KindergartentManagerment.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace KindergartentManagerment.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
         {
             return View();
@@ -29,6 +31,24 @@ namespace KindergartentManagerment.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+        public JsonResult GetCalendarEvents()
+        {
+            var eventDetails = db.SYS_EVENT.ToList();
+
+            var eventList = from item in eventDetails
+                            select new
+                            {
+                                id = item.EVENT_ID,
+                                title = item.EVENT_NAME,
+                                start = item.EVENT_START,
+                                end = item.EVENT_END,
+                                allDay = false,
+                                editable = false,
+                                color = item.EVENT_STATUS_COLOR
+                            };
+
+            return Json(eventList.ToArray(), JsonRequestBehavior.AllowGet);
         }
     }
 }

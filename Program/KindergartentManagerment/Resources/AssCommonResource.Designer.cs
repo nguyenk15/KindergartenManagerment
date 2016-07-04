@@ -565,6 +565,24 @@ namespace KindergartentManagerment.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lastestkid.
+        /// </summary>
+        public static string Lastestkid {
+            get {
+                return ResourceManager.GetString("Lastestkid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Latest Members.
+        /// </summary>
+        public static string Lastestmember {
+            get {
+                return ResourceManager.GetString("Lastestmember", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Staff.
         /// </summary>
         public static string lbl_staff {
@@ -642,6 +660,15 @@ namespace KindergartentManagerment.Resources {
         public static string Male {
             get {
                 return ResourceManager.GetString("Male", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More info.
+        /// </summary>
+        public static string Moreinfo {
+            get {
+                return ResourceManager.GetString("Moreinfo", resourceCulture);
             }
         }
         

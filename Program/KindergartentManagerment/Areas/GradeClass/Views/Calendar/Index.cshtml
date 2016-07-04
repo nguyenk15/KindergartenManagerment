@@ -4,7 +4,7 @@
     ViewBag.Title = AssCommonResource.Grade + " | " + AssCommonResource.Calendar;
     Layout = "~/Views/Shared/Layout.cshtml";
     KindergartentManagerment.Models.ApplicationDbContext db = new KindergartentManagerment.Models.ApplicationDbContext();
-    ViewBag.GroupDetail = new SelectList(db.GM_CLASSINFO, "ClassID", "Class_Name",db.GM_CLASSINFO.FirstOrDefault().ClassID);
+    ViewBag.GroupDetail = new SelectList(db.GM_CLASSINFO, "ClassID", "Class_Name");
     ViewBag.Group = new SelectList(db.SYS_GROUP, "GROUP_CODE", "GROUP_NAME", "G003" );
     ViewBag.GroupManager = new SelectList(db.SM_STAFFINFO, "STAFF_ID", "StaffName");
 }

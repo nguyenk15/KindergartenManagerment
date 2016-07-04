@@ -18,12 +18,12 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        Dashboard
+        @AssCommonResource.KindergartenManagerment
         <small>@AssCommonResource.ControlPanel</small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i>@AssCommonResource.Home</a></li>
-        <li>Dashboard</li>
+        <li>@AssCommonResource.ControlPanel</li>
     </ol>
 </section>
 
@@ -41,7 +41,7 @@
                 <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                 </div>
-                <a href="/Home/Kindergarten/StudentOverview/Index" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="/Home/Kindergarten/StudentOverview/Index" class="small-box-footer">@AssCommonResource.Moreinfo <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div><!-- ./col -->
         
@@ -55,7 +55,7 @@
                 <div class="icon">
                     <i class="ion-person-add"></i>
                 </div>
-                <a href="/Home/Staff/StaffInfo/Index" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="/Home/Staff/StaffInfo/Index" class="small-box-footer">@AssCommonResource.Moreinfo <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div><!-- ./col -->
         <div class="col-lg-3 col-xs-6">
@@ -68,7 +68,7 @@
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="/Home/Teach/LessonProgram/Index" class="small-box-footer">More info <i class="fa fa-chevron-circle-right"></i></a>
+                <a href="/Home/Teach/LessonProgram/Index" class="small-box-footer">@AssCommonResource.Moreinfo <i class="fa fa-chevron-circle-right"></i></a>
             </div>
         </div><!-- ./col -->
         <div class="col-lg-3 col-xs-6">
@@ -81,7 +81,7 @@
                 <div class="icon">
                     <i class="fa fa-youtube-play"></i>
                 </div>
-                <a href="/Home/Teach/Topic/Index" class="small-box-footer">More info <i class="fa fa-chevron-circle-right"></i></a>
+                <a href="/Home/Teach/Topic/Index" class="small-box-footer">@AssCommonResource.Moreinfo <i class="fa fa-chevron-circle-right"></i></a>
             </div>
         </div><!-- ./col -->
         <div class="col-lg-3 col-xs-6">
@@ -94,7 +94,7 @@
                 <div class="icon">
                     <i class="fa fa-heart"></i>
                 </div>
-                <a href="/Home/Nutritious/Ingredients/Index" class="small-box-footer">More info <i class="fa fa-chevron-circle-right"></i></a>
+                <a href="/Home/Nutritious/Ingredients/Index" class="small-box-footer">@AssCommonResource.Moreinfo <i class="fa fa-chevron-circle-right"></i></a>
             </div>
         </div><!-- ./col -->
         <div class="col-lg-3 col-xs-6">
@@ -107,7 +107,7 @@
                 <div class="icon">
                     <i class="fa fa-windows"></i>
                 </div>
-                <a href="/Home/GradeClass/ClassOverview/Index" class="small-box-footer">More info <i class="fa fa-chevron-circle-right"></i></a>
+                <a href="/Home/GradeClass/ClassOverview/Index" class="small-box-footer">@AssCommonResource.Moreinfo <i class="fa fa-chevron-circle-right"></i></a>
             </div>
         </div><!-- ./col -->
         <div class="col-lg-3 col-xs-6">
@@ -120,7 +120,7 @@
                 <div class="icon">
                     <i class="fa  fa-hand-o-down"></i>
                 </div>
-                <a href="/Home/Staff/Department/Index" class="small-box-footer">More info <i class="fa fa-chevron-circle-right"></i></a>
+                <a href="/Home/Staff/Department/Index" class="small-box-footer">@AssCommonResource.Moreinfo <i class="fa fa-chevron-circle-right"></i></a>
             </div>
         </div><!-- ./col -->
         <div class="col-lg-3 col-xs-6">
@@ -133,8 +133,178 @@
                 <div class="icon">
                     <i class="fa fa-arrow-circle-up"></i>
                 </div>
-                <a href="" class="small-box-footer">More info <i class="fa fa-chevron-circle-right"></i></a>
+                <a href="" class="small-box-footer">@AssCommonResource.Moreinfo <i class="fa fa-chevron-circle-right"></i></a>
             </div>
         </div><!-- ./col -->
     </div>
+    <div class="row">
+        <div class="col-md-6">
+            <!-- USERS LIST -->
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Nhà quản trị mới nhất</h3>
+                    <div class="box-tools pull-right">
+                        <span class="label label-danger">4 nhà quản trị mới nhất</span>
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div><!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <ul class="users-list clearfix">
+                        @foreach (var user in db.Users.Take(4))
+                        {
+                            <li>
+                                <img src=@user.ImageURL1 alt="User Image">
+                                <a class="users-list-name" href="#">@user.UserName</a>
+                            </li>
+                        }
+                    </ul><!-- /.users-list -->
+                </div><!-- /.box-body -->
+                <div class="box-footer text-center">
+                    <a href="javascript::" class="uppercase">Xem toàn bộ</a>
+                </div><!-- /.box-footer -->
+            </div><!--/.box -->
+        </div><!-- /.col -->
+        <div class="col-md-6">
+            <!-- USERS LIST -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Nhân viên mới nhất</h3>
+                    <div class="box-tools pull-right">
+                        <span class="label label-danger">8 Nhân viên mới nhất</span>
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div><!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <ul class="users-list clearfix">
+                        @foreach (var user in db.SM_STAFFINFO.Where(m => m.Record_Status == "1").OrderBy(m => m.Create_DT).Take(8))
+                        {
+                            <li>
+                                <img src=@user.Picture alt="User Image">
+                                <a class="users-list-name" href="#">@user.StaffName</a>
+                            </li>
+                        }
+                    </ul><!-- /.users-list -->
+                </div><!-- /.box-body -->
+                <div class="box-footer text-center">
+                    <a href="javascript::" class="uppercase">View All Users</a>
+                </div><!-- /.box-footer -->
+            </div><!--/.box -->
+        </div><!-- /.col -->
+        
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <!-- USERS LIST -->
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title">8 trẻ mới nhất</h3>
+                    <div class="box-tools pull-right">
+                        <span class="label label-danger">8 trẻ mới nhất</span>
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div><!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <ul class="users-list clearfix">
+                        @foreach (var user in db.KM_STUDENTOVERVIEW.Where(m => m.Record_Status == "1").OrderBy(m => m.Create_DT).Take(8))
+                        {
+                            <li>
+                                <img src=@user.Picture alt="User Image">
+                                <a class="users-list-name" href="#">@user.StudentName</a>
+                            </li>
+                        }
+                    </ul><!-- /.users-list -->
+                </div><!-- /.box-body -->
+                <div class="box-footer text-center">
+                    <a href="javascript::" class="uppercase">View All Users</a>
+                </div><!-- /.box-footer -->
+            </div><!--/.box -->
+        </div><!-- /.col -->
+        
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-body no-padding">
+                    <!-- THE CALENDAR -->
+                    <div id="calendar"></div>
+                </div><!-- /.box-body -->
+            </div><!-- /. box -->
+        </div>
+    </div>
 </section>
+@section Orther_styles{
+    <!-- fullCalendar 2.2.5-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.8.0/fullcalendar.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.8.0/fullcalendar.print.css" media="print">
+}
+@section Orther_scripts{
+    <!-- Slimscroll -->
+    <!-- fullCalendar 2.2.5 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.8.0/fullcalendar.min.js"></script>
+    <script type="text/javascript">
+        $(".datetimepicker").datetimepicker(
+        {
+            defaultDate: new Date(),
+            format: 'YYYY-MM-DD HH:mm:ss.mmm'
+        });
+        $(document).ready(function () {
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+            },
+            buttonText: {
+                today: 'today',
+                    month: 'month',
+                    week: 'week',
+                    day: 'day'
+                },
+                editble: true,
+                droppable: true, // this allows things to be dropped onto the calendar !!!
+                allDaySlot: false,
+                selectable: true,
+                slotMinutes: 15,
+                events: "@Url.Action("GetCalendarEvents")"
+            });
+
+            /* ADDING EVENTS */
+                var currColor = "#3c8dbc"; //Red by default
+                //Color chooser button
+                var colorChooser = $("#color-chooser-btn");
+                $("#color-chooser > li > a").click(function (e) {
+                    e.preventDefault();
+                    //Save color
+                    currColor = $(this).css("color");
+                    //Add color effect to button
+                $('#add-new-event').css({ "background-color": currColor, "border-color": currColor });
+            });
+
+            $("#add-new-event").click(function (e) {
+            e.preventDefault();
+            //Get value and make sure it is not null
+            var val = $("#new-event").val();
+            if (val.length == 0) {
+            return;
+        }
+
+        //Create events
+        var event = $("<div />");
+        event.css({ "background-color": currColor, "border-color": currColor, "color": "#fff" }).addClass("external-event");
+        event.html(val);
+        $('#external-events').prepend(event);
+
+                    //Add draggable funtionality
+        ini_events(event);
+
+        //Remove event from text input
+        $("#new-event").val("");
+            });
+        });
+    </script>
+}

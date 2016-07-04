@@ -46,7 +46,6 @@ namespace KindergartentManagerment.Areas.GradeClass.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 db.SYS_EVENT.Add(item);
                 db.SaveChanges();
             }

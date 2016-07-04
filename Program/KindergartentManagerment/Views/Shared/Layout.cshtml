@@ -55,16 +55,16 @@
                         <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                             <span class="sr-only">Toggle navigation</span>
                         </a>
+                        
                         <div class="navbar-custom-menu">
                             <ul class="nav navbar-nav">
-
                                 <!-- Role Manager-->
                                 @if (User.IsInRole("Admin"))
                                 {
                                     <!-- Messages: style can be found in dropdown.less-->
                                     <li class="dropdown messages-menu">
                                         <a href="" class="dropdown-toggle" data-toggle="dropdown">
-                                            <i class="fa fa-plus-square fa-2x"></i>
+                                            <i class="fa fa-lock"></i>
                                         </a>
                                         <ul class="dropdown-menu">
                                             <!-- User image -->
@@ -75,15 +75,24 @@
 
                                     </li>
                                 }
+                                <li class="dropdown messages-menu">
+                                    <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="fa fa-info"></i>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li> @Html.ActionLink(AboutContactResource.Contact, "Contact", "Home")</li>
+                                        <li> @Html.ActionLink(AboutContactResource.About, "About", "Home")</li>
+                                    </ul>
+                                </li>
 
                                 <!-- Multi Language: -->
                                 <li class="dropdown messages-menu">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                        <i class="fa fa-globe fa-2x"></i>
+                                        <i class="fa fa-globe"></i>
                                     </a>
                                     <ul class="dropdown-menu">
                                         <!-- User image -->
-                                        <li> @Html.ActionLink("Vietnam", "Set", "Language", new { lang = "vi" }, null)</li>
+                                        <li> @Html.ActionLink("Viet nam", "Set", "Language", new { lang = "vi" }, null)</li>
                                         <li> @Html.ActionLink("English", "Set", "Language", new { lang = "en" }, null)</li>
                                     </ul>
                                 </li>
@@ -196,13 +205,13 @@
                                     <li><a href="/Home/GradeClass/Calendar"><i class="fa fa-calendar-o"></i> @AssCommonResource.Calendar</a></li>
                                 </ul>
                             </li>
-                            <li class="treeview">
+                            @*<li class="treeview">
                                 <a href="#">
                                     <i class="glyphicon glyphicon-apple"></i>
                                     <span>@AssCommonResource.FoodRepository</span>
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </a>
-                            </li>
+                            </li>*@
                             <li class="treeview">
                                 <a href="#">
                                     <i class="glyphicon glyphicon-piggy-bank"></i>
@@ -211,18 +220,18 @@
                                 </a>
                                 <ul class="treeview-menu">
                                     @*<li><a href="/Home/Revenuesandexpenditures/General"><i class="fa fa-circle-o"></i> General</a></li>*@
-                                    <li><a href="/Home/Revenuesandexpenditures/In"><i class="fa fa-circle-o"></i> In</a></li>
-                                    <li><a href="/Home/Revenuesandexpenditures/Out"><i class="fa fa-circle-o"></i> Out</a></li>
-                                    <li><a href="/Home/Revenuesandexpenditures/Inout"><i class="fa fa-circle-o"></i> Inout</a></li>
+                                    <li><a href="/Home/Revenuesandexpenditures/In"><i class="fa fa-arrow-right"></i> @AssCommonResource.In</a></li>
+                                    <li><a href="/Home/Revenuesandexpenditures/Out"><i class="fa fa-arrow-left"></i> @AssCommonResource.Out</a></li>
+                                    <li><a href="/Home/Revenuesandexpenditures/Inout"><i class="fa fa-arrows-h"></i> @AssCommonResource.Inout</a></li>
                                 </ul>
                             </li>
-                            <li class="treeview">
+                            @*<li class="treeview">
                                 <a href="#">
                                     <i class="glyphicon glyphicon-wrench"></i>
                                     <span>@AssCommonResource.Furnitures</span>
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </a>
-                            </li>
+                            </li>*@
                             <li class="treeview">
                                 <a href="#">
                                     <i class="glyphicon glyphicon-heart"></i>
@@ -230,8 +239,8 @@
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="/Home/Nutritious/IngredientType"><i class="fa fa-circle-o"></i> @AssCommonResource.IngredientType</a></li>
-                                    <li><a href="/Home/Nutritious/Ingredients"><i class="fa fa-circle-o"></i> @AssCommonResource.IngredientsOverview</a></li>
+                                    <li><a href="/Home/Nutritious/IngredientType"><i class="fa fa-check-square-o"></i> @AssCommonResource.IngredientType</a></li>
+                                    <li><a href="/Home/Nutritious/Ingredients"><i class="fa fa-check-square"></i> @AssCommonResource.IngredientsOverview</a></li>
                                 </ul>
                             </li>
                             <li class="treeview">
@@ -246,7 +255,7 @@
                                     <li><a href="/Home/Teach/Topic"><i class="fa fa-plus-square"></i>@AssCommonResource.Topic</a></li>
                                 </ul>
                             </li>
-                            <li>
+                            @*<li>
                                 <a href="pages/calendar.html">
                                     <i class="fa fa-calendar"></i> <span>@AssCommonResource.Calendar</span>
                                     <small class="label pull-right bg-red">3</small>
@@ -257,7 +266,7 @@
                                     <i class="fa fa-envelope"></i> <span>@AssCommonResource.Mailbox</span>
                                     <small class="label pull-right bg-yellow">12</small>
                                 </a>
-                            </li>
+                            </li>*@
                         </ul>
                     </section>
                     <!-- /.sidebar -->

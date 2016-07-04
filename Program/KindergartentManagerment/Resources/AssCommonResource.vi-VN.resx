@@ -307,13 +307,13 @@
     <value>Chủ đề</value>
   </data>
   <data name="In" xml:space="preserve">
-    <value>In</value>
+    <value>Thu</value>
   </data>
   <data name="Inout" xml:space="preserve">
-    <value>Inout</value>
+    <value>Thu chi</value>
   </data>
   <data name="Out" xml:space="preserve">
-    <value>Out</value>
+    <value>Chi</value>
   </data>
   <data name="All" xml:space="preserve">
     <value>tất cả</value>
@@ -455,5 +455,14 @@
   </data>
   <data name="Asterisk" xml:space="preserve">
     <value>Ghi chú: các trường (*) bắt buộc phải nhập</value>
+  </data>
+  <data name="Moreinfo" xml:space="preserve">
+    <value>Xem chi tiết</value>
+  </data>
+  <data name="Lastestmember" xml:space="preserve">
+    <value>Thành viên mới nhất</value>
+  </data>
+  <data name="Lastestkid" xml:space="preserve">
+    <value>Lastestkid</value>
   </data>
 </root>
