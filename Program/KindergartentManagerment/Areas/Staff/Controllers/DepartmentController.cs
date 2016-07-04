@@ -29,7 +29,7 @@ namespace KindergartentManagerment.Areas.Staff.Controllers
             DepList.AddRange(dep.Distinct());
             ViewBag._dep = DepList;
             IQueryable<DM_DEPARTMENTINFO> result = db.DM_DEPARTMENTINFO.Where(c => c.Record_Status == "1"
-            && (departmentname == null || c.DepartmentName == departmentname)).OrderBy(c => c.DepartmentName);
+            && (departmentname == null || departmentname == "" || c.DepartmentName.Contains(departmentname))).OrderBy(c => c.DepartmentName);
             return View(result.ToList());
         }
         public ActionResult Index(string departmentname = null)

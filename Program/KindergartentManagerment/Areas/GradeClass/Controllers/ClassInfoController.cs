@@ -49,13 +49,13 @@ namespace KindergartentManagerment.Areas.GradeClass.Controllers
             BMList.AddRange(bml.Distinct());
             ViewBag._baomau = BMList;
             int giaovienID = 0, baomauID = 0;
-            if (giaovien != null)
+            if (giaovien != null && giaovien != "")
             {
                 var gv = db.SM_STAFFINFO.Where(c => c.StaffName.Equals(giaovien)).FirstOrDefault();
                 if (gv != null)
                     giaovienID = gv.STAFF_ID;
             }
-            if (baomau != null)
+            if (baomau != null && baomau != "")
             {
                 var bm = db.SM_STAFFINFO.Where(c => c.StaffName.Equals(giaovien)).FirstOrDefault();
                 if (bm != null)

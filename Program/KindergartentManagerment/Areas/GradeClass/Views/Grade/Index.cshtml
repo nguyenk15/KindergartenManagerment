@@ -147,19 +147,13 @@
         </div>
     </div>
 </section>
-@section Orther_styles{
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-}
 @section Orther_scripts{
-<script src="https://code.jquery.com/jquery-1.10.2.min.js" integrity="sha256-C6CB9UYIS9UJeqinPHWTHVqh/E1uhG5Twh+Y5qFQmYg=" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<script type="text/javascript" language="javascript">
+    <script type="text/javascript" language="javascript">
     $(function () {
         var array = @Html.Raw(Json.Encode(ViewBag._grade));
         $( "#tags" ).autocomplete({
             source: array
         });
     });
-</script>
+    </script>
 }
-

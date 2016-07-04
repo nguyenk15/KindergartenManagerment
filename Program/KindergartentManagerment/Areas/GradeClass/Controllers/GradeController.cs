@@ -32,7 +32,7 @@ namespace KindergartentManagerment.Areas.GradeClass.Controllers
             GradeList.AddRange(grade.Distinct());
             ViewBag._grade = GradeList;
             IQueryable<GM_GRADEINFO> result = db.GM_GRADEINFO.Where(c => c.Record_Status == "1"
-            && (gradename == null || c.GRADE_NAME == gradename)).OrderBy(c => c.GRADE_NAME);
+            && (gradename == null || gradename == "" || c.GRADE_NAME.Contains(gradename))).OrderBy(c => c.GRADE_NAME);
             return View(result.ToList());
         }
         public ActionResult Index(string gradename = null)

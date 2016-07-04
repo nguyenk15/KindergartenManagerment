@@ -32,7 +32,7 @@ namespace KindergartentManagerment.Areas.Nutritious.Controllers
             TypeList.AddRange(type.Distinct());
             ViewBag._type = TypeList;
             IQueryable<DD_NhomThucPham> result = db.DD_NhomThucPham.Where(c => c.Record_Status == "1"
-            && (ingredienttype == null || c.TenNhomThucPham == ingredienttype)).OrderBy(c => c.TenNhomThucPham);
+            && (ingredienttype == null || ingredienttype == "" || c.TenNhomThucPham.Contains(ingredienttype))).OrderBy(c => c.TenNhomThucPham);
             return View(result.ToList());
         }
         public ActionResult Index(string ingredienttype = null)

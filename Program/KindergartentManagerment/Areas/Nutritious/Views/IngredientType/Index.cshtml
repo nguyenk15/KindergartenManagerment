@@ -5,22 +5,6 @@
     Layout = "~/Views/Shared/Layout.cshtml";
     KindergartentManagerment.Models.ApplicationDbContext db = new KindergartentManagerment.Models.ApplicationDbContext();
 }
-@section Orther_styles{}
-@section Orther_scripts{
-    
-
-    <script>
-    $(function () {
-        var array = @Html.Raw(Json.Encode(ViewBag._type));
-        $( "#tags" ).autocomplete({
-            source: array
-        });
-    });
-</script>
-    
-    }
-
-
 <section class="content-header">
     <h1>
         @AssCommonResource.IngredientType
@@ -162,4 +146,15 @@
         </div>
     </div>
 </section>
+@*@section Orther_styles{}*@
+@section Orther_scripts{
+    <script type="text/javascript" language="javascript">
+    $(function () {
+        var array = @Html.Raw(Json.Encode(ViewBag._type));
+        $( "#tags" ).autocomplete({
+            source: array
+        });
+    });
+    </script>
 
+}
