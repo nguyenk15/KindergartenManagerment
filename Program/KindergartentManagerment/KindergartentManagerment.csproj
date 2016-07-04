@@ -286,6 +286,11 @@
     <Compile Include="Models\UM_ROLEDELIVERY.cs" />
     <Compile Include="Models\UM_USERINFO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\AboutContactResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AboutContactResource.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\AssCommonResource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1776,6 +1781,11 @@
     <EmbeddedResource Include="Areas\Teach\Reports\TeachSchedule\Master.rdlc" />
     <EmbeddedResource Include="Areas\Teach\Reports\Topic\Details.rdlc" />
     <EmbeddedResource Include="Areas\Teach\Reports\Topic\Master.rdlc" />
+    <EmbeddedResource Include="Resources\AboutContactResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AboutContactResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\AboutContactResource.vi-VN.resx" />
     <EmbeddedResource Include="Resources\AssCommonResource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AssCommonResource.Designer.cs</LastGenOutput>

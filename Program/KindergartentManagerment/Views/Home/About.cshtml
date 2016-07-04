@@ -1,7 +1,43 @@
-﻿@{
-    ViewBag.Title = "About";
+﻿@using KindergartentManagerment.Resources
+@{
+    ViewBag.Title = AssCommonResource.KindergartenManagerment + " | " + AboutContactResource.About;
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<div class="content-header">
+    <h1>
+        @ViewBag.Title
+        <small>@AboutContactResource.Currentversion 1.0.0</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> @AssCommonResource.Home</a></li>
+        <li class="active">@AboutContactResource.About</li>
+    </ol>
+</div>
+<!-- Main content -->
+<div class="content body">
+    <section id="introduction">
+        <h2 class="page-header"><a href="#introduction">#@AboutContactResource.About</a></h2>
+        <div class="callout callout-info lead">
+            <h4>Thành viên</h4>
+            <p>
+                Nhóm thực hiện: nhóm 07 lớp SE109.G21.PMCL<br />
+                Danh sách thành viên<br />
+                    - Huỳnh Thái Hòa<br />
+                    - Nguyễn An Hoàng Nguyên<br />
+                    - Phạm Tấn Phát<br />
+                    - Trần Đình Phúc<br />
+            </p>
 
-<p>Use this area to provide additional information.</p>
+        </div>
+        <div class="callout callout-success lead">
+            <h4>Lời cảm ơn</h4>
+            <p>
+                Nhóm xin gửi lời cảm ơn đến Giảng viên ThS. Nguyễn Thị Thanh Trúc đã hỗ trợ nhóm trong việc cung cấp các tài liệu về vận hành, quy trình, kiểm thử, bảo trì phần mềm và các tài liệu liên quan.<br />
+                Nhóm cũng xin cảm ơn Giảng viên ThS. Phan Trung Hiếu, môn Công nghệ phần mềm chuyên sâu lớp SE214.G21.PMCL đã giúp đỡ nhóm tìm hiểu về quy trình phát triển phần mềm Agile Scrum, các công cụ quản lý SVN, Readmine.<br />
+                Đặc biệt gửi lời cảm ơn chân thành đến Giảng viên ThS. Nguyễn Công Hoan, môn Phân Tích Thiết Kế Hệ Thống Thông Tin lớp IS201.G21.PMCL ở đã hỗ trợ nhóm rất nhiều trong khâu phân tích thiết kế hệ thống,
+                vẽ các sơ đồ liên quan, cung cấp tài liệu phân tích hệ thống và gợi ý cho nhóm thêm nhiều
+                ý tưởng mới.<br />
+            </p>
+        </div>
+</section>
+</div>

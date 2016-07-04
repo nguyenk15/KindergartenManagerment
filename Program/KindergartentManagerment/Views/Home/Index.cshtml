@@ -3,13 +3,13 @@
 @{
     ViewBag.Title = AssCommonResource.KindergartenManagerment + " | " + AssCommonResource.Home;
     KindergartentManagerment.Models.ApplicationDbContext db = new KindergartentManagerment.Models.ApplicationDbContext();
-    int countkindergartent= db.KM_STUDENTOVERVIEW.Count() ;
-    int countStaff = db.SM_STAFFINFO.Count();
-    int countLessonProgram = db.TM_LESSONPROGRAM.Count();
-    int countTopic = db.TM_TOPIC.Count();
-    int countIngredients = db.DD_ThucPham.Count();
-    int countClass = db.GM_CLASSINFO.Count();
-    int countDepartment = db.DM_DEPARTMENTINFO.Count();
+    int countkindergartent= db.KM_STUDENTOVERVIEW.Where(c => c.Record_Status == "1").Count() ;
+    int countStaff = db.SM_STAFFINFO.Where(c => c.Record_Status == "1").Count();
+    int countLessonProgram = db.TM_LESSONPROGRAM.Where(c => c.Record_Status == "1").Count();
+    int countTopic = db.TM_TOPIC.Where(c => c.Record_Status == "1").Count();
+    int countIngredients = db.DD_ThucPham.Where(c => c.Record_Status == "1").Count();
+    int countClass = db.GM_CLASSINFO.Where(c => c.Record_Status == "1").Count();
+    int countDepartment = db.DM_DEPARTMENTINFO.Where(c => c.Record_Status == "1").Count();
     int countUser = db.Users.Count();
 }
 

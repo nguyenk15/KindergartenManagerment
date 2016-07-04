@@ -556,7 +556,7 @@ namespace KindergartentManagerment.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Kindergarten Management.
+        ///   Looks up a localized string similar to System DeKidz.
         /// </summary>
         public static string KindergartenManagerment {
             get {

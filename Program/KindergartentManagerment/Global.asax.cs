@@ -19,8 +19,8 @@ namespace KindergartentManagerment
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             Database.SetInitializer<ApplicationDbContext>(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
-            //ViewEngines.Engines.Clear();
-            //ViewEngines.Engines.Add(new RazorViewEngine());
+            ViewEngines.Engines.Clear();
+            ViewEngines.Engines.Add(new RazorViewEngine());
         }
     }
 }

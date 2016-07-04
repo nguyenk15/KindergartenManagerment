@@ -1,17 +1,73 @@
-﻿@{
-    ViewBag.Title = "Contact";
+﻿@using KindergartentManagerment.Resources
+@{
+    ViewBag.Title = AssCommonResource.KindergartenManagerment + " | " + AboutContactResource.Contact;
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
-
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
-
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<div class="content-header">
+    <h1>
+        @ViewBag.Title
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> @AssCommonResource.Home</a></li>
+        <li class="active">@AboutContactResource.Contact</li>
+    </ol>
+</div>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-body">
+                    <div class="box box-solid box-warning">
+                        <div class="box-header">
+                            @AboutContactResource.lAddress
+                        </div><!-- /.box-header -->
+                        <div class="box-body small-box">
+                            <address>
+                                @AboutContactResource.UIT<br />
+                                @AboutContactResource.Address<br />
+                            </address>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="box box-solid box-success">
+                        <div class="box-header">
+                            @AboutContactResource.lOther
+                        </div>
+                        <div class="box-body small-box">
+                            <address>
+                                <table>
+                                    <tr>
+                                        <th>
+                                            @AboutContactResource.Support
+                                        </th>
+                                        <td>
+                                            <a href="mailto:13520558@gm.uit.edu.vn">  13520558@gm.uit.edu.vn</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            @AboutContactResource.Makerting
+                                        </th>
+                                        <td>
+                                            <a href="mailto:13520644@gm.uit.edu.vn">  13520644@gm.uit.edu.vn</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            @AboutContactResource.Other
+                                        </th>
+                                        <td>
+                                            <a href="mailto:13520285@gm.uit.edu.vn">  13520285@gm.uit.edu.vn</a><br />
+                                            <a href="mailto:13520600@gm.uit.edu.vn">  13520600@gm.uit.edu.vn</a><br />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </address>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
