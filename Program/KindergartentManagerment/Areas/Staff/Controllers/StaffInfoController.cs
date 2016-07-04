@@ -20,21 +20,31 @@ using System.Diagnostics;
 
 namespace KindergartentManagerment.Areas.Staff.Controllers
 {
+    
     public class StaffInfoController : Controller
     {
+        string preAuthStatus = null;
+        DateTime? preCheckerDT = null;
+        string preCheckerID = null;
         private ApplicationDbContext db = new ApplicationDbContext();
         private UserManager<ApplicationUser> userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
         // GET: Staff/SM_STAFFINFO
-        public ActionResult getResult(int? departmentid, string staffname = null,
-     string gender = null,
-     string position = null)
+        public ActionResult getResult(int? departmentid = null, string staffname = null,
+     string gender = "2",
+     string position = "All")
         {
+            List<SelectListItem> listGender = new List<SelectListItem>();
+            listGender.Add(new SelectListItem { Text = StudentOverviewResource.Male, Value = "0" });
+            listGender.Add(new SelectListItem { Text = StudentOverviewResource.Female, Value = "1" });
+            listGender.Add(new SelectListItem { Text = AssCommonResource.All, Value = "2" });
+            ViewBag.Gender = new SelectList(listGender,"Value","Text",gender);
             List<SelectListItem> listPosition = new List<SelectListItem>();
             ResourceSet resourceSet_2 = PositionCommonResource.ResourceManager.GetResourceSet(CultureInfo.CurrentUICulture, true, true);
             foreach (DictionaryEntry item in resourceSet_2)
             {
                 listPosition.Add(new SelectListItem { Text = item.Value.ToString(), Value = item.Key.ToString() });
             }
+            //listPosition.Add(new SelectListItem {Text = AssCommonResource.All, Value = "All" });
             ViewBag.Position = new SelectList(listPosition, "Value", "Text", position);
             var dep = db.DM_DEPARTMENTINFO.Where(c => c.Record_Status == "1" && c.Auth_Status == "A").OrderBy(c => c.DepartmentName).ToList();
             ViewBag._department = new SelectList(dep, "Depatment_ID", "DepartmentName", departmentid);
@@ -43,26 +53,26 @@ namespace KindergartentManagerment.Areas.Staff.Controllers
                 Where(c => (!departmentid.HasValue || c.DepartmentID == Department_ID)
                 && (staffname == null || c.StaffName.Contains(staffname))
                 && (gender == "2" || c.Gender.Equals(gender))
-                && (position == null || c.Position.Contains(position))
+                && (position == "All" || c.Position.Contains(position))
                 && c.Record_Status == "1").
                 OrderBy(c => c.DepartmentID).ThenBy(c => c.StaffName).
                 Include(c => c.Department);
             return View(result.ToList());
         }
-        public ActionResult Index(int? departmentid, string staffname = null,
-            string gender = null,
+        public ActionResult Index(int? departmentid = null, string staffname = null,
+            string gender = "2",
             string isateacher = null,
             string isakindergartener = null,
-            string position = null)
+            string position = "All")
         {
             return getResult(departmentid, staffname, gender, position);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(int? departmentid, int? id, string AUTH_STATUS,
+        public ActionResult Index(int? id, string AUTH_STATUS, int? departmentid = null,
            string staffname = null,
-            string gender = null,
-            string position = null)
+            string gender = "2",
+            string position = "All")
         {
             if (id == null)
             {
@@ -102,23 +112,30 @@ namespace KindergartentManagerment.Areas.Staff.Controllers
         {
             List<SelectListItem> listNation = new List<SelectListItem>();
             ResourceSet resourceSet = NationCommonResource.ResourceManager.GetResourceSet(CultureInfo.CurrentUICulture, true, true);
+            SelectListItem defaultNation = new SelectListItem();
             foreach (DictionaryEntry item in resourceSet)
             {
-                listNation.Add(new SelectListItem { Text = item.Value.ToString(), Value = item.Key.ToString()});
+                if (item.Key.ToString() != "Vietnamese")
+                    listNation.Add(new SelectListItem { Text = item.Value.ToString(), Value = item.Key.ToString()});
+                else
+                    listNation.Insert(0, new SelectListItem { Text = item.Value.ToString(), Value = item.Key.ToString() });
             }
-            //listNation.Sort();
             ViewBag.Nation = listNation;
             List<SelectListItem> listPosition = new List<SelectListItem>();
             ResourceSet resourceSet_2 = PositionCommonResource.ResourceManager.GetResourceSet(CultureInfo.CurrentUICulture, true, true);
+            SelectListItem defaultPosition = new SelectListItem();
             foreach (DictionaryEntry item in resourceSet_2)
             {
-                listPosition.Add(new SelectListItem { Text = item.Value.ToString(), Value = item.Key.ToString() });
+                if (item.Key.ToString() != "Officer")
+                    listPosition.Add(new SelectListItem { Text = item.Value.ToString(), Value = item.Key.ToString() });
+                else
+                    listPosition.Insert(0, new SelectListItem { Text = item.Value.ToString(), Value = item.Key.ToString() });
             }
             ViewBag.Position = listPosition;
             ViewBag.DepartmentList = new SelectList(db.DM_DEPARTMENTINFO.Where(s => s.Auth_Status == "A"), "Depatment_ID", "DepartmentName");
             List<SelectListItem> listGender = new List<SelectListItem>();
-            listGender.Add(new SelectListItem { Text = StudentOverviewResource.Female, Value = "0" });
-            listGender.Add(new SelectListItem { Text = StudentOverviewResource.Male, Value = "1" });
+            listGender.Add(new SelectListItem { Text = StudentOverviewResource.Male, Value = "0" });
+            listGender.Add(new SelectListItem { Text = StudentOverviewResource.Female, Value = "1" });
             ViewBag.Gender = listGender;
         }
         // GET: Staff/SM_STAFFINFO/Create
@@ -215,6 +232,9 @@ namespace KindergartentManagerment.Areas.Staff.Controllers
             {
                 return HttpNotFound();
             }
+            preAuthStatus = sM_STAFFINFO.Auth_Status;
+            preCheckerDT = sM_STAFFINFO.Approve_DT;
+            preCheckerID = sM_STAFFINFO.Checker_ID;
             AllViewBag();
             return View(sM_STAFFINFO);
         }
@@ -224,12 +244,18 @@ namespace KindergartentManagerment.Areas.Staff.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "STAFF_ID,StaffNumber,StaffName,Gender,Date_Of_Birth,Nation,Religion,Address,IsATeacher,IndentityCard,IssuedBy,DateRange,Phone,Email,Position,Degree,SalaryGrade,CoefficientsSalary,BasicSalary,WagesDay,DayWageIncress,FatherisFullName,BirthFather,JobFather,MotherisFullName,BirthMother,JobMother,TelephoneFather,TelephoneMother,Picture,IsLeaguer,DayatParty,CardNumberParty,WorkingStatus,DayStartedMaking,Dayoff,TypeofContract,Record_Status,Maker_ID,Create_DT,Auth_Status,Checker_ID,Approve_DT")] SM_STAFFINFO sM_STAFFINFO)
+        public ActionResult Edit(SM_STAFFINFO sM_STAFFINFO)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(sM_STAFFINFO).State = EntityState.Modified;
                 sM_STAFFINFO.Create_DT = DateTime.Now;
+                sM_STAFFINFO.Create_DT = DateTime.Now;
+                sM_STAFFINFO.Maker_ID = userManager.FindById(User.Identity.GetUserId()).Id;
+                sM_STAFFINFO.Auth_Status = preAuthStatus;
+                sM_STAFFINFO.Checker_ID = preCheckerID;
+                sM_STAFFINFO.Approve_DT = preCheckerDT;
+                sM_STAFFINFO.Record_Status = "1";
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

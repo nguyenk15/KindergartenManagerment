@@ -6,19 +6,19 @@
     Layout = "~/Views/Shared/Layout.cshtml";
     KindergartentManagerment.Models.ApplicationDbContext db = new KindergartentManagerment.Models.ApplicationDbContext();
 }
-<script src="/Content/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="/Content/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<script src="/Content/themes/AdminLTE/js/datatables/jquery.dataTables.min.js"></script>
+<script src="/Content/themes/AdminLTE/js/datatables/dataTables.bootstrap.min.js"></script>
 <!-- SlimScroll -->
-<script src="/Content/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="/Content/themes/AdminLTE/js/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
-<script src="/Content/plugins/fastclick/fastclick.min.js"></script>
+<script src="/Content/themes/AdminLTE/js/fastclick/fastclick.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/Content/themes/AdminLTE/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/Content/themes/AdminLTE/js/demo.js"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.10.2.min.js" integrity="sha256-C6CB9UYIS9UJeqinPHWTHVqh/E1uhG5Twh+Y5qFQmYg=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -38,8 +38,8 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
-                <div class="box-header">
-                    <h3 class="box-title" title=@StudentOverviewResource.CreateStudent>@Html.ActionLink(AssCommonResource.Create_New, "Create")</h3>
+                <div class="box-header clearfix">
+                    @Html.ActionLink(AssCommonResource.Create_New, "Create","StudentOveview", new { @class = "btn btn-block btn-danger pull-left", @style = "width:15%" })
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <div class="row">
@@ -70,18 +70,10 @@
                                                         @Html.TextBox("studentname", null, new { @class = "form-control" })
                                                     </td>
                                                     <td>
-                                                        @Html.DropDownList("gender",
-                                                           new SelectList(new List<Object>{
-                                                                new { value = "0" , text = AssCommonResource.Male  },
-                                                                new { value = "1" , text = AssCommonResource.Female },
-                                                                new {value = "2" , text = AssCommonResource.All }
-                                                            },
-                                                           "value",
-                                                           "text"),
-                                                           new {@class = "form-control" })
+                                                        @Html.DropDownList("gender", ViewBag.Gender as List<SelectListItem>, null, new { @class = "form-control" })
                                                     </td>
                                                     <td>
-                                                        @Html.DropDownList("_ClassList", "tất cả")
+                                                        @Html.DropDownList("_ClassList", null, AssCommonResource.All, new { @class = "form-control" })
                                                     </td>
                                                 </tr>
                                                 
@@ -130,6 +122,9 @@
                                                 @*@StudentOverviewResource.StudentName*@
                                             </th>
                                             <th>
+                                                @StudentOverviewResource.Gender
+                                            </th>
+                                            <th>
                                                 @StudentOverviewResource.Class
                                             </th>
                                             <th>
@@ -138,9 +133,6 @@
                                             </th>
                                             <th>
                                                 @StudentOverviewResource.Address
-                                            </th>
-                                            <th>
-                                                @StudentOverviewResource.Nation
                                             </th>
                                             <th>
                                                 @AssCommonResource.Option
@@ -174,6 +166,16 @@
                                                         @Html.DisplayFor(modelItem => item.StudentName)
                                                     </td>
                                                     <td>
+                                                        @if (item.Gender == "0")
+                                                        {
+                                                            @AssCommonResource.Male
+                                                        }
+                                                        else if (item.Gender == "1")
+                                                        {
+                                                            @AssCommonResource.Female
+                                                        }
+                                                    </td>
+                                                    <td>
                                                         @Html.DisplayFor(modelItem => item.Class.Class_Name)
                                                     </td>
                                                     <td>
@@ -183,9 +185,6 @@
                                                         @Html.DisplayFor(modelItem => item.Address)
                                                     </td>
                                                     <td>
-                                                        @Html.DisplayFor(modelItem => item.Nation)
-                                                    </td>
-                                                    <td>
                                                         @Html.ActionLink(AssCommonResource.Edit, "Edit", new { id = item.STUDENT_ID }) |
                                                         @Html.ActionLink(AssCommonResource.Details, "Details", new { id = item.STUDENT_ID }) |
                                                         @Html.ActionLink(AssCommonResource.Delete, "Delete", new { id = item.STUDENT_ID })
@@ -193,7 +192,7 @@
                                                    @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
                                                    {
                                                     <td>
-                                                        <input type="submit" value="@AssCommonResource.Save" class="btn btn-sm btn-default btn-flat pull-right" />
+                                                        <input type="submit" value=@AssCommonResource.Save class="btn btn-sm btn-warning btn-flat pull-right" />
                                                     </td>
                                                    }
                                                 </tr>

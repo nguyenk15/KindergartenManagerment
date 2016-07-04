@@ -15,17 +15,33 @@ namespace KindergartentManagerment.Areas.Nutritious.Controllers
 {
     public class IngredientTypeController : Controller
     {
+        string preAuthStatus = null;
+        DateTime? preCheckerDT = null;
+        string preCheckerID = null;
         private ApplicationDbContext db = new ApplicationDbContext();
         private UserManager<ApplicationUser> userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
         // GET: Nutritious/IngredientType
-        public ActionResult Index()
+        public ActionResult getResult(string ingredienttype = null)
         {
-            IQueryable<DD_NhomThucPham> result = db.DD_NhomThucPham.Where(c => c.Record_Status == "1").OrderBy(c => c.TenNhomThucPham);
-            return View(result);
+            var TypeList = new List<String>();
+            var type = from d in db.DD_NhomThucPham
+                       where d.Record_Status == "1"
+                       where d.Auth_Status == "A"
+                       orderby d.TenNhomThucPham
+                       select d.TenNhomThucPham;
+            TypeList.AddRange(type.Distinct());
+            ViewBag._type = TypeList;
+            IQueryable<DD_NhomThucPham> result = db.DD_NhomThucPham.Where(c => c.Record_Status == "1"
+            && (ingredienttype == null || c.TenNhomThucPham == ingredienttype)).OrderBy(c => c.TenNhomThucPham);
+            return View(result.ToList());
+        }
+        public ActionResult Index(string ingredienttype = null)
+        {
+            return getResult(ingredienttype);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(int? id, string AUTH_STATUS)
+        public ActionResult Index(int? id, string AUTH_STATUS, string ingredienttype = null)
         {
             if (id == null)
             {
@@ -44,8 +60,7 @@ namespace KindergartentManagerment.Areas.Nutritious.Controllers
                 dD_NhomThucPham.Approve_DT = DateTime.Now;
                 db.SaveChanges();
             }
-            IQueryable<DD_NhomThucPham> result = db.DD_NhomThucPham.OrderBy(c => c.TenNhomThucPham);
-            return View(result);
+            return getResult(ingredienttype);
         }
         // GET: Nutritious/Ingredients/Details/5
         public ActionResult Details(int? id)
@@ -66,7 +81,17 @@ namespace KindergartentManagerment.Areas.Nutritious.Controllers
         {
             return View();
         }
-
+        public void AllViewBag()
+        {
+            var TypeList = new List<String>();
+            var type = from d in db.DD_NhomThucPham
+                       where d.Record_Status == "1"
+                       where d.Auth_Status == "A"
+                       orderby d.TenNhomThucPham
+                       select d.TenNhomThucPham;
+            TypeList.AddRange(type.Distinct());
+            ViewBag._type = TypeList;
+        }
         // POST: Kindergarten/StudentOverview/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -115,6 +140,9 @@ namespace KindergartentManagerment.Areas.Nutritious.Controllers
             {
                 return HttpNotFound();
             }
+            preAuthStatus = a.Auth_Status;
+            preCheckerDT = a.Approve_DT;
+            preCheckerID = a.Checker_ID;
             return View(a);
         }
 
@@ -123,12 +151,18 @@ namespace KindergartentManagerment.Areas.Nutritious.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(DD_NhomThucPham nhomthucpham, HttpPostedFileBase file)
+        public ActionResult Edit(DD_NhomThucPham nhomthucpham)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(nhomthucpham).State = EntityState.Modified;
                 nhomthucpham.Create_DT = DateTime.Now;
+                nhomthucpham.Create_DT = DateTime.Now;
+                nhomthucpham.Maker_ID = userManager.FindById(User.Identity.GetUserId()).Id;
+                nhomthucpham.Auth_Status = preAuthStatus;
+                nhomthucpham.Checker_ID = preCheckerID;
+                nhomthucpham.Approve_DT = preCheckerDT;
+                nhomthucpham.Record_Status = "1";
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

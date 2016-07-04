@@ -15,6 +15,9 @@ namespace KindergartentManagerment.Areas.Nutritious.Controllers
 {
     public class IngredientsController : Controller
     {
+        string preAuthStatus = null;
+        DateTime? preCheckerDT = null;
+        string preCheckerID = null;
         private ApplicationDbContext db = new ApplicationDbContext();
         private UserManager<ApplicationUser> userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
         // GET: Nutritious/Ingredients
@@ -132,6 +135,9 @@ namespace KindergartentManagerment.Areas.Nutritious.Controllers
             {
                 return HttpNotFound();
             }
+            preAuthStatus = a.Auth_Status;
+            preCheckerDT = a.Approve_DT;
+            preCheckerID = a.Checker_ID;
             //db.SaveChanges();
             return View(a);
         }
@@ -141,22 +147,18 @@ namespace KindergartentManagerment.Areas.Nutritious.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(DD_ThucPham thucpham, HttpPostedFileBase file)
+        public ActionResult Edit(DD_ThucPham thucpham)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(thucpham).State = EntityState.Modified;
                 thucpham.Create_DT = DateTime.Now;
-                //var content = from p in db.DD_NhomThucPham
-                //              join b in db.DD_ThucPham
-                //              on p.NhomThucPhamID equals b.NhomThucPhamID
-                //              select new { b.NhomThucPhamID, p.TenNhomThucPham };
-                //ViewBag.GroupList = content
-                //       .Select(c => new SelectListItem
-                //       {
-                //           Text = c.TenNhomThucPham,
-                //           Value = c.NhomThucPhamID.ToString()
-                //       }).ToList();
+                thucpham.Create_DT = DateTime.Now;
+                thucpham.Maker_ID = userManager.FindById(User.Identity.GetUserId()).Id;
+                thucpham.Auth_Status = preAuthStatus;
+                thucpham.Checker_ID = preCheckerID;
+                thucpham.Approve_DT = preCheckerDT;
+                thucpham.Record_Status = "1";
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

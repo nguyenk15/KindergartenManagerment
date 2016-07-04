@@ -18,14 +18,28 @@ namespace KindergartentManagerment.Areas.Staff.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         private UserManager<ApplicationUser> userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
         // GET: Staff/Department
-        public ActionResult Index()
+        public ActionResult getResult(string departmentname = null)
         {
-            IQueryable<DM_DEPARTMENTINFO> result = db.DM_DEPARTMENTINFO.Where(c => c.Record_Status == "1").OrderBy(c => c.DepartmentName);
+            var DepList = new List<String>();
+            var dep = from d in db.DM_DEPARTMENTINFO
+                       where d.Record_Status == "1"
+                       where d.Auth_Status == "A"
+                       orderby d.DepartmentName
+                       select d.DepartmentName;
+            DepList.AddRange(dep.Distinct());
+            ViewBag._dep = DepList;
+            IQueryable<DM_DEPARTMENTINFO> result = db.DM_DEPARTMENTINFO.Where(c => c.Record_Status == "1"
+            && (departmentname == null || c.DepartmentName == departmentname)).OrderBy(c => c.DepartmentName);
             return View(result.ToList());
+        }
+        public ActionResult Index(string departmentname = null)
+        {
+            return getResult(departmentname);
+
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(int? id, string AUTH_STATUS)
+        public ActionResult Index(int? id, string AUTH_STATUS, string departmentname = null)
         {
             if (id == null)
             {
@@ -44,8 +58,7 @@ namespace KindergartentManagerment.Areas.Staff.Controllers
                 dM_DEPARTMENTINFO.Approve_DT = DateTime.Now;
                 db.SaveChanges();
             }
-            IQueryable<DM_DEPARTMENTINFO> result = db.DM_DEPARTMENTINFO.OrderBy(c => c.DepartmentName);
-            return View(result.ToList());
+            return getResult(departmentname);
         }
         public ActionResult Details(int? id)
         {

@@ -46,28 +46,28 @@
                                 <div class="box-body">
                                         <!--Group name-->
                                     <div class="form-group">
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="my-control-label col-md-3">
                                                 @StudentOverviewResource.StudentName
                                             </div>
                                             <div class="col-md-8">
-                                                @Html.EditorFor(model => model.StudentName, new { htmlAttributes = new { @class = "form-control", @*required = "required", @placeholder = StudentOverviewResource.RequireName*@ } })
+                                                @Html.EditorFor(model => model.StudentName, new { htmlAttributes = new { @class = "form-control", required = "required", @placeholder = StudentOverviewResource.RequireName } })
                                                 @Html.ValidationMessageFor(model => model.StudentName, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
                                     </div>
                                         <!-- Group gender and birthday-->
                                     <div class="form-group">
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                              <div class="my-control-label col-md-3">
                                                 @StudentOverviewResource.Gender
                                              </div>
                                              <div class="col-md-8">
-                                                 @Html.DropDownListFor(model => model.Gender, ViewBag.Gender as List<SelectListItem>, new { @class = "form-control" })
+                                                 @Html.DropDownListFor(model => model.Gender, ViewBag.Gender as List<SelectListItem>, new { @class = "form-control", required = "required" })
                                                  @Html.ValidationMessageFor(model => model.Gender)
                                               </div>
                                          </div>
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                              <div class="control-label col-md-3">
                                                  @StudentOverviewResource.Birthday
                                              </div>
@@ -85,7 +85,7 @@
                                         <!-- end group-->
                                             <!--Group adress and prioritysubjects-->
                                             <div class="form-group">
-                                                <div class="col-md-6">
+                                                <div class="control-label col-md-6">
                                                     <div class="control-label col-md-3">
                                                         @StudentOverviewResource.Address
                                                     </div>
@@ -95,7 +95,7 @@
                                                     </div>
 
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="control-label col-md-6">
                                                     <div class="control-label col-md-3">
                                                         @StudentOverviewResource.PrioritySubjects
                                                     </div>
@@ -107,7 +107,7 @@
                                             </div><!-- End group-->
                                             <!-- Group nation and Religion-->
                                             <div class="form-group">
-                                                <div class="col-md-6">
+                                                <div class="control-label col-md-6">
                                                     <div class="control-label col-md-3">
                                                         @StudentOverviewResource.Nation
                                                     </div>
@@ -116,7 +116,7 @@
                                                         @Html.ValidationMessageFor(model => model.Nation)
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="control-label col-md-6">
                                                     <div class="control-label col-md-3">
                                                         @StudentOverviewResource.Religion
                                                     </div>
@@ -129,7 +129,7 @@
                                             
                                             <!-- group Class and School Year-->
                                             <div class="form-group">
-                                                <div class="col-md-6">
+                                                <div class="control-label col-md-6">
                                                     <div class="control-label col-md-3">
                                                         @StudentOverviewResource.Class
                                                     </div>
@@ -137,7 +137,7 @@
                                                         @Html.DropDownListFor(model => model.ClassID, ViewBag.Class as SelectList, new { @class = "form-control" })
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="control-label col-md-6">
                                                     <div class="control-label col-md-3">
                                                         @StudentOverviewResource.SchoolYear
                                                     </div>
@@ -171,7 +171,7 @@
                                 <div class="box-body">
                                     <!-- Group father name and father birthday-->
                                     <div class="form-group">
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-3">
                                                 @StudentOverviewResource.FatherName
                                             </div>
@@ -180,7 +180,7 @@
                                                 @Html.ValidationMessageFor(model => model.FatherName, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-3">
                                                 @StudentOverviewResource.FatherBirthday
                                             </div>
@@ -198,7 +198,7 @@
                                     <!-- End group -->
                                     <!-- Group fatherjob and fatherPhone-->
                                     <div class="form-group">
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-3">
                                                 @StudentOverviewResource.FatherJob
                                             </div>
@@ -207,7 +207,7 @@
                                                 @Html.ValidationMessageFor(model => model.FatherJob, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-3">
                                                 @StudentOverviewResource.FatherPhone
                                             </div>
@@ -230,7 +230,7 @@
                                     <!-- End group-->
                                     <!-- Group Mothername and motherbirthday-->
                                     <div class="form-group">
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-3">
                                                 @StudentOverviewResource.MotherName
                                             </div>
@@ -239,7 +239,7 @@
                                                 @Html.ValidationMessageFor(model => model.MotherName, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-3">
                                                 @StudentOverviewResource.MotherBirthday
                                             </div>
@@ -257,7 +257,7 @@
                                     <!-- End group-->
                                     <!-- Group MotherJop and Mother Phone-->
                                     <div class="form-group">
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-3">
                                                 @StudentOverviewResource.MotherJob
                                             </div>
@@ -266,7 +266,7 @@
                                                 @Html.ValidationMessageFor(model => model.MotherJob, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-3">
                                                 @StudentOverviewResource.MotherPhone
                                             </div>
@@ -299,7 +299,7 @@
                                 </div>
                                 <div class="box-body">
                                     <div class="form-group">
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-3">
                                                 @StudentOverviewResource.DateofAdmission
                                             </div>
@@ -317,7 +317,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="form-group">
                                                 <div class="control-label col-md-3">
                                                     @StudentOverviewResource.CompletionDate
@@ -340,7 +340,7 @@
 
                                     </div>
                                     <div class="form-group">
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-3">
                                                 @AssCommonResource.Notes
                                             </div>

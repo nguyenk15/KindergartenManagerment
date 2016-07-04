@@ -15,17 +15,33 @@ namespace KindergartentManagerment.Areas.GradeClass.Controllers
 {
     public class GradeController : Controller
     {
+        string preAuthStatus = null;
+        DateTime? preCheckerDT = null;
+        string preCheckerID = null;
         private ApplicationDbContext db = new ApplicationDbContext();
         private UserManager<ApplicationUser> userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
         // GET: GradeClass/Grade
-        public ActionResult Index()
+        public ActionResult getResult(string gradename = null)
         {
-            IQueryable<GM_GRADEINFO> result = db.GM_GRADEINFO.Where(c => c.Record_Status == "1").OrderBy(c => c.GRADE_NAME);
-            return View(result);
+            var GradeList = new List<String>();
+            var grade = from d in db.GM_GRADEINFO
+                        where d.Record_Status == "1"
+                        where d.Auth_Status == "A"
+                        orderby d.GRADE_NAME
+                        select d.GRADE_NAME;
+            GradeList.AddRange(grade.Distinct());
+            ViewBag._grade = GradeList;
+            IQueryable<GM_GRADEINFO> result = db.GM_GRADEINFO.Where(c => c.Record_Status == "1"
+            && (gradename == null || c.GRADE_NAME == gradename)).OrderBy(c => c.GRADE_NAME);
+            return View(result.ToList());
+        }
+        public ActionResult Index(string gradename = null)
+        {
+            return getResult(gradename);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(int? id, string AUTH_STATUS)
+        public ActionResult Index(int? id, string AUTH_STATUS, string gradename = null)
         {
             if (id == null)
             {
@@ -44,8 +60,7 @@ namespace KindergartentManagerment.Areas.GradeClass.Controllers
                 gM_GRADEINFO.Approve_DT = DateTime.Now;
                 db.SaveChanges();
             }
-            IQueryable<GM_GRADEINFO> result = db.GM_GRADEINFO.Where(c => c.Record_Status == "1").OrderBy(c => c.GRADE_NAME);
-            return View(result);
+            return getResult(gradename);
         }
         public ActionResult Details(int? id)
         {
@@ -112,6 +127,9 @@ namespace KindergartentManagerment.Areas.GradeClass.Controllers
             {
                 return HttpNotFound();
             }
+            preAuthStatus = gM_GRADEINFO.Auth_Status;
+            preCheckerDT = gM_GRADEINFO.Approve_DT;
+            preCheckerID = gM_GRADEINFO.Checker_ID;
             //db.SaveChanges();
             return View(gM_GRADEINFO);
         }
@@ -121,12 +139,17 @@ namespace KindergartentManagerment.Areas.GradeClass.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(GM_GRADEINFO gM_GRADEINFO, HttpPostedFileBase file)
+        public ActionResult Edit(GM_GRADEINFO gM_GRADEINFO)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(gM_GRADEINFO).State = EntityState.Modified;
                 gM_GRADEINFO.Create_DT = DateTime.Now;
+                gM_GRADEINFO.Maker_ID = userManager.FindById(User.Identity.GetUserId()).Id;
+                gM_GRADEINFO.Auth_Status = preAuthStatus;
+                gM_GRADEINFO.Checker_ID = preCheckerID;
+                gM_GRADEINFO.Approve_DT = preCheckerDT;
+                gM_GRADEINFO.Record_Status = "1";
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

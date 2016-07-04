@@ -50,29 +50,29 @@
 
                                     <!-- Group 1-->
                                     <div class="form-group">
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="my-control-label col-md-4">
-                                                @IngredientsCommonResource.TenThucPham
+                                                <t></t>@IngredientsCommonResource.TenThucPham
                                             </div>
                                             <div class="col-md-8">
-                                                @Html.EditorFor(model => model.TenThucPham, new { htmlAttributes = new { @class = "form-control", required = "required", @placeholder = StudentOverviewResource.RequireName } })
+                                                @Html.EditorFor(model => model.TenThucPham, new { htmlAttributes = new { @class = "form-control", required = "required" } })
                                                 @Html.ValidationMessageFor(model => model.TenThucPham, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="my-control-label col-md-4">
-                                                @IngredientsCommonResource.NhomThucPham
+                                                <t></t>@IngredientsCommonResource.NhomThucPham
                                             </div>
                                             <div class="col-md-8">
-                                                @Html.DropDownListFor(model => model.NhomThucPhamID,new SelectList(db.DD_NhomThucPham.Where(s => s.Auth_Status == "A"), "NhomThucPhamID", "TenNhomThucPham"), new { @class = "form-control" })
-                                                @Html.ValidationMessageFor(model => model.TenThucPham, "", new { @class = "text-danger" })
+                                                @Html.DropDownListFor(model => model.NhomThucPhamID,new SelectList(db.DD_NhomThucPham.Where(s => s.Auth_Status == "A"), "NhomThucPhamID", "TenNhomThucPham"), new { @class = "form-control", required = "required" })
+                                                @Html.ValidationMessageFor(model => model.TenThucPham, "", new { @class = "text-danger"})
                                             </div>
                                         </div>
                                     </div>
                                     <!-- end group-->
                                     <!-- Group 2-->
                                     <div class="form-group">
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-4">
                                                 @IngredientsCommonResource.NguonTuDongVat
                                             </div>
@@ -81,7 +81,7 @@
                                                 @Html.ValidationMessageFor(model => model.NguonTuDongVat, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-4">
                                                 @IngredientsCommonResource.QuyDoiVeKq
                                             </div>
@@ -94,7 +94,7 @@
                                     <!-- end group-->
                                     <!--Group 3-->
                                     <div class="form-group">
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-4">
                                                 @IngredientsCommonResource.DonViTinh
                                             </div>
@@ -103,7 +103,7 @@
                                                 @Html.ValidationMessageFor(model => model.DonViTinh, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-4">
                                                 @IngredientsCommonResource.GiaThanh
                                             </div>
@@ -128,7 +128,7 @@
 
                                     <!-- Group 1-->
                                     <div class="form-group">
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-4">
                                                 @IngredientsCommonResource.TyLeHapThu
                                             </div>
@@ -137,7 +137,7 @@
                                                 @Html.ValidationMessageFor(model => model.TyLeHapThu, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-4">
                                                 @IngredientsCommonResource.TyLeThai
                                             </div>
@@ -150,7 +150,7 @@
                                     <!-- end group-->
                                     <!-- Group 2-->
                                     <div class="form-group">
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-4">
                                                 @IngredientsCommonResource.NangLuongCalo
                                             </div>
@@ -159,7 +159,7 @@
                                                 @Html.ValidationMessageFor(model => model.NangLuongCalo, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-4">
                                                 @IngredientsCommonResource.VitaminPP
                                             </div>
@@ -172,7 +172,7 @@
                                     <!-- end group-->
                                     <!--Group 3-->
                                     <div class="form-group">
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-4">
                                                 @IngredientsCommonResource.TphhNuoc
                                             </div>
@@ -181,7 +181,7 @@
                                                 @Html.ValidationMessageFor(model => model.TphhNuoc, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-4">
                                                 @IngredientsCommonResource.TphhProtid
                                             </div>
@@ -192,7 +192,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-4">
                                                 @IngredientsCommonResource.TphhLipid
                                             </div>
@@ -201,7 +201,7 @@
                                                 @Html.ValidationMessageFor(model => model.TphhLipid, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-4">
                                                 @IngredientsCommonResource.TphhGlucid
                                             </div>
@@ -212,7 +212,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-4">
                                                 @IngredientsCommonResource.TphhCellulose
                                             </div>
@@ -221,7 +221,7 @@
                                                 @Html.ValidationMessageFor(model => model.TphhCellulose, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-4">
                                                 @IngredientsCommonResource.TphhCholesterol
                                             </div>
@@ -232,7 +232,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-4">
                                                 @IngredientsCommonResource.MkCalci
                                             </div>
@@ -241,7 +241,7 @@
                                                 @Html.ValidationMessageFor(model => model.MkCalci, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-4">
                                                 @IngredientsCommonResource.MkPhotpho
                                             </div>
@@ -252,7 +252,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-4">
                                                 @IngredientsCommonResource.MkSat
                                             </div>
@@ -261,7 +261,7 @@
                                                 @Html.ValidationMessageFor(model => model.MkSat, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-4">
                                                 @IngredientsCommonResource.VitaminCaroten
                                             </div>
@@ -272,7 +272,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-4">
                                                 @IngredientsCommonResource.VitaminA
                                             </div>
@@ -281,7 +281,7 @@
                                                 @Html.ValidationMessageFor(model => model.VitaminA, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-4">
                                                 @IngredientsCommonResource.VitaminB1
                                             </div>
@@ -292,7 +292,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-4">
                                                 @IngredientsCommonResource.VitaminB2
                                             </div>
@@ -301,7 +301,7 @@
                                                 @Html.ValidationMessageFor(model => model.VitaminB2, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-4">
                                                 @IngredientsCommonResource.VitaminC
                                             </div>
@@ -312,7 +312,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div class="col-md-6">
+                                        <div class="control-label col-md-6">
                                             <div class="control-label col-md-4">
                                                 @AssCommonResource.Notes
                                             </div>

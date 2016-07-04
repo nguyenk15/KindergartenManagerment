@@ -15,6 +15,9 @@ namespace KindergartentManagerment.Areas.Teach.Controllers
 {
     public class TeachScheduleController : Controller
     {
+        string preAuthStatus = null;
+        DateTime? preCheckerDT = null;
+        string preCheckerID = null;
         private ApplicationDbContext db = new ApplicationDbContext();
         private UserManager<ApplicationUser> userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
         // GET: Teach/TeachSchedule
@@ -78,6 +81,9 @@ namespace KindergartentManagerment.Areas.Teach.Controllers
             {
                 return HttpNotFound();
             }
+            preAuthStatus = tM_TEACHSCHEDULE.Auth_Status;
+            preCheckerDT = tM_TEACHSCHEDULE.Approve_DT;
+            preCheckerID = tM_TEACHSCHEDULE.Checker_ID;
             return View(tM_TEACHSCHEDULE);
         }
 
@@ -86,11 +92,18 @@ namespace KindergartentManagerment.Areas.Teach.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ClassID,DateofWeek,Date,MorningLesson,MorningTeacher,AfternoonLesson,AfternoonTeacher,Notes,Record_Status,Maker_ID,Create_DT,Auth_Status,Checker_ID,Approve_DT")] TM_TEACHSCHEDULE tM_TEACHSCHEDULE)
+        public ActionResult Edit(TM_TEACHSCHEDULE tM_TEACHSCHEDULE)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(tM_TEACHSCHEDULE).State = EntityState.Modified;
+                tM_TEACHSCHEDULE.Create_DT = DateTime.Now;
+                tM_TEACHSCHEDULE.Create_DT = DateTime.Now;
+                tM_TEACHSCHEDULE.Maker_ID = userManager.FindById(User.Identity.GetUserId()).Id;
+                tM_TEACHSCHEDULE.Auth_Status = preAuthStatus;
+                tM_TEACHSCHEDULE.Checker_ID = preCheckerID;
+                tM_TEACHSCHEDULE.Approve_DT = preCheckerDT;
+                tM_TEACHSCHEDULE.Record_Status = "1";
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

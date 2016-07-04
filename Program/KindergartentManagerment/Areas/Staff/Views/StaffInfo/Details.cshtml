@@ -367,7 +367,7 @@
                                                 @StaffCommonResource.Position
                                             </div>
                                             <div class="col-md-8">
-                                                @Html.DropDownListFor(model => model.Position, ViewBag.Nation as List<SelectListItem>, new { @class = "form-control", @disabled = "disabled" })
+                                                @Html.DropDownListFor(model => model.Position, ViewBag.Position as List<SelectListItem>, new { @class = "form-control", @disabled = "disabled" })
                                                 @Html.ValidationMessageFor(model => model.Position)
                                             </div>
                                         </div>

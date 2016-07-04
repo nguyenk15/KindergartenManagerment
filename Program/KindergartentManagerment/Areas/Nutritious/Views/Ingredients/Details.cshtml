@@ -48,7 +48,7 @@
                                             @IngredientsCommonResource.TenThucPham
                                         </div>
                                         <div class="col-md-8">
-                                            @Html.EditorFor(model => model.TenThucPham, new { htmlAttributes = new { @class = "form-control", required = "required", @placeholder = StudentOverviewResource.RequireName, @disabled = "disabled" } })
+                                            @Html.EditorFor(model => model.TenThucPham, new { htmlAttributes = new { @class = "form-control", required = "required", @disabled = "disabled" } })
                                             @Html.ValidationMessageFor(model => model.TenThucPham, "", new { @class = "text-danger" })
                                         </div>
                                     </div>

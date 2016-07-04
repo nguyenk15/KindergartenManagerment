@@ -23,11 +23,19 @@ namespace KindergartentManagerment.Areas.Kindergarten.Controllers
 {
     public class StudentOverviewController : Controller
     {
+        string preAuthStatus = null;
+        DateTime? preCheckerDT = null;
+        string preCheckerID = null;
         private ApplicationDbContext db = new ApplicationDbContext();
         UserManager<ApplicationUser> userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
         public ActionResult getResult(string sortOrder, int? classid, string studentname = null,
-                   string gender = null)
+                   string gender = "2")
         {
+            List<SelectListItem> listGender = new List<SelectListItem>();
+            listGender.Add(new SelectListItem { Text = StudentOverviewResource.Male, Value = "0" });
+            listGender.Add(new SelectListItem { Text = StudentOverviewResource.Female, Value = "1" });
+            listGender.Add(new SelectListItem { Text = AssCommonResource.All, Value = "2" });
+            ViewBag.Gender = new SelectList(listGender, "Value", "Text", gender);
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
@@ -59,7 +67,7 @@ namespace KindergartentManagerment.Areas.Kindergarten.Controllers
             return View(result.ToList());
         }
         public ActionResult Index(string sortOrder, int? classid, string studentname = null,
-            string gender = null)
+            string gender = "2")
         {
             return getResult(sortOrder, classid, studentname, gender);
         }
@@ -68,7 +76,7 @@ namespace KindergartentManagerment.Areas.Kindergarten.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index(string sortOrder, int? id, string AUTH_STATUS,
             int? classid, string studentname = null,
-            string gender = null)
+            string gender = "2")
         {
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -107,16 +115,20 @@ namespace KindergartentManagerment.Areas.Kindergarten.Controllers
         public void AllViewBag() {
             List<SelectListItem> listNation = new List<SelectListItem>();
             ResourceSet resourceSet = NationCommonResource.ResourceManager.GetResourceSet(CultureInfo.CurrentUICulture, true, true);
+            SelectListItem defaultNation = new SelectListItem();
             foreach (DictionaryEntry item in resourceSet)
             {
-                listNation.Add(new SelectListItem { Text = item.Value.ToString(), Value = item.Key.ToString() });
+                if (item.Key.ToString() != "Vietnamese")
+                    listNation.Add(new SelectListItem { Text = item.Value.ToString(), Value = item.Key.ToString() });
+                else
+                    listNation.Insert(0, new SelectListItem { Text = item.Value.ToString(), Value = item.Key.ToString() });
             }
             ViewBag.Nation = listNation;
             ViewBag.Class = new SelectList(db.GM_CLASSINFO.Where(s => s.Auth_Status == "A"), "ClassID", "Class_Name");
             ViewBag.SchoolYear = new SelectList(db.SCHOOLYEARs, "YEAR_ID", "YEAR_NAME");
             List<SelectListItem> listGender = new List<SelectListItem>();
-            listGender.Add(new SelectListItem { Text = StudentOverviewResource.Female, Value = "0" });
-            listGender.Add(new SelectListItem { Text = StudentOverviewResource.Male, Value = "1" });
+            listGender.Add(new SelectListItem { Text = StudentOverviewResource.Male, Value = "0" });
+            listGender.Add(new SelectListItem { Text = StudentOverviewResource.Female, Value = "1" });
             ViewBag.Gender = listGender;
         }
         public ActionResult Create()
@@ -215,6 +227,9 @@ namespace KindergartentManagerment.Areas.Kindergarten.Controllers
             {
                 return HttpNotFound();
             }
+            preAuthStatus = kM_STUDENTOVERVIEW.Auth_Status;
+            preCheckerDT = kM_STUDENTOVERVIEW.Approve_DT;
+            preCheckerID = kM_STUDENTOVERVIEW.Checker_ID;
             AllViewBag();
             return View(kM_STUDENTOVERVIEW);
         }
@@ -232,6 +247,11 @@ namespace KindergartentManagerment.Areas.Kindergarten.Controllers
                     kM_STUDENTOVERVIEW.Class.Quantity--;
                 db.Entry(kM_STUDENTOVERVIEW).State = EntityState.Modified;
                 kM_STUDENTOVERVIEW.Create_DT = DateTime.Now;
+                kM_STUDENTOVERVIEW.Maker_ID = userManager.FindById(User.Identity.GetUserId()).Id;
+                kM_STUDENTOVERVIEW.Auth_Status = preAuthStatus;
+                kM_STUDENTOVERVIEW.Checker_ID = preCheckerID;
+                kM_STUDENTOVERVIEW.Approve_DT = preCheckerDT;
+                kM_STUDENTOVERVIEW.Record_Status = "1";
                 #region ImageforKindergartent
                 if (file != null)
                 {

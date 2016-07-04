@@ -17,6 +17,9 @@ namespace KindergartentManagerment.Areas.Teach.Controllers
 {
     public class TopicController : Controller
     {
+        string preAuthStatus = null;
+        DateTime? preCheckerDT = null;
+        string preCheckerID = null;
         private ApplicationDbContext db = new ApplicationDbContext();
         private UserManager<ApplicationUser> userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
         // GET: Teach/Topic
@@ -121,6 +124,9 @@ namespace KindergartentManagerment.Areas.Teach.Controllers
             {
                 return HttpNotFound();
             }
+            preAuthStatus = tM_TOPIC.Auth_Status;
+            preCheckerDT = tM_TOPIC.Approve_DT;
+            preCheckerID = tM_TOPIC.Checker_ID;
             return View(tM_TOPIC);
         }
 
@@ -134,6 +140,13 @@ namespace KindergartentManagerment.Areas.Teach.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(tM_TOPIC).State = EntityState.Modified;
+                tM_TOPIC.Create_DT = DateTime.Now;
+                tM_TOPIC.Create_DT = DateTime.Now;
+                tM_TOPIC.Maker_ID = userManager.FindById(User.Identity.GetUserId()).Id;
+                tM_TOPIC.Auth_Status = preAuthStatus;
+                tM_TOPIC.Checker_ID = preCheckerID;
+                tM_TOPIC.Approve_DT = preCheckerDT;
+                tM_TOPIC.Record_Status = "1";
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

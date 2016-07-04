@@ -15,6 +15,9 @@ namespace KindergartentManagerment.Areas.GradeClass.Controllers
 {
     public class ClassInfoController : Controller
     {
+        string preAuthStatus = null;
+        DateTime? preCheckerDT = null;
+        string preCheckerID = null;
         private ApplicationDbContext db = new ApplicationDbContext();
         private UserManager<ApplicationUser> userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
         // GET: GradeClass/ClassInfo
@@ -179,6 +182,9 @@ namespace KindergartentManagerment.Areas.GradeClass.Controllers
             {
                 return HttpNotFound();
             }
+            preAuthStatus = a.Auth_Status;
+            preCheckerDT = a.Approve_DT;
+            preCheckerID = a.Checker_ID;
             AllViewBag();
             return View(a);
         }
@@ -194,6 +200,11 @@ namespace KindergartentManagerment.Areas.GradeClass.Controllers
             {
                 db.Entry(GM_CLASSINFOModel).State = EntityState.Modified;
                 GM_CLASSINFOModel.Create_DT = DateTime.Now;
+                GM_CLASSINFOModel.Maker_ID = userManager.FindById(User.Identity.GetUserId()).Id;
+                GM_CLASSINFOModel.Auth_Status = preAuthStatus;
+                GM_CLASSINFOModel.Checker_ID = preCheckerID;
+                GM_CLASSINFOModel.Approve_DT = preCheckerDT;
+                GM_CLASSINFOModel.Record_Status = "1";
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

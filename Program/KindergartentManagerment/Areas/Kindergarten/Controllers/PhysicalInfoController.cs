@@ -15,6 +15,9 @@ namespace KindergartentManagerment.Areas.Kindergarten.Controllers
 {
     public class PhysicalInfoController : Controller
     {
+        string preAuthStatus = null;
+        DateTime? preCheckerDT = null;
+        string preCheckerID = null;
         private ApplicationDbContext db = new ApplicationDbContext();
         private UserManager<ApplicationUser> userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
         // GET: Kindergarten/PhysicalInfo
@@ -79,6 +82,9 @@ namespace KindergartentManagerment.Areas.Kindergarten.Controllers
             {
                 return HttpNotFound();
             }
+            preAuthStatus = kM_PHYSICALINFO.Auth_Status;
+            preCheckerDT = kM_PHYSICALINFO.Approve_DT;
+            preCheckerID = kM_PHYSICALINFO.Checker_ID;
             return View(kM_PHYSICALINFO);
         }
 
@@ -87,11 +93,17 @@ namespace KindergartentManagerment.Areas.Kindergarten.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "STUDENT_ID,Height,Weight,BMI,Dermatology,Otolaryngology,Dentomaxillofacial,RespiratorySystem,Record_Status,Maker_ID,Create_DT,Auth_Status,Checker_ID,Approve_DT,Notes,Months,Record_ID")] KM_PHYSICALINFO kM_PHYSICALINFO)
+        public ActionResult Edit(KM_PHYSICALINFO kM_PHYSICALINFO)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(kM_PHYSICALINFO).State = EntityState.Modified;
+                kM_PHYSICALINFO.Create_DT = DateTime.Now;
+                kM_PHYSICALINFO.Maker_ID = userManager.FindById(User.Identity.GetUserId()).Id;
+                kM_PHYSICALINFO.Auth_Status = preAuthStatus;
+                kM_PHYSICALINFO.Checker_ID = preCheckerID;
+                kM_PHYSICALINFO.Approve_DT = preCheckerDT;
+                kM_PHYSICALINFO.Record_Status = "1";
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

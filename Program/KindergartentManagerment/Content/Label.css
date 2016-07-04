@@ -1,7 +1,6 @@
-﻿.my-control-label:before 
+﻿.my-control-label:after 
 {
   content:"*";
   color:red;
-  margin-right:4px;
 }
 
