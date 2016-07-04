@@ -1,107 +1,123 @@
 ﻿@model KindergartentManagerment.Models.SM_SALARY
 @using KindergartentManagerment.Resources
 @{
-    ViewBag.Title = AssCommonResource.Salary + " | " + AssCommonResource.Delete;
+    ViewBag.Title = AssCommonResource.Salary + " | " + AssCommonResource.Details;
     Layout = "~/Views/Shared/Layout.cshtml";
+    KindergartentManagerment.Models.ApplicationDbContext db = new KindergartentManagerment.Models.ApplicationDbContext();
 }
+<section class="content-header">
+    <h1>
+        @AssCommonResource.Salary
+    </h1>
 
-<h2>Details</h2>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> @AssCommonResource.Home</a></li>
+        <li><a href="#">@AssCommonResource.lbl_staff</a></li>
+        <li class="active">@AssCommonResource.Salary</li>
+    </ol>
+</section>
 
-<div>
-    <h4>SM_SALARY</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Sa_Total)
-        </dt>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">@AssCommonResource.Details</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
 
-        <dd>
-            @Html.DisplayFor(model => model.Sa_Total)
-        </dd>
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">@AssCommonResource.Overview</h3>
+                                <div class="box-tools pull-right">
+                                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @SalaryResource.Sa_StaffCode
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.STAFF_ID, new { htmlAttributes = new { @class = "form-control", required = "required", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.STAFF_ID, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Sa_Bonus)
-        </dt>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @SalaryResource.Sa_Total
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.Sa_Total, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.Sa_Total, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @SalaryResource.Sa_Bonus
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.Sa_Bonus, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.Sa_Bonus, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Sa_Bonus)
-        </dd>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @SalaryResource.Sa_Minus
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.Sa_Minus, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.Sa_Minus, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="control-label col-md-4">
+                                            @SalaryResource.Sa_Salary
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.Sa_Salary, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.Sa_Salary, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Sa_Minus)
-        </dt>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <div class="control-label col-md-2">
+                                            @AssCommonResource.Notes
+                                        </div>
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.Notes, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Sa_Minus)
-        </dd>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Sa_Salary)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Sa_Salary)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Notes)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Notes)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Record_Status)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Record_Status)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Maker_ID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Maker_ID)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Create_DT)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Create_DT)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Auth_Status)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Auth_Status)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Checker_ID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Checker_ID)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Approve_DT)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Approve_DT)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+                <!-- Action click-->
+                <div class="box-footer clearfix">
+                    <div class="form-group">
+                        <div class="col-md-8">
+                            @Html.ActionLink(AssCommonResource.Edit, "Edit", new { id = Model.Sa_ID, @class = "btn btn-sm btn-info btn-flat pull-left" }) |
+                            @Html.ActionLink(AssCommonResource.BacktoList, "Index", new { @class = "btn btn-sm btn-info btn-flat pull-left" })
+                        </div>
+                    </div>
+                </div><!-- /.box-footer -->
+            </div>
+        </div>
+    </div>
+</section>

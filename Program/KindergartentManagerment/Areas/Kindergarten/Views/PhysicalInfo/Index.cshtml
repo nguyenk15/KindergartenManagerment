@@ -1,124 +1,175 @@
 ﻿@model IEnumerable<KindergartentManagerment.Models.KM_PHYSICALINFO>
 
+@using KindergartentManagerment.Resources
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = AssCommonResource.Physicalinf + " | " + AssCommonResource.Index;
     Layout = "~/Views/Shared/Layout.cshtml";
+    KindergartentManagerment.Models.ApplicationDbContext db = new KindergartentManagerment.Models.ApplicationDbContext();
 }
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        @AssCommonResource.Physicalinf
+    </h1>
 
-<h2>Index</h2>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> @AssCommonResource.Home</a></li>
+        <li><a href="#">@AssCommonResource.Kindergarten</a></li>
+        <li class="active">@AssCommonResource.Physicalinf</li>
+    </ol>
+</section>
+@*<br />*@
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header clearfix">
+                    @Html.ActionLink(AssCommonResource.Create_New, "Create", "PhysicalInfo", new { @class = "btn btn-block btn-danger pull-left", @style = "width:15%" })
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <div class="box box-success">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">@AssCommonResource.Search</h3>
+                                    <span class="label label-success pull-right"><i class="fa fa-search-plus"></i></span>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    @using (Html.BeginForm("Index", "StudentOverview", FormMethod.Get))
+                                    {
+                                        
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="box box-danger">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">@AssCommonResource.ExportReports</h3>
+                                    <span class="label label-danger pull-right"><i class="fa fa-bar-chart"></i></span>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        @Html.ActionLink(" Excel", "ExportTo", "PhysicalInfo", new { ReportType = "Excel" }, new { @class = "fa fa-file-excel-o btn btn-success" })
+                                        @Html.ActionLink(" Pdf", "ExportTo", "PhysicalInfo", new { ReportType = "Pdf" }, new { @class = "fa fa-file-pdf-o btn btn-warning" })
+                                        @Html.ActionLink(" Word", "ExportTo", "PhysicalInfo", new { ReportType = "Word" }, new { @class = "fa fa-file-word-o btn btn-primary" })
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.STUDENT_ID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Height)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Weight)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BMI)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Dermatology)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Otolaryngology)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Dentomaxillofacial)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RespiratorySystem)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Record_Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Maker_ID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Create_DT)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Auth_Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Checker_ID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Approve_DT)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Notes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Months)
-        </th>
-        <th></th>
-    </tr>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">@AssCommonResource.Details</h3>
+                                    <span class="label label-primary pull-right"><i class="fa fa-book"></i></span>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    <table id="example2" class="table table-bordered table-hove table-responsive text-center">
+                                        <tr>
+                                            <th>
+                                                @AssCommonResource.Auth_Status
+                                            </th>
+                                            <th>
+                                                @PhysicalInfoResource.STUDENT_ID
+                                            </th>
+                                            <th>
+                                                @PhysicalInfoResource.Height
+                                            </th>
+                                            <th>
+                                                @PhysicalInfoResource.Weight
+                                            </th>
+                                            <th>
+                                                @PhysicalInfoResource.BMI
+                                            </th>
+                                            <th>
+                                                @PhysicalInfoResource.Dermatology
+                                            </th>
+                                            <th>
+                                                @PhysicalInfoResource.Otolaryngology
+                                            </th>
+                                            <th>
+                                                @PhysicalInfoResource.Dentomaxillofacial
+                                            </th>
+                                            <th>
+                                                @PhysicalInfoResource.RespiratorySystem
+                                            </th>
+                                            <th>
+                                                @AssCommonResource.Option
+                                            </th>
+                                            <th>
+                                                @AssCommonResource.SaveAuth
+                                            </th>
+                                        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.STUDENT_ID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Height)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Weight)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BMI)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Dermatology)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Otolaryngology)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Dentomaxillofacial)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RespiratorySystem)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Record_Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Maker_ID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Create_DT)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Auth_Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Checker_ID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Approve_DT)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Notes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Months)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.RECORD_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.RECORD_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.RECORD_ID })
-        </td>
-    </tr>
-}
+                                        @foreach (var item in Model)
+                                        {
 
-</table>
+                                            using (Html.BeginForm("Index", "PhysicalInfo", new { id = item.RECORD_ID }, FormMethod.Post, new { @class = "form-horizontal text-center", role = "form", enctype = "multipart/form-data" }))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                <tr>
+                                                    <td>
+                                                        @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                                                        {
+                                                            @Html.DropDownList("AUTH_STATUS", new SelectList(db.SYS_AUTH_STATUS, "AUTH_STATUS", "AUTH_STATUS_NAME", item.Auth_Status), new { @class = "form-control" })
+                                                        }
+                                                        else
+                                                        {
+                                                            @Html.DropDownList("AUTH_STATUS", new SelectList(db.SYS_AUTH_STATUS, "AUTH_STATUS", "AUTH_STATUS_NAME", item.Auth_Status), new { @class = "form-control", @disabled = "disabled" })
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.STUDENT_ID)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Height)
+                                                    </td>
+                                                    
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Weight)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.BMI)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Dermatology)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Otolaryngology)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Dentomaxillofacial)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.RespiratorySystem)
+                                                    </td>
+                                                    <td>
+                                                        @Html.ActionLink(AssCommonResource.Edit, "Edit", new { id = item.RECORD_ID }) |
+                                                        @Html.ActionLink(AssCommonResource.Details, "Details", new { id = item.RECORD_ID }) |
+                                                        @Html.ActionLink(AssCommonResource.Delete, "Delete", new { id = item.RECORD_ID })
+                                                    </td>
+                                                    @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                                                    {
+                                                        <td>
+                                                            <input type="submit" value=@AssCommonResource.Save class="btn btn-sm btn-warning btn-flat pull-right" />
+                                                        </td>
+                                                    }
+                                                </tr>
+                                            }
+                                        }
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.box -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

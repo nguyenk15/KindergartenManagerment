@@ -12,10 +12,11 @@ namespace KindergartentManagerment.Models
     {
         [Key]
         public int RECORD_ID { get; set; }
-        public int STUDENT_ID { get; set; }
         public Nullable<decimal> Height { get; set; }
         public Nullable<decimal> Weight { get; set; }
         public Nullable<decimal> BMI { get; set; }
+
+        public int STUDENT_ID { get; set; }
 
         [StringLength(100, ErrorMessage = "Dermatology cannot be longer than 100 characters.")]
         public string Dermatology { get; set; }

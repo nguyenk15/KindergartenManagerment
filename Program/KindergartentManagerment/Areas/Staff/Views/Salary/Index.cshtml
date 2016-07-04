@@ -1,95 +1,151 @@
 ﻿@model IEnumerable<KindergartentManagerment.Models.SM_SALARY>
 @using KindergartentManagerment.Resources
-
 @{
     ViewBag.Title = AssCommonResource.Salary + " | " + AssCommonResource.Index;
     Layout = "~/Views/Shared/Layout.cshtml";
+    KindergartentManagerment.Models.ApplicationDbContext db = new KindergartentManagerment.Models.ApplicationDbContext();
 }
 
-<h2>Index</h2>
+<section class="content-header">
+    <h1>
+        @AssCommonResource.Salary
+    </h1>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Sa_Total)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Sa_Bonus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Sa_Minus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Sa_Salary)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Notes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Record_Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Maker_ID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Create_DT)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Auth_Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Checker_ID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Approve_DT)
-        </th>
-        <th></th>
-    </tr>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> @AssCommonResource.Home</a></li>
+        <li><a href="#">@AssCommonResource.lbl_staff</a></li>
+        <li class="active">@AssCommonResource.Salary</li>
+    </ol>
+</section>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sa_Total)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sa_Bonus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sa_Minus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sa_Salary)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Notes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Record_Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Maker_ID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Create_DT)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Auth_Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Checker_ID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Approve_DT)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    @Html.ActionLink(AssCommonResource.Create_New, "Create", "Salary", new { @class = "btn btn-block btn-danger pull-left", @style = "width:15%" })
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <div class="box box-success">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">@AssCommonResource.Search</h3>
+                                    <span class="label label-success pull-right"><i class="fa fa-search-plus"></i></span>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    @using (Html.BeginForm("Index", "Salary", FormMethod.Get))
+                                    {
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="box box-danger">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">@AssCommonResource.ExportReports</h3>
+                                    <span class="label label-danger pull-right"><i class="fa fa-bar-chart"></i></span>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        @Html.ActionLink(" Excel", "ExportTo", "Salary", new { ReportType = "Excel" }, new { @class = "fa fa-file-excel-o btn btn-success" })
+                                        @Html.ActionLink(" Pdf", "ExportTo", "Salary", new { ReportType = "Pdf" }, new { @class = "fa fa-file-pdf-o btn btn-warning" })
+                                        @Html.ActionLink(" Word", "ExportTo", "Salary", new { ReportType = "Word" }, new { @class = "fa fa-file-word-o btn btn-primary" })
 
-</table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">@AssCommonResource.Details</h3>
+                                    <span class="label label-primary pull-right"><i class="fa fa-book"></i></span>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <table id="example2" class="table table-bordered table-hover">
+                                        <tr>
+                                            <th>
+                                                @AssCommonResource.Auth_Status
+                                            </th>
+                                            <th>
+                                                @SalaryResource.Sa_Total
+                                            </th>
+                                            <th>
+                                                @SalaryResource.Sa_Bonus
+                                            </th>
+                                            <th>
+                                                @SalaryResource.Sa_Minus
+                                            </th>
+                                            <th>
+                                                @SalaryResource.Sa_Salary
+                                            </th>
+                                            <th>
+                                                @AssCommonResource.Notes
+                                            </th>
+                                            <th>
+                                                @AssCommonResource.Option
+                                            </th>
+                                            <th>
+                                                @AssCommonResource.SaveAuth
+                                            </th>
+                                        </tr>
+
+                                        @foreach (var item in Model)
+                                        {
+                                            using (Html.BeginForm("Index", "Department", new { id = item.Sa_ID }, FormMethod.Post, new { @class = "form-horizontal text-center", role = "form", enctype = "multipart/form-data" }))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                <tr>
+                                                    <td>
+                                                        @if (!User.IsInRole("Member") && !User.IsInRole("Guest"))
+                                                        {
+                                                            @Html.DropDownList("AUTH_STATUS", new SelectList(db.SYS_AUTH_STATUS, "AUTH_STATUS", "AUTH_STATUS_NAME", item.Auth_Status), new { @class = "form-control" })
+                                                        }
+                                                        else
+                                                        {
+                                                            @Html.DropDownList("AUTH_STATUS", new SelectList(db.SYS_AUTH_STATUS, "AUTH_STATUS", "AUTH_STATUS_NAME", item.Auth_Status), new { @class = "form-control" })
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Sa_Total)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Sa_Bonus)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Sa_Minus)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Sa_Salary)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Notes)
+                                                    </td>
+                                                    <td>
+                                                        @Html.ActionLink(AssCommonResource.Edit, "Edit", new { id = item.Sa_ID }) |
+                                                        @Html.ActionLink(AssCommonResource.Details, "Details", new { id = item.Sa_ID }) |
+                                                        @Html.ActionLink(AssCommonResource.Delete, "Delete", new { id = item.Sa_ID })
+                                                    </td>
+                                                    <td>
+                                                        @if (!User.IsInRole("Member") && !User.IsInRole("Guest"))
+                                                        {
+                                                            <input type="submit" value=@AssCommonResource.Save class="btn btn-sm btn-default btn-flat pull-left" />
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                    </table>
+                                </div>
+                            </div><!-- /.box -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

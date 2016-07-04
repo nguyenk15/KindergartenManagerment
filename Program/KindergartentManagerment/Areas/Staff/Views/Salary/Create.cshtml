@@ -40,11 +40,11 @@
                                 </div>
                                 <div class="box-body">
                                     <div class="form-group">
-                                        <div class="col-md-10">
-                                            <div class="control-label col-md-2">
+                                        <div class="col-md-6">
+                                            <div class="control-label col-md-4">
                                                 @SalaryResource.Sa_StaffCode
                                             </div>
-                                            <div class="col-md-10">
+                                            <div class="col-md-8">
                                                 @Html.EditorFor(model => model.STAFF_ID, new { htmlAttributes = new { @class = "form-control", required = "required" } })
                                                 @Html.ValidationMessageFor(model => model.STAFF_ID, "", new { @class = "text-danger" })
                                             </div>
@@ -52,7 +52,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <div class="col-md-5">
+                                        <div class="col-md-6">
                                             <div class="control-label col-md-4">
                                                 @SalaryResource.Sa_Total
                                             </div>
@@ -61,7 +61,7 @@
                                                 @Html.ValidationMessageFor(model => model.Sa_Total, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
-                                        <div class="col-md-5">
+                                        <div class="col-md-6">
                                             <div class="control-label col-md-4">
                                                 @SalaryResource.Sa_Bonus
                                             </div>
@@ -73,7 +73,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <div class="col-md-5">
+                                        <div class="col-md-6">
                                             <div class="control-label col-md-4">
                                                 @SalaryResource.Sa_Minus
                                             </div>
@@ -82,7 +82,7 @@
                                                 @Html.ValidationMessageFor(model => model.Sa_Minus, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
-                                        <div class="col-md-5">
+                                        <div class="col-md-6">
                                             <div class="control-label col-md-4">
                                                 @SalaryResource.Sa_Salary
                                             </div>
@@ -94,7 +94,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <div class="col-md-10">
+                                        <div class="col-md-12">
                                             <div class="control-label col-md-2">
                                                 @AssCommonResource.Notes
                                             </div>
