@@ -23,6 +23,7 @@ namespace KindergartentManagerment
 
             bundles.Add(new ScriptBundle("~/bundles/jquerycore").Include(
                         "~/Content/themes/AdminLTE/js/jQuery/jQuery-2.1.4.min.js", //jQuery 2.1.4
+                        "~/Content/themes/AdminLTE/js/jQueryUI/jquery-ui.js",
                         "~/Content/bootstrap/js/bootstrap.min.js",  //Bootstrap 3.3.5
                         "~/Content/themes/AdminLTE/js/app.min.js", //AdminLTE App
                         "~/Content/themes/AdminLTE/js/demo.js"  //AdminLTE for demo purposes

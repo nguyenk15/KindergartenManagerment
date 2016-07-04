@@ -5,20 +5,11 @@
     Layout = "~/Views/Shared/Layout.cshtml";
     KindergartentManagerment.Models.ApplicationDbContext db = new KindergartentManagerment.Models.ApplicationDbContext();
 }
-<script src="/Content/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="/Content/plugins/datatables/dataTables.bootstrap.min.js"></script>
-<!-- SlimScroll -->
-<script src="/Content/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
-<script src="/Content/plugins/fastclick/fastclick.min.js"></script>
-<!-- AdminLTE App -->
-<script src="/Content/themes/AdminLTE/js/app.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="/Content/themes/AdminLTE/js/demo.js"></script>
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.10.2.min.js" integrity="sha256-C6CB9UYIS9UJeqinPHWTHVqh/E1uhG5Twh+Y5qFQmYg=" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<script>
+@section Orther_styles{}
+@section Orther_scripts{
+    
+
+    <script>
     $(function () {
         var array = @Html.Raw(Json.Encode(ViewBag._type));
         $( "#tags" ).autocomplete({
@@ -26,6 +17,10 @@
         });
     });
 </script>
+    
+    }
+
+
 <section class="content-header">
     <h1>
         @AssCommonResource.IngredientType
